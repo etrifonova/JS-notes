@@ -1,4 +1,38 @@
+let getStatistics = function (players) {
+  let totalGoals = 0;
+  for (j = 0; j < players.length; j++) {
+    totalGoals += players[j].goals;
+  }
+  
+  for (let i = 0; i < players.length; i++) {
+    players[i].coefficient = players[i].goals * 2 + players[i].passes;
+    players[i].percent = Math.round(players[i].goals * 100 / totalGoals);
+  }
+  return playersList;
+};
 
+let playerOne = {
+  'name': 'Lampard',
+  'goals': 2,
+  'passes': 2
+}
+
+let playerTwo = {
+  'name': 'Terry',
+  'goals': 10,
+  'passes': 1
+}
+
+let playerThree = {
+  'name': 'Drogba',
+  'goals': 3,
+  'passes': 2
+}
+
+let playersList = [playerOne, playerTwo, playerThree];
+
+console.log(getStatistics(playersList));
+console.log(playersList);
 
 
 
@@ -41,3 +75,4 @@ function descendingOrder(n){
   return parseInt(n.toString().split('').sort().reverse().join(''), 10);
 }
 
+*/
