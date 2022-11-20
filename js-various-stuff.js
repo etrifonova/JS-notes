@@ -1,17 +1,8 @@
-const hogwartsStudents = [
-  { name: 'Harry',  house: 'Gryffindor' },
-  { name: 'Ron',  house: 'Gryffindor' },
-  { name: 'Hermione',  house: 'Gryffindor' },
-  { name: 'Draco',  house: 'Slytherin' },
-  { name: 'Voldemort',  house: 'Slytherin' },
-  { name: 'Luna',  house: 'Ravenclaw' },
-  { name: 'Cedric',  house: 'Hufflepuff' }
-]
+const hogwartsStudents = [1, 2, 3, 4, 5]
 
-hogwartsStudents.forEach((student) => {
-  console.log(student.house);
-})
+const includesTwo = hogwartsStudents.includes(7)
 
+console.log(includesTwo)
 
 /* 8 Must Know JavaScript Array Methods
 https://youtu.be/R8rmfD9Y5-c
@@ -88,7 +79,67 @@ hogwartsStudents.forEach((student) => {
   console.log(student.house);
 })
 
-5) 
+5) some - checks if the array contains the specified value and prints true/false depending on whether it does or not
+
+const hogwartsStudents = [
+  { name: 'Harry',  house: 'Gryffindor' },
+  { name: 'Ron',  house: 'Gryffindor' },
+  { name: 'Hermione',  house: 'Gryffindor' },
+  { name: 'Draco',  house: 'Slytherin' },
+  { name: 'Voldemort',  house: 'Slytherin' },
+  { name: 'Luna',  house: 'Ravenclaw' },
+  { name: 'Cedric',  house: 'Hufflepuff' }
+]
+
+const evilStudents = hogwartsStudents.some((student) => {
+ return student.house === 'Hufflepuff';
+})
+
+console.log(evilStudents)
+
+6) every - checks if every items complies with the condition
+
+const hogwartsStudents = [
+  { name: 'Harry',  house: 'Gryffindor', siblings: 0 },
+  { name: 'Ron',  house: 'Gryffindor', siblings: 6 },
+  { name: 'Hermione',  house: 'Gryffindor', siblings: 0 },
+  { name: 'Draco',  house: 'Slytherin', siblings: 0 },
+  { name: 'Voldemort',  house: 'Slytherin', siblings: 0 },
+  { name: 'Luna',  house: 'Ravenclaw', siblings: 0 },
+  { name: 'Cedric',  house: 'Hufflepuff', siblings: 0 }
+]
+
+const evilStudents = hogwartsStudents.every((student) => {
+ return student.siblings > 0;
+})
+
+console.log(evilStudents)
+
+7) reduce - not just returns sth, but performs some operation first
+
+reduce runs a function on every single item
+the currentTotal is whatever the previous iteration returned
+"student" is the actual item in the array
+"0" is the initial value of currentTotal 
+the function takes currentTotal as the first parameter
+
+const hogwartsStudents = [
+  { name: 'Harry',  house: 'Gryffindor', siblings: 0 },
+  { name: 'Ron',  house: 'Gryffindor', siblings: 6 },
+  { name: 'Hermione',  house: 'Gryffindor', siblings: 0 },
+  { name: 'Draco',  house: 'Slytherin', siblings: 0 },
+  { name: 'Voldemort',  house: 'Slytherin', siblings: 0 },
+  { name: 'Luna',  house: 'Ravenclaw', siblings: 0 },
+  { name: 'Cedric',  house: 'Hufflepuff', siblings: 0 }
+]
+
+const totalSiblings = hogwartsStudents.reduce((currentTotal, student) => {
+ return student.siblings + currentTotal
+}, 0)
+
+console.log(totalSiblings)
+
+8) includes - it doesn't take a function but a single argument
 
 
 */
