@@ -1,5 +1,7 @@
 /* Jaden Casing Strings
 Моё первое самостоятельное (без поиска задачи на Ютубе) решение:
+Решение громоздкое, но пока в рамках моих знаний. Надо учиться более рациональным решениям.
+
 
 String.prototype.toJadenCase = function () {
   
@@ -17,6 +19,33 @@ String.prototype.toJadenCase = function () {
 const someStuff = "here we go yo";
 
 console.log(someStuff.toJadenCase());
+
+Варианты других пользователей:
+1.
+String.prototype.toJadenCase = function () {
+  return this.split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
+2.
+String.prototype.toJadenCase = function () { 
+  return this.split(" ").map(function(word){
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join(" ");
+}
+
+3.
+String.prototype.toJadenCase = function () {
+
+  function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  
+  return this.split(' ').map(capitalizeFirstLetter).join(' ');
+};
+
+
 
 */
 
