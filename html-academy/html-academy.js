@@ -4,6 +4,75 @@
 
 */
 
+let example = "cat";
+let result = example.charAt(0).toUpperCase() + example.slice(1);
+console.log(result);
+
+
+String.prototype.toJadenCase = function () {
+  
+  let array = String.split(" ");
+  console.log(array)
+  let capitalizedString = [];
+  let capitalizedWord;
+  for (let i = 0; i < array.length; i++) {
+    capitalizedWord = array[i].charAt(0).toUpperCase() + array[i].slice(1);
+    capitalizedString += capitalizedWord + " ";
+  }
+  return capitalizedString;
+};
+
+
+
+// let jadenSmithCase = function (string) {
+//   let array = string.split(" ");
+//   console.log(array)
+//   let capitalizedString = [];
+//   let capitalizedWord;
+//   for (let i = 0; i < array.length; i++) {
+//     capitalizedWord = array[i].charAt(0).toUpperCase() + array[i].slice(1);
+//     capitalizedString += capitalizedWord + " ";
+//   }
+//   return capitalizedString;
+// }
+
+// console.log(jadenSmithCase("where is my mind"))
+
+
+/* DESCENDING ORDER
+
+function descendingOrder(n){
+  return parseInt(String(n).split('').sort((a, b) => a - b).reverse().join(""));
+}
+
+console.log(descendingOrder(436285));
+1) Параметры
+string
+Значение, которое необходимо проинтерпретировать. Если значение параметра string не принадлежит строковому типу, оно преобразуется в него (с помощью абстрактной операции ToString). Пробелы в начале строки не учитываются.
+
+radix
+Целое число в диапазоне между 2 и 36, представляющее собой основание системы счисления числовой строки string, описанной выше. В основном пользователи используют десятичную систему счисления и указывают 10. Всегда указывайте этот параметр, чтобы исключить ошибки считывания и гарантировать корректность исполнения и предсказуемость результата. Когда основание системы счисления не указано, разные реализации могут возвращать разные результаты.
+
+Возвращаемое значение
+Целое число, полученное парсингом (разбором и интерпретацией) переданной строки. Если первый символ не получилось сконвертировать в число, то возвращается NaN.
+
+В решении не указан radix. Возможно, по умолчанию исп-ся десятичная система.
+
+2) Далее преобразуем число в строку
+
+3) Преобразуем строку в массив
+
+4) Вычисляем из пар чисео большее и меньшее и ставим по возрастанию
+
+5) Меняем порядок в массиве - от большего к меньшему
+
+6) Преобразуем массив в число
+*/
+
+//   return parseInt(String(n).split("").sort((a,b) => a - b).reverse().join(""));
+
+/* ИСПЫТАНИЕ: ОБЪЕКТЫ 
+
 let materialPrice = {
   'wood': 1000,
   'stone': 1500,
@@ -24,6 +93,10 @@ let house = {
     return this.price = materialPrice[this.material] * this.square;
     }
   };
+
+
+*/
+
 
 //  сработало!!!
 
