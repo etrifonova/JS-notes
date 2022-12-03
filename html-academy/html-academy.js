@@ -4,72 +4,45 @@
 
 */
 
-let example = "cat";
-let result = example.charAt(0).toUpperCase() + example.slice(1);
-console.log(result);
+/* ИСПЫТАНИЕ: САМЫЙ РЕЗУЛЬТАТИВНЫЙ ИГРОК
 
-
-String.prototype.toJadenCase = function () {
-  
-  let array = String.split(" ");
-  console.log(array)
-  let capitalizedString = [];
-  let capitalizedWord;
-  for (let i = 0; i < array.length; i++) {
-    capitalizedWord = array[i].charAt(0).toUpperCase() + array[i].slice(1);
-    capitalizedString += capitalizedWord + " ";
+let getStatistics = function (players) {
+  let totalGoals = 0;
+  for (j = 0; j < players.length; j++) {
+    totalGoals += players[j].goals;
   }
-  return capitalizedString;
+  
+  for (let i = 0; i < players.length; i++) {
+    players[i].coefficient = players[i].goals * 2 + players[i].passes;
+    players[i].percent = Math.round(players[i].goals * 100 / totalGoals);
+  }
+  return players;
 };
 
-
-
-// let jadenSmithCase = function (string) {
-//   let array = string.split(" ");
-//   console.log(array)
-//   let capitalizedString = [];
-//   let capitalizedWord;
-//   for (let i = 0; i < array.length; i++) {
-//     capitalizedWord = array[i].charAt(0).toUpperCase() + array[i].slice(1);
-//     capitalizedString += capitalizedWord + " ";
-//   }
-//   return capitalizedString;
-// }
-
-// console.log(jadenSmithCase("where is my mind"))
-
-
-/* DESCENDING ORDER
-
-function descendingOrder(n){
-  return parseInt(String(n).split('').sort((a, b) => a - b).reverse().join(""));
+let playerOne = {
+  'name': 'Lampard',
+  'goals': 2,
+  'passes': 2
 }
 
-console.log(descendingOrder(436285));
-1) Параметры
-string
-Значение, которое необходимо проинтерпретировать. Если значение параметра string не принадлежит строковому типу, оно преобразуется в него (с помощью абстрактной операции ToString). Пробелы в начале строки не учитываются.
+let playerTwo = {
+  'name': 'Terry',
+  'goals': 10,
+  'passes': 1
+}
 
-radix
-Целое число в диапазоне между 2 и 36, представляющее собой основание системы счисления числовой строки string, описанной выше. В основном пользователи используют десятичную систему счисления и указывают 10. Всегда указывайте этот параметр, чтобы исключить ошибки считывания и гарантировать корректность исполнения и предсказуемость результата. Когда основание системы счисления не указано, разные реализации могут возвращать разные результаты.
+let playerThree = {
+  'name': 'Drogba',
+  'goals': 3,
+  'passes': 2
+}
 
-Возвращаемое значение
-Целое число, полученное парсингом (разбором и интерпретацией) переданной строки. Если первый символ не получилось сконвертировать в число, то возвращается NaN.
+let playersList = [playerOne, playerTwo, playerThree];
 
-В решении не указан radix. Возможно, по умолчанию исп-ся десятичная система.
+console.log(getStatistics(playersList));
+console.log(playersList);
 
-2) Далее преобразуем число в строку
-
-3) Преобразуем строку в массив
-
-4) Вычисляем из пар чисео большее и меньшее и ставим по возрастанию
-
-5) Меняем порядок в массиве - от большего к меньшему
-
-6) Преобразуем массив в число
 */
-
-//   return parseInt(String(n).split("").sort((a,b) => a - b).reverse().join(""));
 
 /* ИСПЫТАНИЕ: ОБЪЕКТЫ 
 
