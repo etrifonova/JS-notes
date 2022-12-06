@@ -1,3 +1,5 @@
+// иЗУЧИТЬ: 1) добавлять элементы в пустой массив; 2) кодировка букв в ASCII
+
 /* Replace With Alphabet Position
 
 In this kata you are required to, given a string, replace every letter with its position in the alphabet.
@@ -14,36 +16,57 @@ function alphabetPosition(text) {
   return text;
 }
 
-*/
-
-
-
-
-// const alphaVal = (s) => s.toLowerCase().charCodeAt(0) - 97 + 1
+My solution (big & clumsy!):
 
 function alphabetPosition(text) {
   let textArray = text.split('');
-  let numberArray = [];
+  let numberArray = '';
   for (let i = 0; i < textArray.length - 1; i++) {
-    numberArray += textArray[i].toLowerCase().charCodeAt(0) - 97 + 1 + " ";
+    if (textArray[i].length === 1 && textArray[i].match(/[a-z]/i)) {
+      numberArray += textArray[i].toLowerCase().charCodeAt(0) - 97 + 1 + " ";
   }
+}
+if (textArray[textArray.length - 1].length === 1 && textArray[textArray.length - 1].match(/[a-z]/i)) {
   numberArray += textArray[textArray.length - 1].toLowerCase().charCodeAt(0) - 97 + 1;
-  
-  return numberArray.toString();
+} else {
+  numberArray = numberArray.slice(0, -1);
+}
+  return numberArray;
 }
 
-console.log(alphabetPosition("hello world")) 
-// 8 5 12 12 15 -64 23 15 18 12 4 - ПРОБЕЛУ ПРИСВОЕН КОД -64, НУЖО ИГНОРИРОВАТЬ ПРОБЕЛЫ
+console.log(alphabetPosition("The sunset sets at twelve o' clock.")) 
+
+Other solutions from codewars:
+
+1.
+function alphabetPosition(text) {
+  var result = "";
+  for (var i = 0; i < text.length; i++){
+    var code = text.toUpperCase().charCodeAt(i)
+    if (code > 64 && code < 91) result += (code - 64) + " ";
+  }
+
+  return result.slice(0, result.length-1);
+}
+
+2. 
+let alphabetPosition = (text) => text.toUpperCase().replace(/[^A-Z]/g, '').split('').map(ch => ch.charCodeAt(0) - 64).join(' ');
+
+3. 
+function alphabetPosition(text) {
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  return text.toLowerCase().split('')
+  .filter( letter => {
+    let index = alphabet.indexOf(letter);
+    return index > -1;
+  }  )
+  .map( letter => alphabet.indexOf(letter) + 1 )
+  .join(' ')
+}
 
 
+*/
 
-
-
-  // for (let i = 0; i < letterArray.length; i++) {
-  //   numberArray += letterArray[i].toLowerCase().charCodeAt(0) - 97 + 1;
-  // }
-
-// console.log(convertToNumber("baby"));
 
 
 /* Jaden Casing Strings
