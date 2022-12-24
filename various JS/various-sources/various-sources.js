@@ -1,14 +1,57 @@
-/*
+/* https://learn.javascript.ru/array-methods#tasks
 
 */
 
-/*
+/* https://learn.javascript.ru/array-methods#tasks
 
 */
 
-/* Переведите текст вида border-left-width в borderLeftWidth 
+/* Сортировать в порядке по убыванию https://learn.javascript.ru/array-methods#tasks
 
-Фильтрация по диапазону
+*/
+
+let arr = [5, 2, 1, -10, 8];
+
+arr.sort((a, b) => b - a);
+
+function sortedArr (arr, a, b) {
+  
+}
+
+console.log( arr ); // 8, 5, 2, 1, -10
+
+
+
+/* Фильтрация по диапазону "на месте"
+
+Напишите функцию filterRangeInPlace(arr, a, b), которая принимает массив arr и удаляет из него все значения кроме тех, которые находятся между a и b. То есть, проверка имеет вид a ≤ arr[i] ≤ b.
+
+Функция должна изменять принимаемый массив и ничего не возвращать.
+
+let arr = [5, 3, 8, 1];
+
+filterRangeInPlace(arr, 1, 4); 
+
+
+function filterRangeInPlace(arr, a, b) {
+
+  for (let i = 0; i < arr.length; i++) {
+    if (a > arr[i] || arr[i] > b) {
+      arr.splice(i, 1);
+    } 
+  }
+}
+
+console.log(arr);
+
+
+
+*/
+
+
+/* Фильтрация по диапазону https://learn.javascript.ru/array-methods#tasks
+
+
 важность: 4
 Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет элементы со значениями больше или равными a и меньше или равными b и возвращает результат в виде массива.
 
@@ -40,7 +83,7 @@ console.log(filtered)
 */
 
 
-/* Переведите текст вида border-left-width в borderLeftWidth
+/* Переведите текст вида border-left-width в borderLeftWidth https://learn.javascript.ru/array-methods#tasks
 
 
 
