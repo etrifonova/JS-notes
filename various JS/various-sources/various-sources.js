@@ -8,17 +8,17 @@
 
 /* Сортировать в порядке по убыванию https://learn.javascript.ru/array-methods#tasks
 
+
+function sortedArr(arr) {
+  return arr.sort((a, b) => b - a);
+}
+let arr1 = [15, -6, 2, 1, -10, 8, 15, -55];
+
+console.log(sortedArr(arr1)); 
+
 */
 
-let arr = [5, 2, 1, -10, 8];
 
-arr.sort((a, b) => b - a);
-
-function sortedArr (arr, a, b) {
-  
-}
-
-console.log( arr ); // 8, 5, 2, 1, -10
 
 
 
