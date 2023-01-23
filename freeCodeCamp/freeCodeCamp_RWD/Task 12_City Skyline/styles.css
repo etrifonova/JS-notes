@@ -1,0 +1,58 @@
+
+
+/* 
+Step 6
+Also add a box-sizing of border-box to everything. This will make it so the border you added doesn't add any size to your elements.
+ */
+
+ /* 
+ Step 7
+You can see the body (it's the inner-most box on your page); the box around it is the html element. 
+Make your body fill the whole viewport by giving it a height of 100vh. Remove the default margin from the body by setting the margin to 0. 
+Finally, set the overflow property to hidden to hide any scroll bars that appear when something extends past the viewport.
+
+body {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+*/
+
+/* 
+Step 21
+The buildings are too spaced out. Squeeze them together by adding two empty div elements to the top of the .background-buildings element, two more at the bottom of it, and one more in between .bb3 and .bb4. These will be added as evenly-spaced elements across the container, effectively moving the buildings closer to the center.
+
+<!DOCTYPE html>
+<html lang="en">    
+  <head>
+    <meta charset="UTF-8">
+    <title>City Skyline</title>
+    <link href="styles.css" rel="stylesheet" />   
+  </head>
+
+    <div class="background-buildings">
+      <div></div>
+      <div></div>
+      <div class="bb1">
+        <div class="bb1a"></div>
+        <div class="bb1b"></div>
+        <div class="bb1c"></div>
+        <div class="bb1d"></div>
+      </div>
+      <div class="bb2"></div>
+      <div class="bb3"></div>
+      <div></div>
+      <div class="bb4"></div>
+      <div></div>
+      <div></div>
+    </div>
+
+*/
+
+/* 
+Step 25
+That didn't work, because the variables you declared in .bb1 do not cascade to the .bb2 and .bb3 sibling elements. That's just how CSS works. Because of this, variables are often declared in the :root selector. This is the highest level selector in CSS; putting your variables there will make them usable everywhere. Add the :root selector to the top of your stylesheet, and move all your variable declarations there.
+ */
+
+ 
