@@ -1,7 +1,18 @@
+
+
+:root {
+  --bar-color: rgb(4,170,109);
+  --main-color: rgb(255,255,255);
+  --gray: rgb(231,233,235);
+  --black: rgb(40,42,53);
+  --light-green: rgb(217,238,225);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Baskervville', sans-serif;
 }
 
 #header {
@@ -11,10 +22,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #eee;
-  position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
+ /*  position: fixed; Set the navbar to fixed position */
+  /* top: 0; Position the navbar at the top of the page */
   width: 100%;
+  background-color: var(--bar-color);
+  color: var(--main-color);
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
 }
 
 
@@ -106,103 +120,48 @@ a {
   padding: 5px;
 }
 
+#welcome-section {
+  
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+
+h1 {
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--black);
+}
+
+#welcome-section span {
+  display: block;
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--black);
+}
+
+#work {
+  background-color: var(--gray);
+}
 
 h2 {
   display: block;
-  font-size: 1.5em;
-  margin-block-start: 0.83em;
-  margin-block-end: 0.83em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-}
-
-#How_It_Works {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-top: 30px;
-}
-
-#Pricing {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.product {
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
-  width: calc(100% / 3);
-  margin: 10px;
-  border: 1px solid #000;
-  border-radius: 3px;
-}
-/* comments:
-width: calc(100% / 3); - чтобы поделить ширина поровну между 3 элементами;
-*/
-
-.product > .level {
-  background-color: #ddd;
-  color: black;
-  padding: 15px 0;
-  width: 100%;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-ol {
-  list-style: none;
-}
-
-.btn {
-  text-transform: uppercase;
-  background-color: #f1c40f;
-}
-
-#hero input[type='submit'] {
-  max-width: 150px;
-  width: 100%;
-  height: 30px;
-  margin: 15px 0;
-  border: 0;
+  font-size: 1.25em;
   font-weight: bold;
-  font-size: 1.15rem;
+  color: var(--black);
 }
 
 
-#Pricing .btn {
-  margin: 30px 0;
-  padding: 10px 20px;
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
 }
 
-.page-footer {
-  background-color: #ddd;
-  align-items: flex-end;
-  margin-bottom: 30px;
-  text-align: right;
-
-}
-
-.page-footer ul {
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-  font-weight: bold;
-}
-
-.page-footer ul li {
-  margin: 0 10px;
-
-}
-
-@media screen and (max-width: 500px) {
-  #Pricing {
-    flex-wrap: wrap;
-  }
-  
+.project-card {
+  object-fit: cover;
 }
