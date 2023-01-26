@@ -57,12 +57,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
-.container {
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 auto;
-}
+/*  */
 
 /* Form section */
 
@@ -80,11 +75,6 @@ a {
   align-items: center;
 }
 
-#container {
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 auto;
-}
 
 #features {
   margin-top: 30px;
@@ -158,8 +148,8 @@ h2 {
 
 .work-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
 .project-card {
