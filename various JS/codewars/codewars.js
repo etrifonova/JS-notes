@@ -17,24 +17,22 @@ We'll also pass strings with special symbols, such as 2A3*3a2, 2A3 3a2, and 2_A3
 2) удалить небуквенные символы, либо выбрать только буквенные символы;
 3) сравнить полученный массив с перевернутым через reverse;
 
-*/
 
-// Добавить цикл для проверки символов
 
 function palindrome(str) {
-  var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  let a = str.toLowerCase().split('').map( letter => letter.match(/^[a-z0-9]+$/i) ).join('');
+  let b = str.toLowerCase().split('').map( letter => letter.match(/^[a-z0-9]+$/i) ).reverse().join('');
+  return a === b;
+}
 
-  return str.split('').toLowerCase().map( letter => letter.match(/[a-z]/i) )
-  .join(' ') === str.split('').toLowerCase().map( letter => letter.match(/[a-z]/i)).reverse().join(' ');
-  }
+console.log(palindrome("1 eye for of 1 eye."));
 
-console.log(palindrome("bull-eye"));
-
-let word = 'fdfgfg';
-let symbol = '!';
-let transform = word.match(/[a-z]/i);
+*/
 
 
+
+
+// ^[a-z0-9]+$/i - for checking if a character is alphanumeric; /[a-z]/i - for checking if a character is a letter
 
 
 /* Replace With Alphabet Position
