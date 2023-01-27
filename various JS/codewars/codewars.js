@@ -1,5 +1,42 @@
 // иЗУЧИТЬ: 1) добавлять элементы в пустой массив; 2) кодировка букв в ASCII
 
+
+/* Return true if the given string is a palindrome. Otherwise, return false.
+
+A palindrome is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing.
+
+Note: You'll need to remove all non-alphanumeric characters (punctuation, spaces and symbols) and turn everything into the same case (lower or upper case) in order to check for palindromes.
+
+We'll pass strings with varying formats, such as racecar, RaceCar, and race CAR among others.
+
+We'll also pass strings with special symbols, such as 2A3*3a2, 2A3 3a2, and 2_A3*3#A2.
+
+Шаги:
+
+1) преобразовать строку в массив через split;
+2) удалить небуквенные символы, либо выбрать только буквенные символы;
+3) сравнить полученный массив с перевернутым через reverse;
+
+*/
+
+// Добавить цикл для проверки символов
+
+function palindrome(str) {
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+  return str.split('').toLowerCase().map( letter => letter.match(/[a-z]/i) )
+  .join(' ') === str.split('').toLowerCase().map( letter => letter.match(/[a-z]/i)).reverse().join(' ');
+  }
+
+console.log(palindrome("bull-eye"));
+
+let word = 'fdfgfg';
+let symbol = '!';
+let transform = word.match(/[a-z]/i);
+
+
+
+
 /* Replace With Alphabet Position
 
 In this kata you are required to, given a string, replace every letter with its position in the alphabet.
