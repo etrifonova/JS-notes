@@ -27,13 +27,56 @@ console.log(palindrome("1 eye for of 1 eye."));
 
 */
 
-function convertToRoman(num) {
-  return num;
- }
- 
- convertToRoman(36);
+// Можно использовать встроенный метод Object.keys. Результатом вызова такого метода будет массив ключей переданного объекта.
 
-console.log(a)
+// Похожим образом работает метод Object.values, только на выходе получаем массив значений, а не ключей.
+
+const hogwartsStudents = [
+  { name: 'Harry',  house: 'Gryffindor' },
+  { name: 'Ron',  house: 'Gryffindor' },
+  { name: 'Hermione',  house: 'Gryffindor' },
+  { name: 'Draco',  house: 'Slytherin' },
+  { name: 'Voldemort',  house: 'Slytherin' },
+  { name: 'Luna',  house: 'Ravenclaw' },
+  { name: 'Cedric',  house: 'Hufflepuff' }
+]
+
+const foundStudent = hogwartsStudents.find((student) => {
+  return student.house === 'Gryffindor';
+})
+
+console.log(foundStudent)
+
+
+const numConverter = [
+  { arabicNum: '1',  romanNum: 'I' },
+  { arabicNum: '2',  romanNum: 'II' },
+  { arabicNum: '3',  romanNum: 'III' },
+  { arabicNum: '4',  romanNum: 'IV' },
+  { arabicNum: '5',  romanNum: 'V' },
+  { arabicNum: '6',  romanNum: 'VII' },
+  { arabicNum: '7',  romanNum: 'VIII' }
+]
+
+ 
+//  console.log(convertToRoman(3));
+
+function convertedNum (number) {
+  return numConverter.find((num) => {
+    return num.arabicNum === number; 
+  }).romanNum;
+}
+
+console.log (convertedNum('4'));
+
+
+// let array = Object.entries(numConverter).join(', ');
+
+// console.log (array);
+
+
+
+
 
 /*Roman Numeral Converter
 Convert the given number into a roman numeral.
@@ -56,7 +99,7 @@ All roman numerals answers should be provided in upper-case.
 
 Шаги:
 
-1) создать объект с соответствие римских и арабских чисел
+1) создать объект с соответствием римских и арабских чисел
 2) 
 
 
