@@ -27,35 +27,12 @@ console.log(palindrome("1 eye for of 1 eye."));
 
 */
 
-// Можно использовать встроенный метод Object.keys. Результатом вызова такого метода будет массив ключей переданного объекта.
 
-// Похожим образом работает метод Object.values, только на выходе получаем массив значений, а не ключей.
-
-// const hogwartsStudents = [
-//   { name: 'Harry',  house: 'Gryffindor' },
-//   { name: 'Ron',  house: 'Gryffindor' },
-//   { name: 'Hermione',  house: 'Gryffindor' },
-//   { name: 'Draco',  house: 'Slytherin' },
-//   { name: 'Voldemort',  house: 'Slytherin' },
-//   { name: 'Luna',  house: 'Ravenclaw' },
-//   { name: 'Cedric',  house: 'Hufflepuff' }
-// ]
-
-// const foundStudent = hogwartsStudents.find((student) => {
-//   return student.house === 'Gryffindor';
-// })
-
-// console.log(foundStudent)
-
-
-
-
-
- 
-//  console.log(convertToRoman(3));
+/* Roman Numeral Converter
 
 function convertedNum (num) {
   const numConverter = [
+  { arabicNum: 0,  romanNum: '' },
   { arabicNum: 1,  romanNum: 'I' },
   { arabicNum: 2,  romanNum: 'II' },
   { arabicNum: 3,  romanNum: 'III' },
@@ -85,7 +62,9 @@ function convertedNum (num) {
   { arabicNum100: 7,  romanNum: 'DCC' },
   { arabicNum100: 8,  romanNum: 'DCCC' },
   { arabicNum100: 9,  romanNum: 'CM' },
-  { arabicNum1000: 1,  romanNum: 'M' }
+  { arabicNum1000: 1,  romanNum: 'M' },
+  { arabicNum1000: 2,  romanNum: 'MM' },
+  { arabicNum1000: 3,  romanNum: 'MMM' }
 
 ]
   if (num.toString().length === 4) {
@@ -93,11 +72,11 @@ function convertedNum (num) {
     const newRoman = numConverter.find((number) => {
       return number.arabicNum1000 == numArray[0]; 
     }).romanNum + numConverter.find((number) => {
-      return number.arabicNum100 == numArray[0]; 
+      return number.arabicNum100 == numArray[1]; 
     }).romanNum + numConverter.find((number) => {
-      return number.arabicNum10 == numArray[1]; 
+      return number.arabicNum10 == numArray[2]; 
     }).romanNum + numConverter.find((number) => {
-      return number.arabicNum == numArray[2]; 
+      return number.arabicNum == numArray[3]; 
     }).romanNum;
     console.log(newRoman);
     return newRoman;
@@ -128,43 +107,6 @@ function convertedNum (num) {
   }
 }
 
-convertedNum(1003);
-
-
-// let array = Object.entries(numConverter).join(', ');
-
-// console.log (array);
-
-
-
-
-
-/*Roman Numeral Converter
-Convert the given number into a roman numeral.
-
-Roman numerals	Arabic numerals
-M	1000
-CM	900
-D	500
-CD	400
-C	100
-XC	90
-L	50
-XL	40
-X	10
-IX	9
-V	5
-IV	4
-I	1
-All roman numerals answers should be provided in upper-case.
-
-Шаги:
-
-1) создать объект с соответствием римских и арабских чисел
-2) 
-
-
-
-
+console.log(convertedNum(3970));
 
 */
