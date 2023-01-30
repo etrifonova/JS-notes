@@ -12,6 +12,18 @@ All letters will be uppercase. Do not transform any non-alphabetic character (i.
 
 */
 
+let capitalLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let a = capitalLetters.split('');
+
+console.log(capitalLetters)
+
+function rot13(str) {
+  
+  return str;
+}
+
+rot13("SERR PBQR PNZC");
+
 
 
 /* Return true if the given string is a palindrome. Otherwise, return false.
