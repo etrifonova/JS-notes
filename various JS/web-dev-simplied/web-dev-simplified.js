@@ -18,6 +18,8 @@ ea* - Matches any string that contains zero or more occurrences of a
 \W - match what is not a character
 \s - match any whitespace
 \S - match anything but whitespaces
+\d - match any digit
+\D - match anything but digits
 \w{4} - match any 4 digits or more // test result: [
     "thin",
     "know",
@@ -30,20 +32,38 @@ ea* - Matches any string that contains zero or more occurrences of a
 \[fc]at - match anything which starts with f or c and end in at
 [a-zA-Z]at - match anything which starts with a letter, non-capital or capital, and ends in at
 [0-9]at
+(t|e|r){2,3} - matches occurrences of the letters in parenthesis, either when there are 2 or 3 of them, in any order
+(re){2,3} - the {2,3} affects both r & e
+re{2,3} - the {2,3} affects only e
+^ - caret, to match the beginning of a line
+$ - matches the end of a statement
+(?<=do) - positive look-behind - matches anything that comes before the specified character or set; < - means behind, = means positive
+(?<!do) - negitive look-behind - matches anything except for what comes before the specified character or set
+(?<at)
 
 */
 
-let testString = 'One thing I don\'t know why 5 it doesn\'t even matter how 6 hard you try wow low allow.'
-let regEx1 = /[nh]ow/g;
+// let testString = 'One thing I don\'t know why 5 it doesn\'t even matter how 6 hard you try wow low allow.'
+// let regEx1 = /(?<=o)./g;
 
-let result1 = testString.match(regEx1);
-console.log(result1);
+// let result1 = testString.match(regEx1);
+// console.log(result1);
 
-let regEx2 = /[a-z]ow/g;
-let result2 = testString.match(regEx2);
-console.log(result2);
+// let regEx2 = /(?<!o)./g;
+// let result2 = testString.match(regEx2);
+// console.log(result2);
 
+let testNumber3 = '645-5437-66382';
+let testNumber4 = '645543766382';
+let testNumber5 = '645 5437 66382';
 
+let regEx3 = /\d{3}(-| )?\d{4}(-| )?\d{5}/g; //or /\d{3}[ -]?\d{4}[ -]?\d{5}/g;
+let result3 = testNumber3.match(regEx3);
+let result4 = testNumber4.match(regEx3);
+let result5 = testNumber5.match(regEx3);
+console.log(result3);
+console.log(result4);
+console.log(result5);
 
 
 
