@@ -43,27 +43,27 @@ $ - matches the end of a statement
 
 */
 
-// let testString = 'One thing I don\'t know why 5 it doesn\'t even matter how 6 hard you try wow low allow.'
-// let regEx1 = /(?<=o)./g;
+let testString = 'One thing I don\'t know why 5 it doesn\'t even matter how 6 hard you try wow low allow.'
+let regEx1 = /(?<!\s)/g;
 
-// let result1 = testString.match(regEx1);
-// console.log(result1);
+let result1 = testString.match(regEx1);
+console.log(result1);
 
-// let regEx2 = /(?<!o)./g;
-// let result2 = testString.match(regEx2);
-// console.log(result2);
+let regEx2 = /(?<!o)./g;
+let result2 = testString.match(regEx2);
+console.log(result2);
 
-let testNumber3 = '645-5437-66382';
-let testNumber4 = '645543766382';
-let testNumber5 = '645 5437 66382';
+// let testNumber3 = '645-5437-66382';
+// let testNumber4 = '645543766382';
+// let testNumber5 = '645 5437 66382';
 
-let regEx3 = /\d{3}(-| )?\d{4}(-| )?\d{5}/g; //or /\d{3}[ -]?\d{4}[ -]?\d{5}/g;
-let result3 = testNumber3.match(regEx3);
-let result4 = testNumber4.match(regEx3);
-let result5 = testNumber5.match(regEx3);
-console.log(result3);
-console.log(result4);
-console.log(result5);
+// let regEx3 = /\d{3}(-| )?\d{4}(-| )?\d{5}/g; //or /\d{3}[ -]?\d{4}[ -]?\d{5}/g;
+// let result3 = testNumber3.match(regEx3);
+// let result4 = testNumber4.match(regEx3);
+// let result5 = testNumber5.match(regEx3);
+// console.log(result3);
+// console.log(result4);
+// console.log(result5);
 
 
 

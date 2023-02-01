@@ -8,6 +8,95 @@
 
 */
 
+/* 
+
+*/
+
+
+
+/* Remove Whitespace from Start and End
+Sometimes whitespace characters around strings are not wanted but are there. Typical processing of strings is to remove the whitespace at the start and end of it.
+
+Write a regex and use the appropriate string methods to remove whitespace at the beginning and end of strings.
+
+Note: The String.prototype.trim() method would work here, but you'll need to complete this challenge using regular expressions.
+
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$|\s+(?=\s)/g; // Change this line
+let result = hello.replace(wsRegex, ''); // Change this line
+
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$|\s+(?=\s)/g; // Change this line; ^\s+ - пробелы в начале строки, \s+$ - пробелы в конце строки, (?=\s)
+let result = hello.replace(wsRegex, ""); // Change this line'
+let outcome = hello.match(wsRegex);
+console.log(outcome)
+console.log(result)
+
+*/
+
+/* Use Capture Groups to Search and Replace
+Searching is useful. However, you can make searching even more powerful when it also changes (or replaces) the text you match.
+
+You can search and replace text in a string using .replace() on a string. The inputs for .replace() is first the regex pattern you want to search for. The second parameter is the string to replace the match or a function to do something.
+
+let wrongText = "The sky is silver.";
+let silverRegex = /silver/;
+wrongText.replace(silverRegex, "blue");
+The replace call would return the string The sky is blue..
+
+You can also access capture groups in the replacement string with dollar signs ($).
+
+"Code Camp".replace(/(\w+)\s(\w+)/, '$2 $1');
+The replace call would return the string Camp Code.
+
+Write a regex fixRegex using three capture groups that will search for each word in the string one two three. Then update the replaceText variable to replace one two three with the string three two one and assign the result to the result variable. Make sure you are utilizing capture groups in the replacement string using the dollar sign ($) syntax.
+
+let str = "one two three";
+let fixRegex = /^(\w+)\s(\w+)\s(\w+)$/; // Change this line
+let replaceText = "$3 $2 $1"; // Change this line
+let result = str.replace(fixRegex, replaceText);
+
+
+*/
+
+/* Reuse Patterns Using Capture Groups
+Say you want to match a word that occurs multiple times like below.
+
+let repeatStr = "row row row your boat";
+You could use /row row row/, but what if you don't know the specific word repeated? Capture groups can be used to find repeated substrings.
+
+Capture groups are constructed by enclosing the regex pattern to be captured in parentheses. In this case, the goal is to capture a word consisting of alphanumeric characters so the capture group will be \w+ enclosed by parentheses: /(\w+)/.
+
+The substring matched by the group is saved to a temporary "variable", which can be accessed within the same regex using a backslash and the number of the capture group (e.g. \1). Capture groups are automatically numbered by the position of their opening parentheses (left to right), starting at 1.
+
+The example below matches a word that occurs thrice separated by spaces:
+
+let repeatRegex = /(\w+) \1 \1/;
+repeatRegex.test(repeatStr); // Returns true
+repeatStr.match(repeatRegex); // Returns ["row row row", "row"]
+Using the .match() method on a string will return an array with the matched substring, along with its captured groups.
+
+Use capture groups in reRegex to match a string that consists of only the same number repeated exactly three times separated by single spaces.
+
+My solution
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+) \1 \1$/; // Change this line
+let result = reRegex.test(repeatNum);
+
+Solution 1 (Click to Show/Hide)
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+) \1 \1$/;
+let result = reRegex.test(repeatNum);
+
+Solution 2 (Click to Show/Hide)
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+) \1 \1(?!.)/; // Change this line
+let result = reRegex.test(repeatNum);
+
+
+
+*/
+
 /* Check For Mixed Grouping of Characters
 Sometimes we want to check for groups of characters using a Regular Expression and to achieve that we use parentheses ().
 
@@ -24,7 +113,16 @@ Fix the regex so that it checks for the names of Franklin Roosevelt or Eleanor R
 
 Then fix the code so that the regex that you have created is checked against myString and either true or false is returned depending on whether the regex matches.
 
+let myString = "Eleanor Roosevelt";
+let myRegex = /(Franklin|Eleanor)\s?([a-zA-Z]{1,}\.?)* Roosevelt/g; // Change this line
+let result = myRegex.test(myString); // Change this line
+// After passing the challenge experiment with myString and see how the grouping works
 
+fCC solution: 
+
+let myString = "Eleanor Roosevelt";
+let myRegex = /(Franklin|Eleanor) (([A-Z]\.?|[A-Z][a-z]+) )?Roosevelt/;
+let result = myRegex.test(myString);
 
 */
 
