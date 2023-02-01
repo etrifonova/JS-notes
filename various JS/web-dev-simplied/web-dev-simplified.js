@@ -1,8 +1,52 @@
-const hogwartsStudents = [1, 2, 3, 4, 5]
+/* REGULAR EXPRESSIONS https://youtu.be/rhzKDrUiJVk
 
-const includesTwo = hogwartsStudents.includes(4)
+Regexes are a way to search through a string of text in an advanced way, e.g. for validation, finding and replacement, etc.
 
-console.log(includesTwo)
+/ / - forward slashes
+
+flags
+g - global
+i - case insensitive
+m - multiline
+
+e+ - match as many e's in a row as possible
+e+a? - Matches any string that contains zero or one occurrences of n
+ea* - Matches any string that contains zero or more occurrences of a
+.at - . matches anything except for a new line
+\. - to look for . a back slash is needed;
+\w - match any character
+\W - match what is not a character
+\s - match any whitespace
+\S - match anything but whitespaces
+\w{4} - match any 4 digits or more // test result: [
+    "thin",
+    "know",
+    "does",
+    "even",
+    "matt", - it just took 4 first letters of the word
+    "hard"
+]
+\w{4, 5} - match any set of characters between 4 & 5
+\[fc]at - match anything which starts with f or c and end in at
+[a-zA-Z]at - match anything which starts with a letter, non-capital or capital, and ends in at
+[0-9]at
+
+*/
+
+let testString = 'One thing I don\'t know why 5 it doesn\'t even matter how 6 hard you try wow low allow.'
+let regEx1 = /[nh]ow/g;
+
+let result1 = testString.match(regEx1);
+console.log(result1);
+
+let regEx2 = /[a-z]ow/g;
+let result2 = testString.match(regEx2);
+console.log(result2);
+
+
+
+
+
 
 /* 8 Must Know JavaScript Array Methods
 https://youtu.be/R8rmfD9Y5-c
