@@ -1,18 +1,124 @@
+// JavaScript Algorithms and Data Structures
+
+/* 
+
+*/
+
+/* 
+
+*/
+
+/* 
+
+*/
+
+/* 
+
+*/
+
+/* Use Caution When Reinitializing Variables Inside a Loop
+Sometimes it's necessary to save information, increment counters, or re-set variables within a loop. A potential issue is when variables either should be reinitialized, and aren't, or vice versa. This is particularly dangerous if you accidentally reset the variable being used for the terminal condition, causing an infinite loop.
+
+Printing variable values with each cycle of your loop by using console.log() can uncover buggy behavior related to resetting, or failing to reset a variable.
+
+The following function is supposed to create a two-dimensional array with m rows and n columns of zeroes. Unfortunately, it's not producing the expected output because the row variable isn't being reinitialized (set back to an empty array) in the outer loop. Fix the code so it returns a correct 3x2 array of zeroes, which looks like [[0, 0], [0, 0], [0, 0]].
+
+
+
+*/
+
+function zeroArray(m, n) {
+    // Creates a 2-D array with m rows and n columns of zeroes
+    let newArray = [];
+    let row = [];
+
+    while (newArray.length < m) {
+
+   
+    for (let i = 0; i < m; i++) {
+      // Adds the m-th row into newArray
+
+      if (row.length < n) {
+  
+        for (let j = 0; j < n; j++) {
+          // Pushes n zeroes into the current row to create the columns
+          row.push(0);
+        }
+        // Pushes the current row, which now has n zeroes in it, to the array
+        newArray.push(row);
+    } else {
+        row = [];
+    }
+    }
+}
+    return newArray;
+  }
+  
+  let matrix = zeroArray(3, 2);
+  console.log(matrix);
+  
+
+/* Catch Off By One Errors When Using Indexing
+Off by one errors (sometimes called OBOE) crop up when you're trying to target a specific index of a string or array (to slice or access a segment), or when looping over the indices of them. JavaScript indexing starts at zero, not one, which means the last index is always one less than the length of the item. If you try to access an index equal to the length, the program may throw an "index out of range" reference error or print undefined.
+
+When you use string or array methods that take index ranges as arguments, it helps to read the documentation and understand if they are inclusive (the item at the given index is part of what's returned) or not. Here are some examples of off by one errors:
+
+let alphabet = "abcdefghijklmnopqrstuvwxyz";
+let len = alphabet.length;
+for (let i = 0; i <= len; i++) {
+  console.log(alphabet[i]);
+}
+for (let j = 1; j < len; j++) {
+  console.log(alphabet[j]);
+}
+for (let k = 0; k < len; k++) {
+  console.log(alphabet[k]);
+}
+The first example here loops one too many times, and the second loops one too few times (missing the first index, 0). The third example is correct.
+
+Fix the two indexing errors in the following function so all the numbers 1 through 5 are printed to the console.
+
+
+
+*/
+
+/* Catch Misspelled Variable and Function Names
+The console.log() and typeof methods are the two primary ways to check intermediate values and types of program output. Now it's time to get into the common forms that bugs take. One syntax-level issue that fast typers can commiserate with is the humble spelling error.
+
+Transposed, missing, or mis-capitalized characters in a variable or function name will have the browser looking for an object that doesn't exist - and complain in the form of a reference error. JavaScript variable and function names are case-sensitive.
+
+Fix the two spelling errors in the code so the netWorkingCapital calculation works.
+
+let receivables = 10;
+let payables = 8;
+let netWorkingCapital = receivables - payables;
+console.log(`Net working capital is: ${netWorkingCapital}`);
+
+
+
+*/
+
+/* Use typeof to Check the Type of a Variable
+You can use typeof to check the data structure, or type, of a variable. This is useful in debugging when working with multiple data types. If you think you're adding two numbers, but one is actually a string, the results can be unexpected. Type errors can lurk in calculations or function calls. Be careful especially when you're accessing and working with external data in the form of a JavaScript Object Notation (JSON) object.
+
+Here are some examples using typeof:
+
+console.log(typeof "");
+console.log(typeof 0);
+console.log(typeof []);
+console.log(typeof {});
+In order, the console will display the strings string, number, object, and object.
+
+JavaScript recognizes seven primitive (immutable) data types: Boolean, Null, Undefined, Number, String, Symbol (new with ES6), and BigInt (new with ES2020), and one type for mutable items: Object. Note that in JavaScript, arrays are technically a type of object.
+
+Add two console.log() statements to check the typeof each of the two variables seven and three in the code.
+
+
+
+*/
+
+
 // Regular Expressions 
-
-/* 
-
-*/
-
-/* 
-
-*/
-
-/* 
-
-*/
-
-
 
 /* Remove Whitespace from Start and End
 Sometimes whitespace characters around strings are not wanted but are there. Typical processing of strings is to remove the whitespace at the start and end of it.
