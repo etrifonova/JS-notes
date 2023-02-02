@@ -9,24 +9,72 @@
 
 */
 
-/* Find the Longest Word in a String
-Return the length of the longest word in the provided sentence.
+/* 
 
-Your response should be a number.
+*/
+
+/* 
+
+*/
+
+/* 
+
+*/
+
+/* Return Largest Numbers in Arrays
+Return an array consisting of the largest number from each provided sub-array. For simplicity, the provided array will contain exactly 4 sub-arrays.
+
+Remember, you can iterate through an array with a simple for loop, and access each member with array syntax arr[i].
 
 
 
 */
 
-function findLongestWordLength(str) {
-    let newStr = str.split(' ').sort((a, b) => {
-        b.length > a.length
-    });
-    console.log(newStr)
-    return str.length;
+function largestOfFour(arr) {
+  let newArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    
+    let largestNum = 0;
+
+    for (let j = 0; j < arr[i].length; j++) {
+
+      if (arr[i][j] > largestNum) {
+        largestNum = arr[i][j];
+      }
+      console.log(largestNum);
+      newArr.push(largestNum);
+    }
   }
-  
-  findLongestWordLength("The quick brown fox jumped over the lazy dog");
+  return newArr;
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+/* Find the Longest Word in a String
+Return the length of the longest word in the provided sentence.
+
+Your response should be a number.
+
+function findLongestWordLength(str) {
+  let longestWord = 0;
+  let splitString = str.split(' ');
+
+  for (let i = 0; i <  splitString.length; i++) {
+    if (splitString[i].length > longestWord) {
+      longestWord = splitString[i].length;
+    }
+  }
+  console.log(splitString)
+  console.log(longestWord)
+  return longestWord;
+}
+
+findLongestWordLength("The quick brown fox jumped over the lazy dog");
+
+
+
+*/
 
 /* Factorialize a Number
 Return the factorial of the provided integer.
@@ -203,32 +251,6 @@ We've defined a function countOnline which accepts one argument (a users object)
 // }
 // console.log(text);
 
-const users = {
-    Alan: {
-      online: false
-    },
-    Jeff: {
-      online: true
-    },
-    Sarah: {
-      online: false
-    }
-  }
-  
-  function countOnline(usersObj) {
-    // Only change code below this line
-    let counter = 0;
-    for (let user in usersObj) {
-       if (usersObj[user].online === true); {
-            counter++;
-       }
-      }
-    return counter;
-    // Only change code above this line
-  }
-  
-  console.log(countOnline(users));
-
 /* Check if an Object has a Property
 Now we can add, modify, and remove keys from objects. But what if we just wanted to know if an object has a specific property? JavaScript provides us with two different ways to do this. One uses the hasOwnProperty() method and the other uses the in keyword. If we have an object users with a property of Alan, we could check for its presence in either of the following ways:
 
@@ -266,6 +288,32 @@ let users = {
   console.log(isEveryoneHere(users));
 
 
+
+const users = {
+    Alan: {
+      online: false
+    },
+    Jeff: {
+      online: true
+    },
+    Sarah: {
+      online: false
+    }
+  }
+  
+  function countOnline(usersObj) {
+    // Only change code below this line
+    let counter = 0;
+    for (let user in usersObj) {
+       if (usersObj[user].online === true); {
+            counter++;
+       }
+      }
+    return counter;
+    // Only change code above this line
+  }
+  
+  console.log(countOnline(users));
 
 */
 
