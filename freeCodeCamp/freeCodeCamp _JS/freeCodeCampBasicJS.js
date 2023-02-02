@@ -33,21 +33,31 @@ We have defined a function, filteredArray, which takes arr, a nested array, and 
 function filteredArray(arr, elem) {
     let newArr = [];
     // Only change code below this line
+
     for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < arr[i].length; j++) {
-        if (arr[i][j] === elem) {
-          arr[i].splice(arr[i].indexOf(elem), 1)
-        } else {
-          newArr.push(arr[i]);
+
+        for (let j = 0; j < 3; j++) {
+
+            if (arr[i][0] === elem) 
+            {
+                arr.splice(arr[i], 1);
+            }
         }
-      }
+        
     }
+
+    console.log(arr)
+    // newArr.push(arr[1]);
+    // newArr.push(arr[2]);
+    // newArr.push(arr[3]);
+    // console.log(newArr)
   
     // Only change code above this line
     return newArr;
   }
   
   console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3));
+  
 
 /* Check For The Presence of an Element With indexOf()
 Since arrays can be changed, or mutated, at any time, there's no guarantee about where a particular piece of data will be on a given array, or if that element even still exists. Luckily, JavaScript provides us with another built-in method, indexOf(), that allows us to quickly and easily check for the presence of an element on an array. indexOf() takes an element as a parameter, and when called, it returns the position, or index, of that element, or -1 if the element does not exist on the array.
