@@ -17,33 +17,140 @@
 
 */
 
+/* Boo who
+Check if a value is classified as a boolean primitive. Return true or false.
+
+Boolean primitives are true and false.
+
+function booWho(bool) {
+  return bool === true || bool === false ? true : false;
+}
+
+console.log(booWho(false));
+
+*/
+
+
+/* Finders Keepers
+Create a function that looks through an array arr and returns the first element in it that passes a 'truth test'. This means that given an element x, the 'truth test' is passed if func(x) is true. If no element passes the test, return undefined.
+
+console.log(findElement([1, 2, 3, 4], num => num % 2 === 0));
+console.log(findElement([1, 3, 5, 9], function(num) { return num % 2 === 0; });
+
+function findElement(arr, func) {
+
+  let num = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+
+    if (func(arr[i]) === true) {
+      num = arr[i];
+      break;
+    } else {
+      num = undefined;
+    }
+
+  }
+  return num;
+}
+
+findElement([1, 2, 3, 4], num => num % 2 === 0);
+
+console.log(findElement([1, 2, 3, 4], num => num % 2 === 0));
+console.log(findElement([1, 3, 5, 8, 9, 10], function(num) { return num % 2 === 0; }));
+
+*/
+
+/* Truncate a String
+Truncate a string (first argument) if it is longer than the given maximum string length (second argument). Return the truncated string with a ... ending.
+
+
+
+function truncateString(str, num) {
+
+  let newStr;
+  if (str.length > num) {
+    newStr = str.split('').splice(0, num).join('');
+    str = newStr + '...';
+  } 
+
+
+
+  return str;
+}
+
+console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8));
+
+console.log(truncateString("Peter Piper picked a peck of pickled peppers", 11));
+
+console.log(truncateString("A-tisket a-tasket A green and yellow basket", "A-tisket a-tasket A green and yellow basket".length));
+
+*/
+
+/* Repeat a String Repeat a String
+Repeat a given string str (first argument) for num times (second argument). Return an empty string if num is not a positive number. For the purpose of this challenge, do not use the built-in .repeat() method.
+
+function repeatStringNumTimes(str, num) {
+
+  let newStr = [];
+
+  for (let i = 0; i < num; i++) {
+    newStr.push(str);
+
+  }
+  return newStr.join('');
+}
+
+repeatStringNumTimes("*", 3);
+
+*/
+
+
 /* Confirm the Ending
 Check if a string (first argument, str) ends with the given target string (second argument, target).
 
 This challenge can be solved with the .endsWith() method, which was introduced in ES2015. But for the purpose of this challenge, we would like you to use one of the JavaScript substring methods instead.
 
 
-
-*/
-
 function confirmEnding(str, target) {
 
   let arrEnd;
 
-  let strArray = str.split(' ');
+  let strArray = str.split('');
+  console.log(strArray);
 
-  if (strArray.length === 1) {
-    let newArr = str.split('');
-    arrEnd = newArr[newArr.length - 1];
-  } else {
-    arrEnd = strArray[strArray.length - 1];
-  }
+
+  arrEnd = strArray.splice(strArray.length - target.length, target.length).join('');
+
+  console.log(arrEnd);
   
   return arrEnd === target;
   
 }
 
-console.log(confirmEnding("interaction", "action"));
+console.log(confirmEnding("Open sesame", "same"));
+
+*/
+
+
+function confirmEnding(str, target) {
+
+  let arrEnd;
+
+  let strArray = str.split('');
+  console.log(strArray);
+
+
+  arrEnd = strArray.splice(strArray.length - target.length, target.length).join('');
+
+  console.log(arrEnd);
+  
+  return arrEnd === target;
+  
+}
+
+console.log(confirmEnding("Привет, Макар", "Макар"));
+
 
 /* Return Largest Numbers in Arrays
 Return an array consisting of the largest number from each provided sub-array. For simplicity, the provided array will contain exactly 4 sub-arrays.
