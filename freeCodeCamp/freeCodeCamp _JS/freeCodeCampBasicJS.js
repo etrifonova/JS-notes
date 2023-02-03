@@ -17,39 +17,84 @@
 
 */
 
-/* 
+/* Confirm the Ending
+Check if a string (first argument, str) ends with the given target string (second argument, target).
+
+This challenge can be solved with the .endsWith() method, which was introduced in ES2015. But for the purpose of this challenge, we would like you to use one of the JavaScript substring methods instead.
+
+
 
 */
+
+function confirmEnding(str, target) {
+
+  let arrEnd;
+
+  let strArray = str.split(' ');
+
+  if (strArray.length === 1) {
+    let newArr = str.split('');
+    arrEnd = newArr[newArr.length - 1];
+  } else {
+    arrEnd = strArray[strArray.length - 1];
+  }
+  
+  return arrEnd === target;
+  
+}
+
+console.log(confirmEnding("Bastian", "n"));
 
 /* Return Largest Numbers in Arrays
 Return an array consisting of the largest number from each provided sub-array. For simplicity, the provided array will contain exactly 4 sub-arrays.
 
 Remember, you can iterate through an array with a simple for loop, and access each member with array syntax arr[i].
 
+РЕШЕНИЕ РАБОЧЕЕ, НО ПРИШЛОСЬ ОПРЕДЕЛИТЬ greatestNum КАК -100, ЧТО СКАЖЕТСЯ НА РЕЗУЛЬТАТЕ ПРИ НАЛИЧИИ ЧИСЕЛ МЕНЬШЕ -100;
+testArr = [[17, 23, 25, 12], [25, 7, 34, 48], [4, -10, 18, 21], [-72, -3, -17, -10]];
 
+function largestNum(arr) {
 
-*/
+  let newArray = [];
+  
+  for (let j = 0; j < arr.length; j++) {
 
-function largestOfFour(arr) {
+    let greatestNum = -100;
+    for (let i = 0; i < arr[j].length; i++) {
+      
+
+      if (arr[j][i] > greatestNum) {
+        greatestNum = arr[j][i];
+      }
+    }
+    newArray.push(greatestNum);
+
+  }
+
+  return newArray;
+}
+
+console.log(largestNum(testArr));
+
+БОЛЕЕ КОРОТКОЕ И ЯСНОЕ РЕШЕНИЕ, ТОЖЕ МОЁ, УРАААА:
+
+testArr = [[17, 23, 25, 12], [25, 7, 34, 48], [4, -10, 18, 21], [-72, -3, -17, -10]];
+
+function largestNum(arr) {
+
   let newArr = [];
-
   for (let i = 0; i < arr.length; i++) {
     
-    let largestNum = 0;
-
-    for (let j = 0; j < arr[i].length; j++) {
-
-      if (arr[i][j] > largestNum) {
-        largestNum = arr[i][j];
-      }
-      console.log(largestNum);
-      newArr.push(largestNum);
-    }
+  arr[i].sort((a,b) => b - a);
+    newArr.push(arr[i][0]);
   }
+
   return newArr;
 }
 
-largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+console.log(largestNum(testArr));
+
+*/
 
 /* Find the Longest Word in a String
 Return the length of the longest word in the provided sentence.
