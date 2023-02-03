@@ -43,7 +43,7 @@ function confirmEnding(str, target) {
   
 }
 
-console.log(confirmEnding("Bastian", "n"));
+console.log(confirmEnding("interaction", "action"));
 
 /* Return Largest Numbers in Arrays
 Return an array consisting of the largest number from each provided sub-array. For simplicity, the provided array will contain exactly 4 sub-arrays.
