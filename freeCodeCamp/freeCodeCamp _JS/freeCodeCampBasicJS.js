@@ -9,6 +9,116 @@
 
 */
 
+/* Mutations
+Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+
+For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+
+The arguments ["hello", "hey"] should return false because the string hello does not contain a y.
+
+Lastly, ["Alien", "line"], should return true because all of the letters in line are present in Alien.
+
+
+
+*/
+
+function mutation(arr) {
+
+  let word1 = arr[0].toLowerCase().split('');
+  let word2 = arr[1].toLowerCase().split('');
+  console.log(word1);
+  console.log(word2);
+
+  let result;
+  let lengthDiff = word1.length-word2.length;
+  console.log(lengthDiff);
+
+  for (let i = word2.length-1; i >=0; i--) {
+    if (word2[i] === word1[i+lengthDiff]) {
+      result = true;
+    } else {
+      result = false;
+    }
+  }
+
+  return result;
+}
+
+console.log(mutation(["hello", "llo"]));
+
+/* Where do I Belong
+Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
+
+For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+
+Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
+
+
+
+function getIndexToIns(arr, num) {
+
+  
+  let index;
+
+  if (arr.length == 0) {
+    index = 0;
+  } else {
+    arr.sort((a, b) => a - b); 
+
+    for (let i=0; i<arr.length; i++) {
+        if (num > arr[i] && num < arr[i+1]) {
+        index = i+1;
+      } else if (num === arr[i]) {
+        index = i;
+      }  else if (num > arr[arr.length-1]) {
+        index = arr.length;
+      }
+    }
+
+  }
+
+  return index;
+}
+
+console.log(getIndexToIns([2, 5, 10], 15));
+
+*/
+
+/* Falsy Bouncer
+Remove all falsy values from an array. Return a new array; do not mutate the original array.
+
+Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
+
+Hint: Try converting each value to a Boolean.
+
+
+
+function bouncer(arr) {
+
+  let arrLength = arr.length;
+  let newArr = [];
+
+  for (let i = 0; i < arrLength; i++) {
+
+    if (!!arr[i] != false) {
+      newArr.push(arr[i]);
+    } 
+  }
+
+  console.log(newArr);
+  return newArr;
+}
+
+bouncer(["a", "b", "c"]);
+
+
+*/
+
+// let a = 'hi'
+// let b = NaN;
+
+// console.log(!!a)
+
 /* Slice and Splice
 You are given two arrays and an index.
 
@@ -18,17 +128,18 @@ Begin inserting elements at index n of the second array.
 
 Return the resulting array. The input arrays should remain the same after the function runs.
 
-*/
-
 function frankenSplice(arr1, arr2, n) {
 
   let newArr = [...arr2];
-  newArr.splice(n, 0, arr1[0]);
-  console.log(newArr);
-  return arr2;
+  for (let i = arr1.length - 1; i >= 0; i--) {
+    newArr.splice(n, 0, arr1[i]);
+  }
+  return newArr;
 }
 
 frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+*/
 
 
 // const numbers = [10, 11, 12, 12, 15];
