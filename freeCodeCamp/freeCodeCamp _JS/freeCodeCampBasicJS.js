@@ -9,11 +9,72 @@
 
 */
 
-/* 
+/* Slice and Splice
+You are given two arrays and an index.
+
+Copy each element of the first array into the second array, in order.
+
+Begin inserting elements at index n of the second array.
+
+Return the resulting array. The input arrays should remain the same after the function runs.
 
 */
 
-/* 
+function frankenSplice(arr1, arr2, n) {
+
+  let newArr = [...arr2];
+  newArr.splice(n, 0, arr1[0]);
+  console.log(newArr);
+  return arr2;
+}
+
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+
+// const numbers = [10, 11, 12, 12, 15];
+// const startIndex = 3;
+// const amountToDelete = 1;
+
+// numbers.splice(startIndex, amountToDelete, 13, 14);
+// console.log(numbers);
+
+// function htmlColorNames(arr) {
+//   // Only change code below this line
+//   arr.splice(0, 2, 'DarkSalmon', 'BlanchedAlmond');
+
+//   // Only change code above this line
+//   return arr;
+// }
+
+// console.log(htmlColorNames(['DarkGoldenRod', 'WhiteSmoke', 'LavenderBlush', 'PaleTurquoise', 'FireBrick']));
+
+// const numbers = [10, 11, 12, 12, 15];
+// const startIndex = 3;
+// const amountToDelete = 1;
+
+// numbers.splice(startIndex, amountToDelete, 13, 14);
+// console.log(numbers);
+
+/* Title Case a Sentence
+Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
+
+For the purpose of this exercise, you should also capitalize connecting words like the and of.
+
+function titleCase(str) {
+  let newStr = str.toLowerCase().split(' ');
+  console.log(newStr);
+  let newArray = [];
+
+  for (let i = 0; i < newStr.length; i++) {
+    let newWord = newStr[i].charAt(0).toUpperCase() + newStr[i].slice(1);
+    newArray.push(newWord);
+  }
+  
+  console.log(newArray.join(' '))
+  return newArray.join(' ');
+}
+
+titleCase("I'm a little tea pot");
 
 */
 
@@ -133,23 +194,23 @@ console.log(confirmEnding("Open sesame", "same"));
 */
 
 
-function confirmEnding(str, target) {
+// function confirmEnding(str, target) {
 
-  let arrEnd;
+//   let arrEnd;
 
-  let strArray = str.split('');
-  console.log(strArray);
+//   let strArray = str.split('');
+//   console.log(strArray);
 
 
-  arrEnd = strArray.splice(strArray.length - target.length, target.length).join('');
+//   arrEnd = strArray.splice(strArray.length - target.length, target.length).join('');
 
-  console.log(arrEnd);
+//   console.log(arrEnd);
   
-  return arrEnd === target;
+//   return arrEnd === target;
   
-}
+// }
 
-console.log(confirmEnding("Привет, Макар", "Макар"));
+// console.log(confirmEnding("Привет, Макар", "Макар"));
 
 
 /* Return Largest Numbers in Arrays
