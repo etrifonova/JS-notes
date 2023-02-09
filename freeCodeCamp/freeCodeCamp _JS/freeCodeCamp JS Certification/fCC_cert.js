@@ -12,13 +12,28 @@ All letters will be uppercase. Do not transform any non-alphabetic character (i.
 
 */
 
-let capitalLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-let a = capitalLetters.split('');
+let capitalLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
 console.log(capitalLetters)
 
 function rot13(str) {
-  
+
+  let arr = str.split('');
+  let newArr = [];
+
+  for (let i=0; i<arr.length; i++) {
+
+    let oldIndex = capitalLetters.indexOf(arr[i]);
+
+    if (oldIndex > -1){
+      newArr.push(capitalLetters[oldIndex - 13]);
+    } else if (oldIndex <= -1) {
+      newArr.push(arr[i]);
+      console.log(newArr);
+    } else {
+      newArr.push(capitalLetters[oldIndex - 1]); // WHY THE FUCK IS IT UNDEFINED?!
+    }
+  }
   return str;
 }
 
