@@ -1,3 +1,30 @@
+
+
+/* Telephone Number Validator
+
+Return true if the passed string looks like a valid US phone number.
+
+The user may fill out the form field any way they choose as long as it has the format of a valid US number. The following are examples of valid formats for US numbers (refer to the tests below for other variants):
+
+555-555-5555
+(555)555-5555
+(555) 555-5555
+555 555 5555
+5555555555
+1 555 555 5555
+For this challenge you will be presented with a string such as 800-692-7753 or 8oo-six427676;laskdjf. Your job is to validate or reject the US phone number based on any combination of the formats provided above. The area code is required. If the country code is provided, you must confirm that the country code is 1. Return true if the string is a valid US phone number; otherwise return false.
+
+*/ 
+
+function telephoneCheck(str) {
+
+  let regEx = /^\d*\W\d*\W\d*$/;
+  console.log(regEx.test(str));
+  return regEx.test(str);
+}
+
+telephoneCheck("555-555-5555");
+
 /* Caesars Cipher
 
 One of the simplest and most widely known ciphers is a Caesar cipher, also known as a shift cipher. In a shift cipher the meanings of the letters are shifted by some set amount.
@@ -10,13 +37,9 @@ All letters will be uppercase. Do not transform any non-alphabetic character (i.
 
 
 
-*/
-
-let capitalLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-
-console.log(capitalLetters)
-
 function rot13(str) {
+
+  const capitalLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   let arr = str.split('');
   let newArr = [];
@@ -25,20 +48,23 @@ function rot13(str) {
 
     let oldIndex = capitalLetters.indexOf(arr[i]);
 
-    if (oldIndex > -1){
+    if (oldIndex >= 13) {
       newArr.push(capitalLetters[oldIndex - 13]);
-    } else if (oldIndex <= -1) {
-      newArr.push(arr[i]);
-      console.log(newArr);
+    } else if (oldIndex < 13 && oldIndex >= 0) {
+      newArr.push(capitalLetters[oldIndex + 13]);
     } else {
-      newArr.push(capitalLetters[oldIndex - 1]); // WHY THE FUCK IS IT UNDEFINED?!
+      newArr.push(arr[i]);
     }
   }
-  return str;
+  
+  console.log(newArr.join(''));
+  return newArr.join('');
 }
 
 rot13("SERR PBQR PNZC");
 
+
+*/
 
 
 /* Return true if the given string is a palindrome. Otherwise, return false.
