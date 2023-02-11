@@ -38,7 +38,7 @@ re{2,3} - the {2,3} affects only e
 ^ - caret, to match the beginning of a line
 $ - matches the end of a statement
 (?<=do) - positive look-behind - matches anything that comes before the specified character or set; < - means behind, = means positive
-(?<!do) - negitive look-behind - matches anything except for what comes before the specified character or set
+(?<!do) - negative look-behind - matches anything except for what comes before the specified character or set
 (?<at)
 
 */
