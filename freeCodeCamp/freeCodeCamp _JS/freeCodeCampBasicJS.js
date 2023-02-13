@@ -1,3 +1,65 @@
+// Intermediate Algorithm Scripting
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+Sum All Numbers in a Range
+We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+
+For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+
+function sumAll(arr) {
+  let sum = 0;
+  if (arr[0] < arr[1]) {
+    for (let i = arr[0]; i <= arr[1]; i++) {
+      sum += i;
+    }
+    } else if (arr[0] > arr[1]) {
+    for (let i = arr[1]; i <= arr[0]; i++) {
+      sum += i;
+    }
+  }
+  
+  return sum;
+}
+
+console.log(sumAll([1, 4]));
+
+
+*/ 
+
+
+
 // Learn About Functional Programming
 
 /*
@@ -8,7 +70,16 @@
 
 */
 
-/*
+/* Implement map on a Prototype
+As you have seen from applying Array.prototype.map(), or simply map() earlier, the map method returns an array of the same length as the one it was called on. It also doesn't alter the original array, as long as its callback function doesn't.
+
+In other words, map is a pure function, and its output depends solely on its inputs. Plus, it takes another function as its argument.
+
+You might learn a lot about the map method if you implement your own version of it. It is recommended you use a for loop or Array.prototype.forEach().
+
+Write your own Array.prototype.myMap(), which should behave exactly like Array.prototype.map(). You should not use the built-in map method. The Array instance can be accessed in the myMap method using this.
+
+
 
 */
 
@@ -39,7 +110,7 @@ The console would display the value [ 'John', 'Amy', 'camperCat' ].
 
 The watchList array holds objects with information on several movies. Use map on watchList to assign a new array of objects to the ratings variable. Each movie in the new array should have only a title key with the name of the film, and a rating key with the IMDB rating. The code in the editor currently uses a for loop to do this, so you should replace the loop functionality with your map expression.
 
-*/
+
 
 // The global variable
 const watchList = [
@@ -157,14 +228,33 @@ const watchList = [
 
 // Only change code below this line
 
-const ratings = [];
-for (let i = 0; i < watchList.length; i++) {
-  ratings.push({title: watchList[i]["Title"], rating: watchList[i]["imdbRating"]});
-}
+const ratings = watchList.map((film) => 
+(
+  { title: film["Title"], 
+  rating: film["imdbRating"] }
+));
 
 // Only change code above this line
 
 console.log(JSON.stringify(ratings));
+
+Solutions from fCC:
+
+Solution 1:
+
+const ratings = watchList.map((film) => 
+(
+  { title: film["Title"], 
+  rating: film["imdbRating"] }
+));
+
+  console.log(ratings)
+
+Solution 2:
+
+const ratings = watchList.map(({ Title: title, imdbRating: rating }) => ({title, rating}));
+
+*/
 
 
 /* Refactor Global Variables Out of Functions
