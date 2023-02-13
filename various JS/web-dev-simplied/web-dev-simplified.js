@@ -1,3 +1,20 @@
+
+let string = "Hello there cool dudes";
+let array = string.split(' ');
+console.log(array);
+let addWord = 'guys'
+array.splice(3, 1, addWord);
+
+console.log(array)
+
+const numbers = [10, 11, 12, 12, 15];
+const startIndex = 3;
+const amountToDelete = 1;
+
+numbers.splice(startIndex, amountToDelete, 13, 14);
+console.log(numbers);
+
+
 /* REGULAR EXPRESSIONS https://youtu.be/rhzKDrUiJVk
 
 Regexes are a way to search through a string of text in an advanced way, e.g. for validation, finding and replacement, etc.
@@ -41,8 +58,6 @@ $ - matches the end of a statement
 (?<!do) - negative look-behind - matches anything except for what comes before the specified character or set
 (?<at)
 
-*/
-
 let testString = 'One thing I don\'t know why 5 it doesn\'t even matter how 6 hard you try wow low allow.'
 let regEx1 = /(?<!\s)/g;
 
@@ -52,6 +67,8 @@ console.log(result1);
 let regEx2 = /(?<!o)./g;
 let result2 = testString.match(regEx2);
 console.log(result2);
+
+*/
 
 // let testNumber3 = '645-5437-66382';
 // let testNumber4 = '645543766382';
