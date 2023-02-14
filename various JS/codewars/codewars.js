@@ -37,8 +37,31 @@ To anyone who doesn't understand the assignment: You have an array e.g [-2, 1, -
 */
 
 var maxSequence = function(arr){
-  // ...
+
+  let sum = 0;
+  let sum1 = 0;
+  let sum2 = 0;
+
+  for (let i=arr.length - 4; i >= 0; i--){
+    sum1 += arr[i];
+    console.log(sum1);
+  }
+
+  for (let i=arr.length - 5; i >= 0; i--){
+    sum2 += arr[i];
+    console.log(sum2);
+  }
+
+  if (sum1 > sum2) {
+    sum = sum1;
+  } else {
+    sum = sum2;
+  }
+  return sum;
 }
+
+console.log(maxSequence([4, -1, 5, 2, 8, -3, 6, -3]))
+// сумма всего массива: 18; сумма массива без последнего числа: 21
 
 /*
 Digital root is the recursive sum of all the digits in a number.
