@@ -1,5 +1,144 @@
 // иЗУЧИТЬ: 1) добавлять элементы в пустой массив; 2) кодировка букв в ASCII
 
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/* Maximum subarray sum
+
+The maximum sum subarray problem consists in finding the maximum sum of a contiguous subsequence in an array or list of integers:
+
+maxSequence([-2, 1, -3, 4, -1, 2, 1, -5, 4])
+// should be 6: [4, -1, 2, 1]
+Easy case is when the list is made up of only positive numbers and the maximum sum is the sum of the whole array. If the list is made up of only negative numbers, return 0 instead.
+
+Empty list is considered to have zero greatest sum. Note that the empty list or array is also a valid sublist/subarray.
+
+To anyone who doesn't understand the assignment: You have an array e.g [-2, 1, -3, 4, -1, 2, 1, -5, 4] You now have to find out which part of this array gives the biggest sum. In this case, it would be [4, -1, 2, 1] because 4 - 1 + 2 + 1 = 6. No other uninterrupted sequence in that array gives you a bigger sum.
+
+
+
+*/
+
+var maxSequence = function(arr){
+  // ...
+}
+
+/*
+Digital root is the recursive sum of all the digits in a number.
+
+Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
+
+Examples
+    16  -->  1 + 6 = 7
+   942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
+132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
+493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
+
+My solution (NB: recursion is mind-blowing!)
+
+
+function digitalRoot(n) {
+
+  n = String(n).split('').map((num)=>{
+    return Number(num)
+  }).reduce((a, b) => a + b, 0);
+
+  if (n <= 9) {
+    return n;
+  } else {
+    return digitalRoot(n);
+  } 
+}
+
+console.log(digitalRoot(55));
+
+codewars solutions:
+
+Solution 1:
+
+function digital_root(n) {
+  return (n - 1) % 9 + 1;
+} - мдэээээ... до такого мне далеко; тут нужно знать математические фишки какие-то, видимо
+
+Solution 2:
+
+function digital_root(n) {
+  if (n < 10)
+    return n;
+
+  for (var sum = 0, i = 0, n = String(n); i < n.length; i++)
+    sum += Number(n[i]);
+   
+  return digital_root(sum);
+}
+
+*/
+
+/* Love vs friendship
+
+If　a = 1, b = 2, c = 3 ... z = 26
+
+Then l + o + v + e = 54
+
+and f + r + i + e + n + d + s + h + i + p = 108
+
+So friendship is twice as strong as love :-)
+
+Your task is to write a function which calculates the value of a word based off the sum of the alphabet positions of its characters.
+
+The input will always be made of only lowercase letters and will never be empty.
+
+My solution:
+
+Note: Found new method for myself - .reduce, which helps find the sum of array values.
+
+function wordsToMarks(string){
+  const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  const stringArray = string.split('');
+  let sum = stringArray.map((a) => alphabet.indexOf(a) + 1).reduce((a,b)=>a+b);
+  return sum;
+}
+
+console.log(wordsToMarks('rock'));
+
+codewars solutions:
+
+Solution 1:
+
+const wordsToMarks = s => [...s].reduce((res, c) => res += c.charCodeAt() - 96, 0)
+
+Solution 2:
+
+function wordsToMarks(str)
+{
+  var sum = 0;
+  for (let i = 0; i < str.length; i++)
+    sum += str.charCodeAt(i) - 96;
+  return sum;
+}
+
+
+*/ 
+
+
+
 
 /* Return true if the given string is a palindrome. Otherwise, return false.
 
