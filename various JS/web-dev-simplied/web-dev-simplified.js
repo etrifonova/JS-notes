@@ -27,7 +27,7 @@ i - case insensitive
 m - multiline
 
 e+ - match as many e's in a row as possible
-e+a? - Matches any string that contains zero or one occurrences of n
+e+a? - Matches any string that contains zero or one occurrences of a
 ea* - Matches any string that contains zero or more occurrences of a
 .at - . matches anything except for a new line
 \. - to look for . a back slash is needed;
