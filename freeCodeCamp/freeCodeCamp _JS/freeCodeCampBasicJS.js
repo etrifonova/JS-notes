@@ -4,7 +4,100 @@
 
 */
 
-/*
+/* Introduction to Currying and Partial Application
+The arity of a function is the number of arguments it requires. Currying a function means to convert a function of N arity into N functions of arity 1.
+
+In other words, it restructures a function so it takes one argument, then returns another function that takes the next argument, and so on.
+
+Here's an example:
+
+function unCurried(x, y) {
+  return x + y;
+}
+
+function curried(x) {
+  return function(y) {
+    return x + y;
+  }
+}
+
+const curried = x => y => x + y
+
+curried(1)(2)
+curried(1)(2) would return 3.
+
+This is useful in your program if you can't supply all the arguments to a function at one time. You can save each function call into a variable, which will hold the returned function reference that takes the next argument when it's available. Here's an example using the curried function in the example above:
+
+const funcForY = curried(1);
+console.log(funcForY(2)); // 3
+Similarly, partial application can be described as applying a few arguments to a function at a time and returning another function that is applied to more arguments. Here's an example:
+
+function impartial(x, y, z) {
+  return x + y + z;
+}
+
+const partialFn = impartial.bind(this, 1, 2);
+partialFn(10); // 13
+Fill in the body of the add function so it uses currying to add parameters x, y, and z.
+
+
+
+*/
+
+
+/* Use the some Method to Check that Any Elements in an Array Meet a Criteria
+The some method works with arrays to check if any element passes a particular test. It returns a Boolean value - true if any of the values meet the criteria, false if not.
+
+For example, the following code would check if any element in the numbers array is less than 10:
+
+const numbers = [10, 50, 8, 220, 110, 11];
+
+numbers.some(function(currentValue) {
+  return currentValue < 10;
+});
+The some method would return true.
+
+Use the some method inside the checkPositive function to check if any element in arr is positive. The function should return a Boolean value.
+
+function checkPositive(arr) {
+  // Only change code below this line
+
+return arr.some(function(currentValue) {
+  return currentValue >= 0;
+})
+  // Only change code above this line
+}
+
+checkPositive([1, 2, 3, -4, 5]);
+
+*/
+
+/* Use the every Method to Check that Every Element in an Array Meets a Criteria
+The every method works with arrays to check if every element passes a particular test. It returns a Boolean value - true if all values meet the criteria, false if not.
+
+For example, the following code would check if every element in the numbers array is less than 10:
+
+const numbers = [1, 5, 8, 0, 10, 11];
+
+numbers.every(function(currentValue) {
+  return currentValue < 10;
+});
+The every method would return false here.
+
+Use the every method inside the checkPositive function to check if every element in arr is positive. The function should return a Boolean value.
+
+
+function checkPositive(arr) {
+  // Only change code below this line
+
+return arr.every(function(currentValue) {
+  return currentValue > 0;
+})
+
+  // Only change code above this line
+}
+
+console.log(checkPositive([1, 2, 3, -4, 5]));
 
 */
 
@@ -26,30 +119,21 @@ The output should be all lower-cased letters
 The output should not have any spaces
 
 
-
-*/
-
 // Only change code below this line
 function urlSlug(title) {
 
-  const regEx1 = /^\s/;
-  const regEx2 = /\s*/;
-
-  return regEx1.test(title) ? title.toLowerCase().split(' ').splice(1, title.split(' ').length).join('-') : regEx2.test(title) ? title.toLowerCase().split(' ').map((arr, index) => arr[index] !== ' ') : title.toLowerCase().split(' ').join('-');
-
-  
+  return title.toLowerCase().split(' ').filter((a) => a !== "").join('-');
+    
   }
   // Only change code above this line
   console.log(urlSlug(" Winter Is  Coming"));
 
 
-  
+
+
+*/ 
    
-  // if (title.split('')[0] === ' ') {
-  //   return title.toLowerCase().split(' ').splice(1, title.split(' ').length).join('-');
-  // } else {
-  // return title.toLowerCase().split(' ').join('-');
-  // }
+
 /* Combine an Array into a String Using the join Method
 The join method is used to join the elements of an array together to create a string. It takes an argument for the delimiter that is used to separate the array elements in the string.
 
