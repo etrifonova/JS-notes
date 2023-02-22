@@ -4,6 +4,101 @@
 
 */
 
+/*
+
+*/
+
+/*
+
+*/
+
+/* Seek and Destroy
+You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
+
+Note: You have to use the arguments object.
+
+
+
+*/
+
+function destroyer(arr) {
+  const args = [...arguments];
+  let newArray = [];
+  args.splice(0, 1).forEach((element) => newArray.push(element))
+  return newArray;
+}
+
+console.log(destroyer([3, 5, 1, 2, 2], 2, 3, 5));
+
+/* Diff Two Arrays
+Compare two arrays and return a new array with any items only found in one of the two given arrays, but not both. In other words, return the symmetric difference of the two arrays.
+
+Note: You can return the array with its elements in any order.
+
+function diffArray(arr1, arr2) {
+  const newArr = arr2.filter(a => arr1.includes(a) === false).concat(arr1.filter(a => arr2.includes(a) === false));
+
+  console.log(newArr);
+  return newArr;
+}
+
+console.log(diffArray([1, 2, 3, 5, 6], [1, 2, 3, 4, 5]));
+
+
+*/
+
+/*
+Sum All Numbers in a Range
+We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+
+For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+
+function sumAll(arr) {
+  let sum = 0;
+  if (arr[0] < arr[1]) {
+    for (let i = arr[0]; i <= arr[1]; i++) {
+      sum += i;
+    }
+    } else if (arr[0] > arr[1]) {
+    for (let i = arr[1]; i <= arr[0]; i++) {
+      sum += i;
+    }
+  }
+  
+  return sum;
+}
+
+console.log(sumAll([1, 4]));
+
+another solution:
+
+function sumAll(arr) {
+  let sum = 0;
+
+  if (arr[0] < arr[1]) {
+  for (let i = arr[0]; i <= arr[1]; i++) {
+    sum += i;
+    console.log(sum);
+  }
+  } else {
+  for (let i = arr[0]; i >= arr[1]; i--) {
+    sum += i;
+    console.log(sum);
+  }
+
+  }
+
+  return sum;
+}
+
+console.log(sumAll([1, 4]));
+
+*/ 
+
+
+// The global variable
+
+
 /* Introduction to Currying and Partial Application
 The arity of a function is the number of arguments it requires. Currying a function means to convert a function of N arity into N functions of arity 1.
 
@@ -40,7 +135,18 @@ const partialFn = impartial.bind(this, 1, 2);
 partialFn(10); // 13
 Fill in the body of the add function so it uses currying to add parameters x, y, and z.
 
+function add(x) {
+  // Only change code below this line
+  return function(y) {
+    return function (z) {
+      return x + y + z;
+    }
+  }
 
+  // Only change code above this line
+}
+
+add(10)(20)(30);
 
 */
 
@@ -458,7 +564,6 @@ console.log(getRating(watchList));
 
 */
 
-// The global variable
 
 // 1) отфильтровать; 2) map; 3) найти общую сумму рейтингов; 4) найти средний рейтинг
 
@@ -739,33 +844,6 @@ console.log(filteredList);
 
 */
 // The global variable
-
-/*
-Sum All Numbers in a Range
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
-
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
-
-function sumAll(arr) {
-  let sum = 0;
-  if (arr[0] < arr[1]) {
-    for (let i = arr[0]; i <= arr[1]; i++) {
-      sum += i;
-    }
-    } else if (arr[0] > arr[1]) {
-    for (let i = arr[1]; i <= arr[0]; i++) {
-      sum += i;
-    }
-  }
-  
-  return sum;
-}
-
-console.log(sumAll([1, 4]));
-
-
-*/ 
-
 
 
 // Learn About Functional Programming
