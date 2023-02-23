@@ -24,11 +24,13 @@ Note: You have to use the arguments object.
 function destroyer(arr) {
   const args = [...arguments];
   let newArray = [];
-  args.splice(0, 1).forEach((element) => newArray.push(element))
+
+  newArray = arr.filter(element => (args.includes(element)) === false)
+
   return newArray;
 }
 
-console.log(destroyer([3, 5, 1, 2, 2], 2, 3, 5));
+console.log(destroyer([3, 5, 1, 2, 2, 2, 5, 3, 1], 2, 3, 5));
 
 /* Diff Two Arrays
 Compare two arrays and return a new array with any items only found in one of the two given arrays, but not both. In other words, return the symmetric difference of the two arrays.
