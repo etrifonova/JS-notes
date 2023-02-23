@@ -19,10 +19,21 @@ For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { f
 
 function whatIsInAName(collection, source) {
 
-  return collection
+  for (let i = 0; i < collection.length; i++) {
+
+    let parent = Object.entries(collection[i]);
+    console.log(parent)
+    let child = Object.entries(source)[0];
+    console.log(child);
+
+  }
+
+  return collection;
 }
 
 console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
+
+console.log(([{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }], { "apple": 1 }));
 
 /* Seek and Destroy
 You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
