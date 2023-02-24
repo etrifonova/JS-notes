@@ -8,32 +8,149 @@
 
 */
 
-/* Wherefore art thou
-Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching name and value pairs (second argument). Each name and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
+/*
 
-For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the name and its value, that was passed on as the second argument.
+*/
+
+/* Spinal Tap Case
+Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
 
 
 
 */
 
-function whatIsInAName(collection, source) {
+function spinalCase(str) {
 
-  for (let i = 0; i < collection.length; i++) {
+  const regEx1 = /\ww*[A-Z]/;
+  const regEx2 = /[A-Z]/;
+  
+  let arr = str.split(' ');
 
-    let parent = Object.entries(collection[i]);
-    console.log(parent)
-    let child = Object.entries(source)[0];
-    console.log(child);
+  for (let i=0; i<arr.length; i++) {
+    
+    if (regEx1.test(arr[i]) === true) {
+
+       let arr2 = arr[i].split('');
+       
+       for (let j=1; j<arr2.length; j++) {
+        if (regEx2.test(arr2[j]) === true) {
+          arr2.splice(arr2.indexOf(arr2[j]), 1, ' ', arr2[j].toLowerCase());
+          console.log(arr2);
+        }
+        }
+        arr2 = arr2.join('');
+        console.log(arr.join(' '));
+       }
+       
+       
+    }
+
+    return arr;
 
   }
 
-  return collection;
-}
+// console.log(spinalCase('This Is Spinal Tap'));
+// console.log(spinalCase('Teletubbies say Eh-oh'));
+
+console.log(spinalCase('AllThe-small Things'));
+// console.log(spinalCase('The_Andy_Griffith_Show')); 
+
+
+/* Wherefore art thou
+Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching name and value pairs (second argument). Each name and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
+
+For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the name and its value, that was passed on as the second argument.
+
+НИ ФИГА НЕ РАЗОБРАЛАСЬ ДО КОНЦА и стырила решение у FCC
+
+function whatIsInAName(collection, source) {
+  
+  const sourceKeys = Object.keys(source);
+
+  // filter the collection
+  return collection.filter(obj => {
+    for (let i=0; i<sourceKeys.length; i++) {
+      if (!obj.hasOwnProperty(sourceKeys[i]) || obj[sourceKeys[i]] !== source[sourceKeys[i]]) {
+        return false;
+      }
+    }
+    return true;
+  })
+    }
+
 
 console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
 
 console.log(([{ "apple": 1 }, { "apple": 1 }, { "apple": 1, "bat": 2 }], { "apple": 1 }));
+
+Другие решения:
+
+function whatIsInAName(collection, source) {
+  // "What's in a name? that which we call a rose
+  // By any other name would smell as sweet.”
+  // -- by William Shakespeare, Romeo and Juliet
+  const sourceKeys = Object.keys(source);
+
+  return collection
+    .filter(obj => sourceKeys
+                     .every(key => obj.hasOwnProperty(key) &&
+                            obj[key] === source[key]));
+}
+
+// test here
+whatIsInAName(
+  [
+    { first: "Romeo", last: "Montague" },
+    { first: "Mercutio", last: null },
+    { first: "Tybalt", last: "Capulet" }
+  ],
+  { last: "Capulet" }
+
+  function whatIsInAName(collection, source) {
+  // "What's in a name? that which we call a rose
+  // By any other name would smell as sweet.”
+  // -- by William Shakespeare, Romeo and Juliet
+  const souceKeys = Object.keys(source);
+
+  // filter the collection
+  return collection.filter(obj => souceKeys
+      .map(key => obj.hasOwnProperty(key) && obj[key] === source[key])
+      .reduce((a, b) => a && b));
+}
+
+// test here
+whatIsInAName(
+  [
+    { first: "Romeo", last: "Montague" },
+    { first: "Mercutio", last: null },
+    { first: "Tybalt", last: "Capulet" }
+  ],
+  { last: "Capulet" }
+);
+
+function whatIsInAName(collection, source) {
+  // What's in a name?
+  const arr = [];
+  // Only change code below this line
+  for (let i = 0; i < collection.length; i++) {
+    let found = true;
+    for (const sourceProp in source) {
+      if (collection[i][sourceProp] !== source[sourceProp]) {
+        found = false;
+        break;
+      }
+    }
+    if (found) arr.push(collection[i]);
+  }
+  // Only change code above this line
+  return arr;
+}
+</details>
+
+
+
+*/
+
 
 /* Seek and Destroy
 You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
