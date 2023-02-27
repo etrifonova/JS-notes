@@ -8,52 +8,70 @@
 
 */
 
-/*
+/* Pig Latin
+Pig Latin is a way of altering English Words. The rules are as follows:
+
+- If a word begins with a consonant, take the first consonant or consonant cluster, move it to the end of the word, and add ay to it.
+
+- If a word begins with a vowel, just add way at the end.
+
+Translate the provided string to Pig Latin. Input strings are guaranteed to be English words in all lowercase.
+
+
 
 */
+
+function translatePigLatin(str) {
+  return str;
+}
+
+translatePigLatin("consonant");
 
 /* Spinal Tap Case
 Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
 
-
-
-*/
-
 function spinalCase(str) {
-
-  const regEx1 = /\ww*[A-Z]/;
-  const regEx2 = /[A-Z]/;
-  
-  let arr = str.split(' ');
-
-  for (let i=0; i<arr.length; i++) {
-    
-    if (regEx1.test(arr[i]) === true) {
-
-       let arr2 = arr[i].split('');
-       
-       for (let j=1; j<arr2.length; j++) {
-        if (regEx2.test(arr2[j]) === true) {
-          arr2.splice(arr2.indexOf(arr2[j]), 1, ' ', arr2[j].toLowerCase());
-          console.log(arr2);
-        }
-        }
-        arr2 = arr2.join('');
-        console.log(arr.join(' '));
-       }
-       
-       
-    }
-
-    return arr;
-
+  return str.split(/\s|_(?=[A-Z])/).join('-').toLowerCase();
   }
 
-// console.log(spinalCase('This Is Spinal Tap'));
-// console.log(spinalCase('Teletubbies say Eh-oh'));
+console.log(spinalCase('This Is Spinal Tap'));
+console.log(spinalCase('Teletubbies say Eh-oh'));
 
 console.log(spinalCase('AllThe-small Things'));
-// console.log(spinalCase('The_Andy_Griffith_Show')); 
+console.log(spinalCase('The_Andy_Griffith_Show')); 
+
+
+Solution 2:
+function spinalCase(str) {
+  // Replace low-upper case to low-space-uppercase
+  str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+  // Split on whitespace and underscores and join with dash
+  return str
+    .toLowerCase()
+    .split(/(?:_| )+/)
+    .join("-");
+}
+
+// test here
+spinalCase("This Is Spinal Tap");
+
+Solution 1:
+
+function spinalCase(str) {
+  // Create a variable for the white space and underscores.
+  var regex = /\s+|_+/g;
+
+  // Replace low-upper case to low-space-uppercase
+  str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+
+  // Replace space and underscore with -
+  return str.replace(regex, "-").toLowerCase();
+}
+
+// test here
+spinalCase("This Is Spinal Tap");
+
+*/
 
 
 /* Wherefore art thou
