@@ -8,6 +8,43 @@
 
 */
 
+/*
+
+*/
+
+/*
+
+*/
+
+
+/*
+
+*/
+
+/* Search and Replace
+Perform a search and replace on the sentence using the arguments provided and return the new sentence.
+
+First argument is the sentence to perform the search and replace on.
+
+Second argument is the word that you will be replacing (before).
+
+Third argument is what you will be replacing the second argument with (after).
+
+Note: Preserve the case of the first character in the original word when you are replacing it. For example if you mean to replace the word Book with the word dog, it should be replaced as Dog
+
+
+
+function myReplace(str, before, after) {
+
+  return (/[A-Z]/).test(before.charAt(0)) ? 
+  str.replace(before, after.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')) 
+  : str.replace(before, after.toLowerCase());
+}
+// 
+console.log(myReplace("I think we should look up there", "up", "Down"));
+
+*/
+
 /* Pig Latin
 Pig Latin is a way of altering English Words. The rules are as follows:
 
@@ -17,31 +54,67 @@ Pig Latin is a way of altering English Words. The rules are as follows:
 
 Translate the provided string to Pig Latin. Input strings are guaranteed to be English words in all lowercase.
 
-
-
-*/
-
 function translatePigLatin(str) {
-  const regEx1 = /(a|e|i|o|u)/;
-  // console.log(regEx1.test(str.charAt(0)))
-  if (regEx1.test(str.charAt(0)) === true) {
-    return str + 'way'
-  } 
-  
-    let counter = 0;
-    for (let i=0; i<str.length; i++) {
-      if (regEx1.test(str.split('')[i]) === false) {
-        counter = i;
-      }
-    }
 
-  let pigArray = str.split('').splice(1, str.split('').length);
-  pigArray.push(str.charAt(0), 'ay');
-  return pigArray.join('')
+  const regEx1 = /^[aeiou]/;
+  const regEx2 = /^[bcdfghjklmnpqrstvwxyz][bcdfghjklmnpqrstvwxyz]*/; 
+/*
+  if (regEx1.test(str) === true) {
+    return str + 'way';
+  } else {
+    let match = str.match(regEx2)[0];
+    return str.split('').splice(match.length, str.length-1).join('') + match + 'ay';
+  }
 }
-
 console.log(translatePigLatin("glove"));
 console.log(translatePigLatin("union"));
+
+
+FCC Solutions:
+
+function translatePigLatin(str) {
+  let consonantRegex = /^[^aeiou]+/;
+  let myConsonants = str.match(consonantRegex);
+  return myConsonants !== null
+    ? str
+        .replace(consonantRegex, "")
+        .concat(myConsonants)
+        .concat("ay")
+    : str.concat("way");
+}
+
+Code Explanation
+start at beginning and get longest match of everything not a vowel (consonants)
+
+if regex pattern found, it saves the match; else, it returns null
+
+if regex pattern found (starts with consonants), it deletes match, adds the match to the end, and adds “ay” to the end
+
+if regex pattern not found (starts with vowels), it just adds “way” to the ending
+
+Solution 2: 
+function translatePigLatin(str) {
+  // Create variables to be used
+  var pigLatin = "";
+  var regex = /[aeiou]/gi;
+
+  // Check if the first character is a vowel
+  if (str[0].match(regex)) {
+    pigLatin = str + "way";
+  } else if (str.match(regex) === null) {
+    // Check if the string contains only consonants
+    pigLatin = str + "ay";
+  } else {
+    // Find how many consonants before the first vowel.
+    var vowelIndice = str.indexOf(str.match(regex)[0]);
+
+    // Take the string from the first vowel to the last char
+    // then add the consonants that were previously omitted and add the ending.
+    pigLatin = str.substr(vowelIndice) + str.substr(0, vowelIndice) + "ay";
+  }
+
+  More solutions here https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-pig-latin/16039
+*/
 
 
 /* Spinal Tap Case
