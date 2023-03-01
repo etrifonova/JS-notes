@@ -22,10 +22,27 @@ Translate the provided string to Pig Latin. Input strings are guaranteed to be E
 */
 
 function translatePigLatin(str) {
-  return str;
+  const regEx1 = /(a|e|i|o|u)/;
+  // console.log(regEx1.test(str.charAt(0)))
+  if (regEx1.test(str.charAt(0)) === true) {
+    return str + 'way'
+  } 
+  
+    let counter = 0;
+    for (let i=0; i<str.length; i++) {
+      if (regEx1.test(str.split('')[i]) === false) {
+        counter = i;
+      }
+    }
+
+  let pigArray = str.split('').splice(1, str.split('').length);
+  pigArray.push(str.charAt(0), 'ay');
+  return pigArray.join('')
 }
 
-translatePigLatin("consonant");
+console.log(translatePigLatin("glove"));
+console.log(translatePigLatin("union"));
+
 
 /* Spinal Tap Case
 Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
