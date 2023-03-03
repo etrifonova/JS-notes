@@ -26,23 +26,103 @@ For example, for the input GCG, return [["G", "C"], ["C","G"], ["G", "C"]]
 
 The character and its pair are paired up in an array, and all the arrays are grouped into one encapsulating array.
 
-*/
+Шаги:
+1) создать базовые пары в виде переменных
+2) создать тернарный оператор с проверкой наличия буквы из аргумента в базовой паре
+
 
 function pairElement(str) {
+  const basePair1 = ['A', 'T'];
+  const basePair2 = ['C', 'G'];
+
   let bigArray = [];
-  const arr = str.split('');
-  
-  for (let i = 0; i < arr.length - 1; i++) {
-    let smallArray =[];
-    smallArray.push(arr[i] + arr[i+1])
-    console.log(smallArray);
-    bigArray.push(smallArray);
-  }
+  let smallArray = [];
+  const initialArray = str.split('');
+
+  for (let i = 0; i < initialArray.length; i++) {
+ 
+      if (initialArray[i] === basePair1[0]) {
+        smallArray.push(basePair1[0]);
+        smallArray.push(basePair1[1]);
+        bigArray.push(smallArray);
+        smallArray = [];
+      } else if (initialArray[i] === basePair1[1]) {
+        smallArray.push(basePair1[1]);
+        smallArray.push(basePair1[0]);
+        bigArray.push(smallArray);
+        smallArray = [];
+      } else if (initialArray[i] === basePair2[0]) {
+      smallArray.push(basePair2[0]);
+      smallArray.push(basePair2[1]);
+      bigArray.push(smallArray);
+      smallArray = [];
+    } else if (initialArray[i] === basePair2[1]) {
+      smallArray.push(basePair2[1]);
+      smallArray.push(basePair2[0]);
+      bigArray.push(smallArray);
+      smallArray = [];
+    } 
+    }
 
   return bigArray;
 }
 
 console.log(pairElement("ATCGA"));
+
+----------------------------------
+FCC solutions:
+
+function pairElement(str) {
+  // Function to match each character with the base pair
+  const matchWithBasePair = function(char) {
+    switch (char) {
+      case "A":
+        return ["A", "T"];
+      case "T":
+        return ["T", "A"];
+      case "C":
+        return ["C", "G"];
+      case "G":
+        return ["G", "C"];
+    }
+  };
+
+    // Find pair for every character in the string
+  const pairs = [];
+  for (let i = 0; i < str.length; i++) {
+    pairs.push(matchWithBasePair(str[i]));
+  }
+
+  return pairs;
+}
+
+// test here
+pairElement("GCG");
+
+
+
+
+
+*/
+
+function pairElement(str) {
+  // create object for pair lookup
+  const pairs = {
+    A: "T",
+    T: "A",
+    C: "G",
+    G: "C"
+  };
+
+  // map character to array of character and matching pair
+  return str
+    .split("")
+    .map(x => [x, pairs[x]]);
+}
+
+// test here
+pairElement("GCG");
+
 
 /* Search and Replace
 Perform a search and replace on the sentence using the arguments provided and return the new sentence.
@@ -7318,13 +7398,5 @@ function fun2() {
 document.write(output);
 
 }
-
-*/
-
-
-/* SoloLearnStuff
-
-
-
 
 */
