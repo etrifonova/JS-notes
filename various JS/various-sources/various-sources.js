@@ -9,6 +9,8 @@ const newValues = values.map((value, index) => {
   console.log('new value: ' + newValue + ' , index number: ' + (index +1))
 })
 
+console.log(newValues)
+
 /*
 
 */

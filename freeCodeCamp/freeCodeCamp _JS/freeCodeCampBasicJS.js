@@ -8,13 +8,122 @@
 
 */
 
-/*
+/* Sorted Union
+Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+
+In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+
+The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+
+Check the assertion tests for examples.
+
+
+
+*/
+// ! is a logic reversal operator, if something was true it will change it to false, if something is false, it will change to true.
+
+function uniteUnique(...arrays) {
+  let result = [];
+  for (let i = 0; i < arrays.length; i++) {
+    for (let j = 0; j < arrays[i].length; j++) {
+      if (result.includes(arrays[i][j]) !== true) {
+        result.push(arrays[i][j]);
+      }
+    }
+  }
+  return result;
+}
+
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+console.log(uniteUnique([1, 2, 3], [5, 2, 1]));
+console.log(uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8]));
+
+/* Missing letters
+Find the missing letter in the passed letter range and return it.
+
+If all letters are present in the range, return undefined.
+
+STEPS:
+
+1) create an alphabet string;
+2) compare the str and alphabet to find the first and last characters of the chunk;
+3) check if their lengths are equal;
+4) go through the chunk to see if every characters is present; if not, return it;
+
+MY SOLUTION:
+
+function fearNotLetter(str) {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+  let firstChar = alphabet.find(element => element === str.charAt(0))
+  let splitStr = str.split('');
+  let alphArr = alphabet.splice(alphabet.indexOf(firstChar), str.length)
+
+  for (let i=0; i<str.length; i++) {
+    if (splitStr[i] !== alphArr[i]) {
+      return alphArr[i];
+    }
+  }
+
+}
+
+console.log(fearNotLetter("bcdf"));
+console.log(fearNotLetter("abcdefghjklmno"));
+console.log(fearNotLetter("stvwx"));
+
+
+FCC SOLUTIONS:
+
+SOL 1:
+function fearNotLetter(str) {
+  for (let i = 0; i < str.length; i++) {
+    code of current character
+    const charCode = str.charCodeAt(i);
+
+    if code of current character is not equal to first character + no of iteration
+        then a letter was skipped
+    if (charCode !== str.charCodeAt(0) + i) {
+      if current character skipped past a character find previous character and return
+      return String.fromCharCode(charCode - 1);
+    }
+  }
+  return undefined;
+}
+
+SOL 2:
+
+function fearNotLetter(str) {
+  let currCharCode = str.charCodeAt(0);
+  let missing = undefined;
+
+  str
+    .split("")
+    .forEach(letter => {
+      if (letter.charCodeAt(0) === currCharCode) {
+        currCharCode++;
+      } else {
+        missing = String.fromCharCode(currCharCode);
+      }
+    });
+
+  return missing;
+}
+
+SOL 3: 
+function fearNotLetter(str) {
+  for (let i = 1; i < str.length; ++i) {
+    if (str.charCodeAt(i) - str.charCodeAt(i - 1) > 1) {
+      return String.fromCharCode(str.charCodeAt(i - 1) + 1);
+    }
+  }
+}
+Code Explanation
+Loop over the string
+Check if the difference in char codes between adjacent characters in the string is more than 1 (check ASCII table)
+Return the missing character ( +1 from where the gap was detected)
 
 */
 
-/*
-
-*/
 
 
 /* DNA Pairing
@@ -99,12 +208,6 @@ function pairElement(str) {
 // test here
 pairElement("GCG");
 
-
-
-
-
-*/
-
 function pairElement(str) {
   // create object for pair lookup
   const pairs = {
@@ -123,6 +226,7 @@ function pairElement(str) {
 // test here
 pairElement("GCG");
 
+*/
 
 /* Search and Replace
 Perform a search and replace on the sentence using the arguments provided and return the new sentence.
