@@ -8,6 +8,234 @@
 
 */
 
+/*
+
+*/
+
+/* Smallest Common Multiple
+Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
+
+The range will be an array of two numbers that will not necessarily be in numerical order.
+
+For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. The answer here would be 6.
+
+
+
+*/
+function smallestCommons(arr) {
+  function isValidMultiple(m, min, max) {
+    for (let i = min; i < max; i++) {
+      if (m % i !== 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  let max = Math.max(arr[0], arr[1]);
+  let min = Math.min(arr[0], arr[1]);
+  let multiple = max;
+  
+  while (!isValidMultiple(multiple, min, max)) {
+    multiple += max;
+  }
+  
+  return multiple;
+}
+
+console.log(smallestCommons([1, 5]))
+/* Sum All Primes
+A prime number is a whole number greater than 1 with exactly two divisors: 1 and itself. For example, 2 is a prime number because it is only divisible by 1 and 2. In contrast, 4 is not prime since it is divisible by 1, 2 and 4.
+
+Rewrite sumPrimes so it returns the sum of all prime numbers that are less than or equal to num.
+
+
+function sumPrimes(num) {
+  let sum = 0;
+  for (let i = 2; i <= num; i++) {
+    if (isPrime(i)) {
+      sum += i;
+    }
+  }
+  return sum;
+}
+function isPrime(n) {
+  if (n <= 1) {
+    return false;
+  }
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(sumPrimes(10));
+
+FCC solutions https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-sum-all-primes/16085
+
+*/
+
+/* Sum All Odd Fibonacci Numbers
+Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
+
+The first two numbers in the Fibonacci sequence are 0 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first seven numbers of the Fibonacci sequence are 0, 1, 1, 2, 3, 5 and 8.
+
+For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
+
+
+function sumFibs(num) {
+  let sum = 0;
+  let fib1 = 0;
+  let fib2 = 1;
+  while (fib2 <= num) {
+    if (fib2 % 2 !== 0) {
+      sum += fib2;
+    }
+    fib2 += fib1;
+    fib1 = fib2 - fib1;
+  }
+  return sum;
+}
+
+console.log(sumFibs(4000000))
+
+FCC solutions https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-sum-all-odd-fibonacci-numbers/16084
+
+*/
+
+
+/* Convert HTML Entities
+Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
+
+
+function convertHTML(str) {
+
+  const splitStr = str.split('');
+
+  let newStr = [];
+
+    const matchWithCharacter = function (char) {
+      switch (char) {
+        case "&":
+          return '&amp;';
+        case "<":
+          return '&lt;';
+        case ">":
+          return '&gt;';
+        case '"':
+          return '&quot;';
+          case "'":
+          return '&apos;';
+      }
+
+    }
+
+    for (let i = 0; i < splitStr.length; i++) {
+      if (matchWithCharacter(splitStr[i]) !== undefined ) {
+        newStr.push(matchWithCharacter(splitStr[i]));
+      } else {
+        newStr.push(splitStr[i]);
+      }
+    }
+
+  return newStr.join(''); 
+  
+}
+
+console.log(convertHTML('Stuff in "quotation marks"'));
+console.log(convertHTML("Hamburgers < Pizza < Tacos"));
+
+Hints
+Hint 1
+You can use regular Expressions however I didn’t in this case.
+Hint 2
+You will benefit from a chart with all the html entities so you know which ones are the right ones to put.
+Hint 3
+You should separate the string and work with each character to convert the right ones and then join everything back up.
+Solutions
+
+Solution 1 (Click to Show/Hide)
+
+function convertHTML(str) {
+  // Split by character to avoid problems.
+
+  var temp = str.split("");
+
+  // Since we are only checking for a few HTML elements, use a switch
+
+  for (var i = 0; i < temp.length; i++) {
+    switch (temp[i]) {
+      case "<":
+        temp[i] = "&lt;";
+        break;
+      case "&":
+        temp[i] = "&amp;";
+        break;
+      case ">":
+        temp[i] = "&gt;";
+        break;
+      case '"':
+        temp[i] = "&quot;";
+        break;
+      case "'":
+        temp[i] = "&apos;";
+        break;
+    }
+  }
+
+  temp = temp.join("");
+  return temp;
+}
+
+//test here
+convertHTML("Dolce & Gabbana");
+
+
+Solution 2 (Click to Show/Hide)
+
+function convertHTML(str) {
+  // Use Object Lookup to declare as many HTML entities as needed.
+  const htmlEntities = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&apos;"
+  };
+  // Using a regex, replace characters with it's corresponding html entity
+  return str.replace(/([&<>\"'])/g, match => htmlEntities[match]);
+}
+
+// test here
+convertHTML("Dolce & Gabbana");
+
+
+Solution 3 (Click to Show/Hide)
+
+function convertHTML(str) {
+  // Use Object Lookup to declare as many HTML entities as needed.
+  const htmlEntities = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&apos;"
+  };
+  //Use map function to return a filtered str with all entities changed automatically.
+  return str
+    .split("")
+    .map(entity => htmlEntities[entity] || entity)
+    .join("");
+}
+
+// test here
+convertHTML("Dolce & Gabbana");
+
+*/
+
+
 /* Sorted Union
 Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
 
@@ -17,9 +245,6 @@ The unique numbers should be sorted by their original order, but the final array
 
 Check the assertion tests for examples.
 
-
-
-*/
 // ! is a logic reversal operator, if something was true it will change it to false, if something is false, it will change to true.
 
 function uniteUnique(...arrays) {
@@ -38,6 +263,100 @@ console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
 console.log(uniteUnique([1, 2, 3], [5, 2, 1]));
 console.log(uniteUnique([1, 2, 3], [5, 2, 1, 4], [2, 1], [6, 7, 8]));
 
+Hints
+Hint 1
+Since you have no idea how many parameters were passed, it would be best to loop through the arguments before looping through the arrays.
+
+Hint 2
+It isn’t necessary to use loops. You can use functions such as map(), reduce() or others if you want.
+
+Hint 3
+You will have to check if the current value is already on the array to be returned for every value.
+
+FCC Solutions
+
+Solution 1 (Click to Show/Hide)
+function uniteUnique(arr1, arr2, arr3) - WHY THREE ARRAYS?! WE DON'T THE EXACT NUMBER ARRAYS PASSED IN AS ARGUMENTS {
+  // Creates an empty array to store our final result.
+  const finalArray = [];
+
+  // Loop through the arguments object to truly make the program work with two or more arrays
+  // instead of 3.
+  for (let i = 0; i < arguments.length; i++) {
+    const arrayArguments = arguments[i];
+
+    // Loops through the array at hand
+    for (let j = 0; j < arrayArguments.length; j++) {
+      let indexValue = arrayArguments[j];
+
+      // Checks if the value is already on the final array.
+      if (finalArray.indexOf(indexValue) < 0) {
+        finalArray.push(indexValue);
+      }
+    }
+  }
+
+  return finalArray;
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+
+Solution 2 (Click to Show/Hide)
+
+function uniteUnique(arr) {
+  const args = [...arguments]; - I forgot about this way or maybe I didn't even know
+  const result = [];
+  for (let i = 0; i < args.length; i++) {
+    for (let j = 0; j < args[i].length; j++) {
+      if (!result.includes(args[i][j])) {
+        result.push(args[i][j]);
+      }
+    }
+  }
+  return result;
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+
+Solution 3 (Click to Show/Hide)
+
+function uniteUnique(...arr) {
+  return [...new Set(arr.flat())]; - what is flat?! 
+}
+
+// Or as an arrow function
+const uniteUnique = (...arr) => [...new Set(arr.flat())];
+
+Solution 4 (Click to Show/Hide)
+
+function uniteUnique() {
+  return [...arguments]
+    .flat()
+    .filter((item, ind, arr) => arr.indexOf(item) === ind); - this one is beyond my knowledge
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]); 
+
+From FCC users:
+
+function uniteUnique(arr) {
+  var args = Array.from(arguments);
+  var uniqueValues = [];
+
+  for (var i = 0; i < args.length; i++) {
+    for (var j = 0; j < args[i].length; j++) {
+      if (!uniqueValues.includes(args[i][j])) {
+        uniqueValues.push(args[i][j]);
+      }
+    }
+  }
+
+  return uniqueValues;
+}
+
+*/
 /* Missing letters
 Find the missing letter in the passed letter range and return it.
 
