@@ -35,7 +35,43 @@ See below for an example of a cash-in-drawer array:
   ["TWENTY", 60],
   ["ONE HUNDRED", 100]
 ]
+
+
+Currency Unit	Amount
+Penny	$0.01 (PENNY)
+Nickel	$0.05 (NICKEL)
+Dime	$0.1 (DIME)
+Quarter	$0.25 (QUARTER)
+Dollar	$1 (ONE)
+Five Dollars	$5 (FIVE)
+Ten Dollars	$10 (TEN)
+Twenty Dollars	$20 (TWENTY)
+One-hundred Dollars	$100 (ONE HUNDRED)
+
 */ 
+
+const statusArr = [
+  {status: "INSUFFICIENT_FUNDS", change: []},
+  // return if cash-in-drawer is less than the change due, or if you cannot return the exact change
+  {status: "CLOSED", change: []},
+  // return with cash-in-drawer as the value for the key change if it is equal to the change due
+  {status: "OPEN", change: []}
+  // return with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
+]
+
+function checkCashRegister(price, cash, cid) {
+  let change = cash - price;
+
+  statusArr[1].change = change;
+
+  return statusArr[1];
+}
+
+console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+
+
+// checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]) should return {status: "OPEN", change: [["QUARTER", 0.5]]}.
+
 
 /* Telephone Number Validator
 
