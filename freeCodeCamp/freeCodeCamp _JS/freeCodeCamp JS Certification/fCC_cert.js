@@ -48,7 +48,22 @@ Ten Dollars	$10 (TEN)
 Twenty Dollars	$20 (TWENTY)
 One-hundred Dollars	$100 (ONE HUNDRED)
 
+
+Things to consider when deciding on the status and change:
+
+1) calculate the change due;
+2) compare it to amount available in the cash register as follows:
+  - if the change due should be submitted in pennies, compare the change due and amount available: return the respective status and amount if applicable;
+
 */ 
+
+// const obj = {
+//   price: []
+// }
+
+// obj.price.push('hello')
+
+// console.log(obj.price)
 
 const statusArr = [
   {status: "INSUFFICIENT_FUNDS", change: []},
@@ -60,14 +75,30 @@ const statusArr = [
 ]
 
 function checkCashRegister(price, cash, cid) {
-  let change = cash - price;
 
-  statusArr[1].change = change;
+  let changeAmount = cash - price;
+  console.log(changeAmount)
+  
+  if (changeAmount < 5) {
 
-  return statusArr[1];
+    if (changeAmount < cid[0][1]) {
+      cid[0][1] -= changeAmount;
+      console.log(statusArr[2]);
+      statusArr[2].change.push(cid[0]);
+      return statusArr[2];
+    } else if (changeAmount === cid[0][1]) {
+
+      cid[0][1] = 0;
+      statusArr[1].change.push(cid[0]);
+      return statusArr[1];
+    } else {
+      return statusArr[0];
+    }
+  } else if (changeAmount >= 5 && changeAmount < )
+  
 }
 
-console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+console.log(checkCashRegister(16.5, 20, [["PENNY", 3.5], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
 
 
 // checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]) should return {status: "OPEN", change: [["QUARTER", 0.5]]}.
