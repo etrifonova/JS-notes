@@ -1,3 +1,22 @@
+.parent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: aqua;
+  padding: 50px;
+}
+
+.child {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background-color: yellow;
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+}
+
+
 /*
 - ссылки одни из тех элементов, которые имеют браузерную стилизацию по умолчанию — для них указан синий цвет. Чтобы переопределить синий цвет по умолчанию у нас есть два варианта: сделать свойство наследуемым (color: inherit) или указать необходимый цвет. 
 */

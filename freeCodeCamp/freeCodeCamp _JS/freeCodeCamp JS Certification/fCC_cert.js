@@ -52,8 +52,7 @@ One-hundred Dollars	$100 (ONE HUNDRED)
 Things to consider when deciding on the status and change:
 
 1) calculate the change due;
-2) compare it to amount available in the cash register as follows:
-  - if the change due should be submitted in pennies, compare the change due and amount available: return the respective status and amount if applicable;
+2) compare it to the corresponding ranges (from 0.01 to 0.04, from 0.05 to 0.09, from 0.1 to 0.4, from 0.5 to 0.9, from 1 to 4, from 5 to 9, from 10 to 19, ??? )
 
 */ 
 
@@ -74,31 +73,52 @@ const statusArr = [
   // return with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
 ]
 
+const currencyArr = [
+  ['PENNY', 0.01],
+  ['NICKEL', 0.05],
+  ['QUARTER', 0.25],
+  ['DIME', 0.1],
+  ['DOLLAR', 1],
+  ['FIVE', 5],
+  ['TEN', 10],
+  ['TWENTY', 20],
+  ['ONE HUNDRED', 100]
+]
+
 function checkCashRegister(price, cash, cid) {
 
   let changeAmount = cash - price;
-  console.log(changeAmount)
-  
-  if (changeAmount < 5) {
 
-    if (changeAmount < cid[0][1]) {
-      cid[0][1] -= changeAmount;
-      console.log(statusArr[2]);
-      statusArr[2].change.push(cid[0]);
-      return statusArr[2];
-    } else if (changeAmount === cid[0][1]) {
+  for (let i = currencyArr.length - 1; i > 0; i--) {
 
-      cid[0][1] = 0;
-      statusArr[1].change.push(cid[0]);
-      return statusArr[1];
-    } else {
-      return statusArr[0];
+    let currentUnit = currencyArr[i][1];
+
+    let remainder = changeAmount % currentUnit;
+
+    if (remainder !== changeAmount && remainder === 0) {
+      console.log(currentUnit);
+    } else if (remainder !== changeAmount && remainder >= 1) {
+      changeAmount -= remainder;
+      currencyArr[i][1] -= changeAmount;
+      console.log(currencyArr[i][1]);
     }
-  } else if (changeAmount >= 5 && changeAmount < )
+
+  }
+
+
+  
+  return changeAmount;
   
 }
 
-console.log(checkCashRegister(16.5, 20, [["PENNY", 3.5], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+// если сумма в кассе равна или превышает сумму сдачи, то проверяем остаток; если если остаток от деления суммы сдачи на денежную единицу больше или равно 0 (changeAmount === 0 && changeAmount >= 1), то подсчитываем в первую очередь, сколько можно выдать сдачи с текущей денежной единицы. Например:
+// Сдача - 35 долларов; Проверяем с самой большой денежной единицы: 35 / 100 (остаток равен делимому; переходим к следующей денежной единице)
+// Если текущая денежная единица подходит, то 1) вычисляем, сколько можем взять из кассы по текущей денежной единице; 
+// 2) вычитаем соответствующую сумму из кассы; 3) вычисляем остаток и дальше работаем с остатком по тому же принципу 
+
+
+
+console.log(checkCashRegister(165, 200, [["PENNY", 3.5], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
 
 
 // checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]) should return {status: "OPEN", change: [["QUARTER", 0.5]]}.
