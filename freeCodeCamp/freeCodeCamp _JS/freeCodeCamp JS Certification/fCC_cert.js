@@ -88,6 +88,7 @@ const currencyArr = [
 function checkCashRegister(price, cash, cid) {
 
   let changeAmount = cash - price;
+  let currentStatus = [];
 
   for (let i = currencyArr.length - 1; i > 0; i--) {
 
@@ -96,10 +97,13 @@ function checkCashRegister(price, cash, cid) {
     let remainder = changeAmount % currentUnit;
 
     if (remainder !== changeAmount && remainder === 0) {
-      console.log(statusArr[2]);
+      statusArr[1].change.push(changeAmount);
+      currentStatus.push(statusArr[1])
+      console.log(currentStatus);
     } else if (remainder !== changeAmount && remainder >= 1) {
       changeAmount -= remainder;
       cid[i][1] -= changeAmount;
+      console.log(statusArr[1]);
       console.log(cid[i][1]);
     }
 
