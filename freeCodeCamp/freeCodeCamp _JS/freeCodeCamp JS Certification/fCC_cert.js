@@ -96,11 +96,11 @@ function checkCashRegister(price, cash, cid) {
     let remainder = changeAmount % currentUnit;
 
     if (remainder !== changeAmount && remainder === 0) {
-      console.log(currentUnit);
+      console.log(statusArr[2]);
     } else if (remainder !== changeAmount && remainder >= 1) {
       changeAmount -= remainder;
-      currencyArr[i][1] -= changeAmount;
-      console.log(currencyArr[i][1]);
+      cid[i][1] -= changeAmount;
+      console.log(cid[i][1]);
     }
 
   }
