@@ -64,26 +64,26 @@ Things to consider when deciding on the status and change:
 
 // console.log(obj.price)
 
-const statusArr = [
-  {status: "INSUFFICIENT_FUNDS", change: []},
-  // return if cash-in-drawer is less than the change due, or if you cannot return the exact change
-  {status: "CLOSED", change: []},
-  // return with cash-in-drawer as the value for the key change if it is equal to the change due
-  {status: "OPEN", change: []}
-  // return with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
-]
+// const statusArr = [
+//   {status: "INSUFFICIENT_FUNDS", change: []},
+//   // return if cash-in-drawer is less than the change due, or if you cannot return the exact change
+//   {status: "CLOSED", change: []},
+//   // return with cash-in-drawer as the value for the key change if it is equal to the change due
+//   {status: "OPEN", change: []}
+//   // return with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
+// ]
 
-const currencyArr = [
-  ['PENNY', 0.01],
-  ['NICKEL', 0.05],
-  ['QUARTER', 0.25],
-  ['DIME', 0.1],
-  ['DOLLAR', 1],
-  ['FIVE', 5],
-  ['TEN', 10],
-  ['TWENTY', 20],
-  ['ONE HUNDRED', 100]
-]
+// const currencyArr = [
+//   ['PENNY', 0.01],
+//   ['NICKEL', 0.05],
+//   ['QUARTER', 0.25],
+//   ['DIME', 0.1],
+//   ['DOLLAR', 1],
+//   ['FIVE', 5],
+//   ['TEN', 10],
+//   ['TWENTY', 20],
+//   ['ONE HUNDRED', 100]
+// ]
 
 function checkCashRegister(price, cash, cid) {
 

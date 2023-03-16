@@ -14,38 +14,36 @@ console.log(newValues)
 
 */
 
-const statusArr = [
-  {status: "INSUFFICIENT_FUNDS", change: []},
-  // return if cash-in-drawer is less than the change due, or if you cannot return the exact change
-  {status: "CLOSED", change: []},
-  // return with cash-in-drawer as the value for the key change if it is equal to the change due
-  {status: "OPEN", change: []}
-  // return with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
-]
+// const statusArr = [
+//   {status: "INSUFFICIENT_FUNDS", change: []},
+//   // return if cash-in-drawer is less than the change due, or if you cannot return the exact change
+//   {status: "CLOSED", change: []},
+//   // return with cash-in-drawer as the value for the key change if it is equal to the change due
+//   {status: "OPEN", change: []}
+//   // return with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
+// ]
 
-const currencyArr = [
-  ['PENNY', 0.01],
-  ['NICKEL', 0.05],
-  ['QUARTER', 0.25],
-  ['DIME', 0.1],
-  ['DOLLAR', 1],
-  ['FIVE', 5],
-  ['TEN', 10],
-  ['TWENTY', 20],
-  ['ONE HUNDRED', 100]
-]
+// const currencyArr = [
+//   ['PENNY', 0.01],
+//   ['NICKEL', 0.05],
+//   ['QUARTER', 0.25],
+//   ['DIME', 0.1],
+//   ['DOLLAR', 1],
+//   ['FIVE', 5],
+//   ['TEN', 10],
+//   ['TWENTY', 20],
+//   ['ONE HUNDRED', 100]
+// ]
 
 function checkCashRegister(price, cash, cid) {
   let change = cash*100 - price*100;
   let cidTotal = 0;
   for (let elem of cid) {
     cidTotal += elem[1]*100;
-  }
-
-  if (change > cidTotal) {
+  } if (change > cidTotal) {
     return {status: "INSUFFICIENT_FUNDS", change: []}
   } else if (change === cidTotal) {
-    return {status: "CLOSED", change: []}
+    return {status: "CLOSED", change: cid}
   } else {
     let answer = [];
     cid = cid.reverse();
@@ -54,7 +52,7 @@ function checkCashRegister(price, cash, cid) {
       'TWENTY': 2000,
       'TEN': 1000,
       'FIVE': 500,
-      'DOLLAR': 100,
+      'ONE': 100,
       'QUARTER': 25,
       'DIME': 10,
       'NICKEL': 5,
