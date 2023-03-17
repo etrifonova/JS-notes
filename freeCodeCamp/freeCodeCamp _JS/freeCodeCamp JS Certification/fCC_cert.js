@@ -64,65 +64,69 @@ Things to consider when deciding on the status and change:
 
 // console.log(obj.price)
 
-// const statusArr = [
-//   {status: "INSUFFICIENT_FUNDS", change: []},
-//   // return if cash-in-drawer is less than the change due, or if you cannot return the exact change
-//   {status: "CLOSED", change: []},
-//   // return with cash-in-drawer as the value for the key change if it is equal to the change due
-//   {status: "OPEN", change: []}
-//   // return with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
-// ]
+const statusArr = [
+  {status: "INSUFFICIENT_FUNDS", change: []},
+  // return if cash-in-drawer is less than the change due, or if you cannot return the exact change
+  {status: "CLOSED", change: []},
+  // return with cash-in-drawer as the value for the key change if it is equal to the change due
+  {status: "OPEN", change: []}
+  // return with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
+]
 
-// const currencyArr = [
-//   ['PENNY', 0.01],
-//   ['NICKEL', 0.05],
-//   ['QUARTER', 0.25],
-//   ['DIME', 0.1],
-//   ['DOLLAR', 1],
-//   ['FIVE', 5],
-//   ['TEN', 10],
-//   ['TWENTY', 20],
-//   ['ONE HUNDRED', 100]
-// ]
+const units = {
+        'ONE HUNDRED': 10000,
+        'TWENTY': 2000,
+        'TEN': 1000,
+        'FIVE': 500,
+        'ONE': 100,
+        'QUARTER': 25,
+        'DIME': 10,
+        'NICKEL': 5,
+        'PENNY': 1
+      }
+
 
 function checkCashRegister(price, cash, cid) {
-
   let changeAmount = cash*100 - price*100;
-  let currentStatus = [];
-
+  let cidTotal = 0;
   for (let element of cid) {
-
-    let currentUnit = currencyArr[i][1];
-
-    let remainder = changeAmount % currentUnit;
-
-    if (remainder !== changeAmount && remainder === 0) {
-      statusArr[1].change.push(changeAmount);
-      currentStatus.push(statusArr[1])
-      console.log(currentStatus);
-    } else if (remainder !== changeAmount && remainder >= 1) {
-      changeAmount -= remainder;
-      cid[i][1] -= changeAmount;
-      console.log(statusArr[1]);
-      console.log(cid[i][1]);
-    }
-
+    cidTotal += element[1]*100;
   }
+    if (changeAmount > cidTotal) {
+      return statusArr[0];
+    } else if (changeAmount === cidTotal) {
+      statusArr[1].change = cid;
+      return statusArr[1];
+    } else {
+      let cashLeft = [];
+      cid = cid.reverse();
 
-
+      for (let element of cid) {
+        let accumulator = [element[0], 0];
+        element[1] = element[1]*100;
+        while (changeAmount >= units[element[0]] && element[1] > 0) {
+          changeAmount -= units[element[0]];
+          element[1] -= units[element[0]];
+          accumulator[1] += units[element[0]]/100;
+        }
+        if (accumulator[1] > 0) {
+          cashLeft.push(accumulator);
+        }
+      }
+      if (changeAmount > 0) {
+        return statusArr[0];
+      }
+      statusArr[2].change = cashLeft;
+      return statusArr[2];
+    }
+  }
   
-  return changeAmount;
-  
-}
+console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
 
-// если сумма в кассе равна или превышает сумму сдачи, то проверяем остаток; если если остаток от деления суммы сдачи на денежную единицу больше или равно 0 (changeAmount === 0 && changeAmount >= 1), то подсчитываем в первую очередь, сколько можно выдать сдачи с текущей денежной единицы. Например:
-// Сдача - 35 долларов; Проверяем с самой большой денежной единицы: 35 / 100 (остаток равен делимому; переходим к следующей денежной единице)
-// Если текущая денежная единица подходит, то 1) вычисляем, сколько можем взять из кассы по текущей денежной единице; 
-// 2) вычитаем соответствующую сумму из кассы; 3) вычисляем остаток и дальше работаем с остатком по тому же принципу 
+console.log(checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
 
+console.log(checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
 
-
-console.log(checkCashRegister(165, 200, [["PENNY", 3.5], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
 
 
 // checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]) should return {status: "OPEN", change: [["QUARTER", 0.5]]}.

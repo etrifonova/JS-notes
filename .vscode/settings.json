@@ -1,5 +1,7 @@
 {
-    "workbench.editor.showTabs": false,
+    "workbench.editor.showTabs": true,
     "notebook.output.wordWrap": true,
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false
 }
