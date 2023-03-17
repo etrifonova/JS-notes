@@ -87,10 +87,10 @@ Things to consider when deciding on the status and change:
 
 function checkCashRegister(price, cash, cid) {
 
-  let changeAmount = cash - price;
+  let changeAmount = cash*100 - price*100;
   let currentStatus = [];
 
-  for (let i = currencyArr.length - 1; i > 0; i--) {
+  for (let element of cid) {
 
     let currentUnit = currencyArr[i][1];
 

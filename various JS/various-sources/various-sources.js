@@ -35,11 +35,55 @@ console.log(newValues)
 //   ['ONE HUNDRED', 100]
 // ]
 
+// function checkCashRegister(price, cash, cid) {
+//   let change = cash*100 - price*100;
+//   let cidTotal = 0;
+//   for (let elem of cid) {
+//     cidTotal += elem[1]*100;
+//   } if (change > cidTotal) {
+//     return {status: "INSUFFICIENT_FUNDS", change: []}
+//   } else if (change === cidTotal) {
+//     return {status: "CLOSED", change: cid}
+//   } else {
+//     let answer = [];
+//     cid = cid.reverse();
+//     let moneyUnits = {
+//       'ONE HUNDRED': 10000,
+//       'TWENTY': 2000,
+//       'TEN': 1000,
+//       'FIVE': 500,
+//       'ONE': 100,
+//       'QUARTER': 25,
+//       'DIME': 10,
+//       'NICKEL': 5,
+//       'PENNY': 1
+//     }
+//     for (let elem of cid) {
+//       let accumulator = [elem[0], 0];
+//       elem[1]=elem[1]*100;
+//       while (change >= moneyUnits[elem[0]] && elem[1] > 0) {
+//         change -= moneyUnits[elem[0]];
+//         elem[1] -= moneyUnits[elem[0]];
+//         accumulator[1] += moneyUnits[elem[0]]/100;
+//       }
+//       if (accumulator[1] > 0) {
+//         answer.push(accumulator);
+//       }
+//     }
+//     if (change > 0) {
+//       return {status: "INSUFFICIENT_FUNDS", change: []}
+//     }
+//     return {status: "OPEN", change: answer};
+//   }
+// }
+
+// console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+
 function checkCashRegister(price, cash, cid) {
-  let change = cash*100 - price*100;
+  let change = cash - price;
   let cidTotal = 0;
   for (let elem of cid) {
-    cidTotal += elem[1]*100;
+    cidTotal += elem[1];
   } if (change > cidTotal) {
     return {status: "INSUFFICIENT_FUNDS", change: []}
   } else if (change === cidTotal) {
@@ -48,23 +92,23 @@ function checkCashRegister(price, cash, cid) {
     let answer = [];
     cid = cid.reverse();
     let moneyUnits = {
-      'ONE HUNDRED': 10000,
-      'TWENTY': 2000,
-      'TEN': 1000,
-      'FIVE': 500,
-      'ONE': 100,
-      'QUARTER': 25,
-      'DIME': 10,
-      'NICKEL': 5,
-      'PENNY': 1
+      'ONE HUNDRED': 100,
+      'TWENTY': 20,
+      'TEN': 10,
+      'FIVE': 5,
+      'ONE': 1,
+      'QUARTER': 0.25,
+      'DIME': 0.1,
+      'NICKEL': 0.05,
+      'PENNY': 0.01
     }
     for (let elem of cid) {
       let accumulator = [elem[0], 0];
-      elem[1]=elem[1]*100;
+      elem[1]=elem[1];
       while (change >= moneyUnits[elem[0]] && elem[1] > 0) {
         change -= moneyUnits[elem[0]];
         elem[1] -= moneyUnits[elem[0]];
-        accumulator[1] += moneyUnits[elem[0]]/100;
+        accumulator[1] += moneyUnits[elem[0]];
       }
       if (accumulator[1] > 0) {
         answer.push(accumulator);
