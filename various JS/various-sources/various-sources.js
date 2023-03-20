@@ -1,3 +1,63 @@
+
+
+/* 
+
+
+
+
+*/ 
+
+/* 
+
+
+
+
+*/ 
+
+/* Тинькофф экзамен
+
+Четыре человека выстроились в очередь друг за другом. Определите, правда ли, что они стоят по росту (неважно, в порядке неубывания или порядке невозрастания). 
+ 
+Формат входных данных 
+ 
+Единственная строка содержит числа h1, h2, h3, h4 (0 <= hi <= 300), где hi — рост человека, стоящего на i-й позиции. 
+ 
+Формат выходных данных 
+ 
+Выведите YES, если люди выстроены в порядке неубывания или невозрастания их роста, и NO в противном случае.
+
+
+Порядок неубывания или невозрастания - это свойство последовательности, при котором ее элементы расположены в порядке возрастания или равенства (в случае неубывания) или в порядке убывания или равенства (в случае невозрастания). Другими словами, если последовательность a1, a2, a3, ..., an имеет порядок неубывания, то a1 ≤ a2 ≤ a3 ≤ ... ≤ an, а если она имеет порядок невозрастания, то a1 ≥ a2 ≥ a3 ≥ ... ≥ an. Это понятие широко используется в математике, особенно в теории чисел, анализе и дискретной математике.
+
+
+function heightCheck (str) {
+
+  const arr = str.split('');
+   
+  for (let i = 1; i < arr.length; i++) {
+
+    if (arr[i] >= arr[i-1] && arr[i] <= arr[i+1]) {
+      return 'YES';
+    } else if (arr[i] <= arr[i-1] && arr[i] >= arr[i+1]) {
+      return 'YES';
+    } 
+    
+    else {
+      return 'NO';
+    }
+
+  }
+
+}
+
+console.log(heightCheck('1234'));
+console.log(heightCheck('7655'));
+console.log(heightCheck('4444'));
+console.log(heightCheck('5231'));
+
+*/ 
+
+
 /* map() https://www.youtube.com/watch?v=cTNR5eN-uEY
 
 
@@ -35,49 +95,49 @@ console.log(newValues)
 //   ['ONE HUNDRED', 100]
 // ]
 
-function checkCashRegister(price, cash, cid) {
-  let change = cash*100 - price*100;
-  let cidTotal = 0;
-  for (let elem of cid) {
-    cidTotal += elem[1]*100;
-  } if (change > cidTotal) {
-    return {status: "INSUFFICIENT_FUNDS", change: []}
-  } else if (change === cidTotal) {
-    return {status: "CLOSED", change: cid}
-  } else {
-    let answer = [];
-    cid = cid.reverse();
-    let moneyUnits = {
-      'ONE HUNDRED': 10000,
-      'TWENTY': 2000,
-      'TEN': 1000,
-      'FIVE': 500,
-      'ONE': 100,
-      'QUARTER': 25,
-      'DIME': 10,
-      'NICKEL': 5,
-      'PENNY': 1
-    }
-    for (let elem of cid) {
-      let accumulator = [elem[0], 0];
-      elem[1]=elem[1]*100;
-      while (change >= moneyUnits[elem[0]] && elem[1] > 0) {
-        change -= moneyUnits[elem[0]];
-        elem[1] -= moneyUnits[elem[0]];
-        accumulator[1] += moneyUnits[elem[0]]/100;
-      }
-      if (accumulator[1] > 0) {
-        answer.push(accumulator);
-      }
-    }
-    if (change > 0) {
-      return {status: "INSUFFICIENT_FUNDS", change: []}
-    }
-    return {status: "OPEN", change: answer};
-  }
-}
+// function checkCashRegister(price, cash, cid) {
+//   let change = cash*100 - price*100;
+//   let cidTotal = 0;
+//   for (let elem of cid) {
+//     cidTotal += elem[1]*100;
+//   } if (change > cidTotal) {
+//     return {status: "INSUFFICIENT_FUNDS", change: []}
+//   } else if (change === cidTotal) {
+//     return {status: "CLOSED", change: cid}
+//   } else {
+//     let answer = [];
+//     cid = cid.reverse();
+//     let moneyUnits = {
+//       'ONE HUNDRED': 10000,
+//       'TWENTY': 2000,
+//       'TEN': 1000,
+//       'FIVE': 500,
+//       'ONE': 100,
+//       'QUARTER': 25,
+//       'DIME': 10,
+//       'NICKEL': 5,
+//       'PENNY': 1
+//     }
+//     for (let elem of cid) {
+//       let accumulator = [elem[0], 0];
+//       elem[1]=elem[1]*100;
+//       while (change >= moneyUnits[elem[0]] && elem[1] > 0) {
+//         change -= moneyUnits[elem[0]];
+//         elem[1] -= moneyUnits[elem[0]];
+//         accumulator[1] += moneyUnits[elem[0]]/100;
+//       }
+//       if (accumulator[1] > 0) {
+//         answer.push(accumulator);
+//       }
+//     }
+//     if (change > 0) {
+//       return {status: "INSUFFICIENT_FUNDS", change: []}
+//     }
+//     return {status: "OPEN", change: answer};
+//   }
+// }
 
-console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
+// console.log(checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]));
 
 // function checkCashRegister(price, cash, cid) {
 //   let change = cash - price;
