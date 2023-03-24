@@ -12,11 +12,71 @@
 
 */
 
-/*
+/* Human Readable Time
+
+Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
+
+HH = hours, padded to 2 digits, range: 00 - 99
+MM = minutes, padded to 2 digits, range: 00 - 59
+SS = seconds, padded to 2 digits, range: 00 - 59
+The maximum time never exceeds 359999 (99:59:59)
+
+You can find some examples in the test fixtures.
 
 */
 
-/*
+function humanReadable (seconds) {
+  let hours = '00';
+  let minutes = '00';
+
+  if (seconds > 59) {
+    minutes = Math.floor(seconds / 60);
+    seconds = seconds - minutes * 60;
+    if (seconds >= 0 && seconds < 10) {
+      seconds = '0' + seconds;
+    }
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+  } 
+
+
+  return hours + ':' + minutes + ':' + seconds;
+}
+
+console.log(humanReadable(59));
+console.log(humanReadable(600));
+console.log(humanReadable(90));
+
+
+/* Multiples of 3 or 5
+
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in. Additionally, if the number is negative, return 0 (for languages that do have them).
+
+Note: If the number is a multiple of both 3 and 5, only count it once.
+
+Courtesy of projecteuler.net (Problem 1)
+
+function solution(number){
+  let sum = 0;
+  for (let i = 1; i < number; i++) {
+    if (i % 3 === 0 || i % 5 === 0) {
+      sum += i;
+    }
+  }
+  return sum;
+}
+
+console.log(solution(10));
+
+
+Solution from codewars:
+
+function solution(number){
+  return number < 1 ? 0 : [...new Array(number).keys()].filter(n => n % 3 == 0 || n % 5 == 0).reduce((a, b) => a + b);
+}
 
 */
 
@@ -33,8 +93,6 @@ Empty list is considered to have zero greatest sum. Note that the empty list or 
 To anyone who doesn't understand the assignment: You have an array e.g [-2, 1, -3, 4, -1, 2, 1, -5, 4] You now have to find out which part of this array gives the biggest sum. In this case, it would be [4, -1, 2, 1] because 4 - 1 + 2 + 1 = 6. No other uninterrupted sequence in that array gives you a bigger sum.
 
 
-
-*/
 
 var maxSequence = function(arr){
 
@@ -62,6 +120,8 @@ var maxSequence = function(arr){
 
 console.log(maxSequence([4, -1, 5, 2, 8, -3, 6, -3]))
 // сумма всего массива: 18; сумма массива без последнего числа: 21
+
+*/
 
 /*
 Digital root is the recursive sum of all the digits in a number.
