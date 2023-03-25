@@ -29,24 +29,36 @@ function humanReadable (seconds) {
   let hours = '00';
   let minutes = '00';
 
-  if (seconds > 59) {
+  if (seconds === 0) {
+    seconds = '00';
+  } else if (seconds < 10) {
+    seconds = '0' + seconds;
+  } else if (seconds > 59) {
     minutes = Math.floor(seconds / 60);
     seconds = seconds - minutes * 60;
-    if (seconds >= 0 && seconds < 10) {
-      seconds = '0' + seconds;
+    if (seconds === 0) {
+      seconds = '00';
     }
     if (minutes < 10) {
       minutes = '0' + minutes;
-    }
+    } else if (minutes > 59) {
+      hours = Math.floor(minutes / 60);
+      minutes = minutes - hours * 60;
+      if (minutes === 0) {
+        minutes = '00';
+      } 
+      if (hours < 10) {
+        hours = '0' + hours;
+      } 
   } 
-
-
+  }  
   return hours + ':' + minutes + ':' + seconds;
 }
 
-console.log(humanReadable(59));
-console.log(humanReadable(600));
-console.log(humanReadable(90));
+console.log(humanReadable(3599));
+console.log(humanReadable(3600));
+console.log(humanReadable(60));
+console.log(humanReadable(359999));
 
 
 /* Multiples of 3 or 5
