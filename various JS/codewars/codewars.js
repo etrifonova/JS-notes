@@ -8,11 +8,13 @@
 
 */
 
-/*
+/* Build a pile of Cubes https://www.codewars.com/kata/5592e3bd57b64d00f3000047/train/javascript 
+
+
 
 */
 
-/* Human Readable Time
+/* Human Readable Time https://www.codewars.com/kata/52685f7382004e774f0001f7/solutions/javascript
 
 Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
 
@@ -23,7 +25,8 @@ The maximum time never exceeds 359999 (99:59:59)
 
 You can find some examples in the test fixtures.
 
-*/
+My long and ugly solution:
+
 
 function humanReadable (seconds) {
   let hours = '00';
@@ -31,34 +34,136 @@ function humanReadable (seconds) {
 
   if (seconds === 0) {
     seconds = '00';
-  } else if (seconds < 10) {
+  } else if (seconds > 0 && seconds < 10) {
     seconds = '0' + seconds;
-  } else if (seconds > 59) {
-    minutes = Math.floor(seconds / 60);
+  } else if (seconds >= 60 && seconds <= 599) {
+    minutes = '0' + Math.floor(seconds / 60);
     seconds = seconds - minutes * 60;
+
     if (seconds === 0) {
       seconds = '00';
-    }
-    if (minutes < 10) {
-      minutes = '0' + minutes;
-    } else if (minutes > 59) {
-      hours = Math.floor(minutes / 60);
-      minutes = minutes - hours * 60;
-      if (minutes === 0) {
-        minutes = '00';
+    } else if (seconds > 0 && seconds < 10) {
+      seconds = '0' + seconds;
+    } 
+
+  } else if (seconds >= 600 && seconds <= 3599) {
+    minutes = Math.floor(seconds / 60);
+    seconds = seconds - minutes * 60;
+
+    if (seconds === 0) {
+      seconds = '00';
+    } else if (seconds > 0 && seconds < 10) {
+      seconds = '0' + seconds;
+    } 
+
+  } else if (seconds >= 3600 && seconds <= 35999) {
+    hours = '0' + Math.floor(seconds / 3600);
+    seconds = seconds - hours * 3600;
+    
+    if (seconds === 0) {
+      seconds = '00';
+    } else if (seconds > 0 && seconds < 10) {
+      seconds = '0' + seconds;
+    } else if (seconds >= 60 && seconds <= 599) {
+      minutes = '0' + Math.floor(seconds / 60);
+      seconds = seconds - minutes * 60;
+  
+      if (seconds === 0) {
+        seconds = '00';
+      } else if (seconds > 0 && seconds < 10) {
+        seconds = '0' + seconds;
       } 
-      if (hours < 10) {
-        hours = '0' + hours;
+  
+    } else if (seconds >= 600 && seconds <= 3599) {
+      minutes = Math.floor(seconds / 60);
+      seconds = seconds - minutes * 60;
+  
+      if (seconds === 0) {
+        seconds = '00';
+      } else if (seconds > 0 && seconds < 10) {
+        seconds = '0' + seconds;
       } 
-  } 
-  }  
+  }
+} else if (seconds >= 36000 && seconds <= 359999) {
+  hours = Math.floor(seconds / 3600);
+  seconds = seconds - hours * 3600;
+    
+  if (seconds === 0) {
+    seconds = '00';
+  } else if (seconds > 0 && seconds < 10) {
+    seconds = '0' + seconds;
+  } else if (seconds >= 60 && seconds <= 599) {
+    minutes = '0' + Math.floor(seconds / 60);
+    seconds = seconds - minutes * 60;
+
+    if (seconds === 0) {
+      seconds = '00';
+    } else if (seconds > 0 && seconds < 10) {
+      seconds = '0' + seconds;
+    } 
+
+  } else if (seconds >= 600 && seconds <= 3599) {
+    minutes = Math.floor(seconds / 60);
+    seconds = seconds - minutes * 60;
+
+    if (seconds === 0) {
+      seconds = '00';
+    } else if (seconds > 0 && seconds < 10) {
+      seconds = '0' + seconds;
+    } 
+}
+
+}
+
   return hours + ':' + minutes + ':' + seconds;
 }
 
 console.log(humanReadable(3599));
+console.log(humanReadable(936));
 console.log(humanReadable(3600));
-console.log(humanReadable(60));
+console.log(humanReadable(59));
 console.log(humanReadable(359999));
+
+My solution is sooo long and definitely not very rational. Having checked out other solutions on codewars, I can say that I don't know the tricks used by other users there and I need to study them.
+
+Some solutions:
+______________________________
+
+function humanReadable(seconds) {
+  var pad = function(x) { return (x < 10) ? "0"+x : x; }
+  return pad(parseInt(seconds / (60*60))) + ":" +
+         pad(parseInt(seconds / 60 % 60)) + ":" +
+         pad(seconds % 60)
+}
+
+What is pad?!
+______________________________
+
+function humanReadable(seconds) {
+var hours = parseInt( seconds / 3600 ) ;
+var minutes = parseInt( seconds / 60 ) % 60;
+var seconds = seconds % 60;
+
+var pad = function(val){
+  return val < 10 ?"0"+val:val;
+}
+
+return pad(hours) + ":" +pad(minutes) + ":" + pad(seconds);
+}
+Pad again!
+______________________________
+
+function humanReadable(seconds) {
+  return [seconds / 3600, seconds % 3600 / 60, seconds % 60].map(function(v) {
+    v = Math.floor(v).toString();
+    return v.length == 1 ? '0' + v : v;
+  }).join(':');
+}
+
+This is very cool and I've studied the methods used here
+
+*/
+
 
 
 /* Multiples of 3 or 5
