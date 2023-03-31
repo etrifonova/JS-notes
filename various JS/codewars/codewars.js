@@ -11,8 +11,28 @@
 /* Build a pile of Cubes https://www.codewars.com/kata/5592e3bd57b64d00f3000047/train/javascript 
 
 
+Examples:
+findNb(1071225) --> 45
+
+findNb(91716553919377) --> -1
 
 */
+
+function findNb(m) {
+
+  let volume = 0;
+  for (let i = 1; i < m; i++) {
+    volume = i * i * i;
+    m -= volume;
+    console.log(volume);
+  }
+  // your code
+  return m - volume;
+  // return (-1);
+}
+
+console.log(findNb(1071225));
+console.log(findNb(91716553919377));
 
 /* Human Readable Time https://www.codewars.com/kata/52685f7382004e774f0001f7/solutions/javascript
 
