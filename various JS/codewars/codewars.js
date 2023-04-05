@@ -1,10 +1,27 @@
-// иЗУЧИТЬ: 1) добавлять элементы в пустой массив; 2) кодировка букв в ASCII
+
 
 /*
 
 */
 
 /*
+
+*/
+
+/*
+
+*/
+
+/* 6 kyu Split Strings https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/javascript
+
+Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+
+Examples:
+
+* 'abc' =>  ['ab', 'c_']
+* 'abcdef' => ['ab', 'cd', 'ef']
+
+
 
 */
 
@@ -16,23 +33,70 @@ findNb(1071225) --> 45
 
 findNb(91716553919377) --> -1
 
-*/
 
 function findNb(m) {
-
   let volume = 0;
-  for (let i = 1; i < m; i++) {
+  let volumeLeft = m;
+  let n;
+
+  for (let i = 1; volumeLeft > volume; i++) {
     volume = i * i * i;
-    m -= volume;
-    console.log(volume);
+    volumeLeft -= volume;
+    n = i;
   }
-  // your code
-  return m - volume;
-  // return (-1);
+
+  if (volumeLeft === 0) {
+    return n;
+  } else {
+    return -1;
+  }
 }
 
-console.log(findNb(1071225));
-console.log(findNb(91716553919377));
+console.log(findNb(4183059834009));
+console.log(findNb(24723578342962));
+
+Tests
+const { assert } = require('chai');
+
+it("Basic tests",function() {
+  assert.strictEqual(findNb(4183059834009), 2022)
+  assert.strictEqual(findNb(24723578342962), -1)
+  assert.strictEqual(findNb(135440716410000), 4824)
+  assert.strictEqual(findNb(40539911473216), 3568)
+})
+
+Codewars Solutions:
+
+function findNb(m) {
+  var n = 0
+  while (m > 0) m -= ++n**3
+  return m ? -1 : n
+}
+
+function findNb(m) {
+  let n = 0;
+  let sum = 0;
+  while (sum < m) {
+    n++;
+    sum += Math.pow(n, 3);
+  }
+  return sum === m ? n : -1;
+}
+
+// this is based on the formula that the sum of the first n cubes equals (n * (n + 1) / 2) ^ 2
+// also, the sum of the first n cubes is always a square
+function findNb(m) {
+    m = Math.sqrt(m) * 2;
+    if (m != parseInt(m)){
+      return -1;
+    }
+    var result = parseInt(Math.sqrt(m));
+    return (result * (result + 1) == m) ? result : -1;
+}
+
+
+*/
+
 
 /* Human Readable Time https://www.codewars.com/kata/52685f7382004e774f0001f7/solutions/javascript
 
