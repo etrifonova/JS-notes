@@ -25,6 +25,17 @@ Examples:
 
 */
 
+function solution(str){
+  return str.length % 2 === 0 ? str.split('').forEach((element, index) => {
+    return element[index] + element[index+1]
+  }) : false;
+   
+}
+
+console.log(solution("djfekdsl"))
+console.log(solution("abgds"))
+
+
 /* Build a pile of Cubes https://www.codewars.com/kata/5592e3bd57b64d00f3000047/train/javascript 
 
 
