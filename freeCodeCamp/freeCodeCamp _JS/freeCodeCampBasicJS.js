@@ -8,9 +8,75 @@
 
 */
 
-/*
+/* Drop it
+Given the array arr, iterate through and remove each element starting from the first element (the 0 index) until the function func returns true when the iterated element is passed through it.
+
+Then return the rest of the array once the condition is satisfied, otherwise, arr should be returned as an empty array.
+
+dropElements([1, 2, 3, 4], function(n) {return n >= 3;}) should return [3, 4].
+Waiting:dropElements([0, 1, 0, 1], function(n) {return n === 1;}) should return [1, 0, 1].
+Waiting:dropElements([1, 2, 3], function(n) {return n > 0;}) should return [1, 2, 3].
+Waiting:dropElements([1, 2, 3, 4], function(n) {return n > 5;}) should return [].
+Waiting:dropElements([1, 2, 3, 7, 4], function(n) {return n > 3;}) should return [7, 4].
+Waiting:dropElements([1, 2, 3, 9, 2], function(n) {return n > 2;}) should return [3, 9, 2].
+
+
+
+function dropElements(arr, func) {
+  let indexArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (func(arr[i]) === false) {
+      indexArray.push(i);
+      console.log(indexArray)
+    } else {
+      break;
+    }
+  }
+  arr.splice(indexArray[0], indexArray.length)
+  return arr;
+}
+
+console.log(dropElements([1, 2, 3, 4], function(n) {return n >= 3;}));
+console.log(dropElements([0, 1, 0, 1], function(n) {return n === 1;}));
+console.log(dropElements([1, 2, 3], function(n) {return n > 0;}));
+
+More solutions https://forum.freecodecamp.org/t/freecodecamp-challenge-guide-drop-it/16010
+
+Sol 1
+
+function dropElements(arr, func) {
+  while (arr.length > 0 && !func(arr[0])) {
+    arr.shift();
+  }
+  return arr;
+}
+
+// test here
+dropElements([1, 2, 3, 4], function(n) {
+  return n >= 3;
+});
+
+function dropElements(arr, func) {
+  // drop them elements.
+  let originalLen = arr.length;
+  for (let i = 0; i < originalLen; i++) {
+    if (func(arr[0])) {
+      break;
+    } else {
+      arr.shift();
+    }
+  }
+  return arr;
+}
+
+// test here
+dropElements([1, 2, 3, 4], function(n) {
+  return n >= 3;
+});
 
 */
+
+
 
 /* Smallest Common Multiple
 Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
@@ -19,9 +85,6 @@ The range will be an array of two numbers that will not necessarily be in numeri
 
 For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. The answer here would be 6.
 
-
-
-*/
 function smallestCommons(arr) {
   function isValidMultiple(m, min, max) {
     for (let i = min; i < max; i++) {
@@ -44,6 +107,9 @@ function smallestCommons(arr) {
 }
 
 console.log(smallestCommons([1, 5]))
+*/
+
+
 /* Sum All Primes
 A prime number is a whole number greater than 1 with exactly two divisors: 1 and itself. For example, 2 is a prime number because it is only divisible by 1 and 2. In contrast, 4 is not prime since it is divisible by 1, 2 and 4.
 
