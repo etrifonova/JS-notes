@@ -19,28 +19,40 @@ Write an algorithm that will identify valid IPv4 addresses in dot-decimal format
 function isValidIP(str) {
   const splitStr = str.split('.');
   let result;
+  let regEx1 = /^\d/g;
+  let result1;
+  // && regEx1.test(Number(splitStr[i])) === true
+
   for (let i = 0; i < splitStr.length; i++) {
-    if (splitStr[i] >= 0 && splitStr[i] <= 255) {
+    if (Number(splitStr[i]) >= 0 && Number(splitStr[i]) <= 255) {
       result = true;
-    } else if (typeof splitStr[i] == 'string') {
-      result = false;
-      break;
     } else {
       result = false;
+      // break;
     }
-    console.log(splitStr[i]);
+    console.log(typeof Number(splitStr[i]));
+
   }
   return result;
 }
 
-// console.log(isValidIP("0.0.0.0"))
-// console.log(isValidIP("12.255.56.1"))
-// console.log(isValidIP('abc.def.ghi.jkl'))
-// console.log(isValidIP('123.456.789.0'))
-console.log(isValidIP('')) 
-// must be false
-console.log(isValidIP(' 1.2.3.4'))
-// must be false
+console.log(isValidIP("0.0.0.0"));
+// console.log(isValidIP("12.255.56.1"));
+// console.log(isValidIP("137.255.156.100"));
+// console.log(isValidIP(''));
+// console.log(isValidIP('abc.def.ghi.jkl'));
+// console.log(isValidIP('123.456.789.0'));
+// console.log(isValidIP('12.34.56'));
+// console.log(isValidIP('01.02.03.04'));
+// console.log(isValidIP('256.1.2.3'));
+// console.log(isValidIP('1.2.3.4.5'));
+// console.log(isValidIP('123,45,67,89'));
+// console.log(isValidIP('1e0.1e1.1e2.2e2'));
+// console.log(isValidIP(' 1.2.3.4'));
+// console.log(isValidIP('1.2.3.4 '));
+// console.log(isValidIP('12.34.56.-7'));
+// console.log(isValidIP('1.2.3.4\n'));
+// console.log(isValidIP('\n1.2.3.4'));
 
 /* 6 kyu Split Strings https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/javascript
 
