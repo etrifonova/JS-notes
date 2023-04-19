@@ -8,9 +8,39 @@
 
 */
 
-/*
+/* IP Validation https://www.codewars.com/kata/515decfd9dcfc23bb6000006/train/javascript
+
+Write an algorithm that will identify valid IPv4 addresses in dot-decimal format. IPs should be considered valid if they consist of four octets, with values between 0 and 255, inclusive.
+
+
 
 */
+
+function isValidIP(str) {
+  const splitStr = str.split('.');
+  let result;
+  for (let i = 0; i < splitStr.length; i++) {
+    if (splitStr[i] >= 0 && splitStr[i] <= 255) {
+      result = true;
+    } else if (typeof splitStr[i] == 'string') {
+      result = false;
+      break;
+    } else {
+      result = false;
+    }
+    console.log(splitStr[i]);
+  }
+  return result;
+}
+
+// console.log(isValidIP("0.0.0.0"))
+// console.log(isValidIP("12.255.56.1"))
+// console.log(isValidIP('abc.def.ghi.jkl'))
+// console.log(isValidIP('123.456.789.0'))
+console.log(isValidIP('')) 
+// must be false
+console.log(isValidIP(' 1.2.3.4'))
+// must be false
 
 /* 6 kyu Split Strings https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/javascript
 
@@ -21,10 +51,6 @@ Examples:
 * 'abc' =>  ['ab', 'c_']
 * 'abcdef' => ['ab', 'cd', 'ef']
 
-
-
-*/
-
 function solution(str){
   return str.length % 2 === 0 ? str.split('').forEach((element, index) => {
     return element[index] + element[index+1]
@@ -34,6 +60,8 @@ function solution(str){
 
 console.log(solution("djfekdsl"))
 console.log(solution("abgds"))
+
+*/
 
 
 /* Build a pile of Cubes https://www.codewars.com/kata/5592e3bd57b64d00f3000047/train/javascript 
