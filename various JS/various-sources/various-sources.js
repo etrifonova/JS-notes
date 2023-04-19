@@ -7,6 +7,21 @@
 
 */ 
 
+function Contact(name, number) {
+  this.name = name;
+  this.number = number;
+}
+
+Contact.prototype.print = function() {
+  return this.name + ": " + this.number;
+}
+
+const a = new Contact("David", 12345);
+const b = new Contact("Amy", 136643214);
+
+console.log(a.print());
+console.log(b.print());
+
 /* 
 
 
