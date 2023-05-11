@@ -4,9 +4,32 @@
 
 */
 
-/*
+/* Steamroller
+Flatten a nested array. You must account for varying levels of nesting.
 
 */
+
+function steamrollArray(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i]) === true) {
+      while (Array.isArray(arr[i]) === true) {
+        arr[i] = arr[i][0];
+      }
+    } else if (Array.isArray(arr[i]) === true && arr[i] > 1) {
+      
+      console.log("wazzup")
+    }
+    else {
+      console.log("okay")
+    }
+  }
+  return arr;
+}
+
+// console.log(steamrollArray([1, [2], [3, [[4]]]]));
+// console.log(steamrollArray([1, [2], [3, [[4]]]]));
+console.log(steamrollArray([1, [], [3, [[4]]]]));
+// console.log(steamrollArray([1, {}, [3, [[4]]]]));
 
 /* Drop it
 Given the array arr, iterate through and remove each element starting from the first element (the 0 index) until the function func returns true when the iterated element is passed through it.
