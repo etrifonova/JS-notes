@@ -7,20 +7,25 @@
 
 */ 
 
-function Contact(name, number) {
-  this.name = name;
-  this.number = number;
+function camelize(str) {
+  return str.split('-').map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)).join('');
 }
+console.log(camelize('hello-pretty-world'));
 
-Contact.prototype.print = function() {
-  return this.name + ": " + this.number;
-}
+// function Contact(name, number) {
+//   this.name = name;
+//   this.number = number;
+// }
 
-const a = new Contact("David", 12345);
-const b = new Contact("Amy", 136643214);
+// Contact.prototype.print = function() {
+//   return this.name + ": " + this.number;
+// }
 
-console.log(a.print());
-console.log(b.print());
+// const a = new Contact("David", 12345);
+// const b = new Contact("Amy", 136643214);
+
+// console.log(a.print());
+// console.log(b.print());
 
 /* 
 
