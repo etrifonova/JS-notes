@@ -6,11 +6,21 @@
 
 
 */ 
+let arr = [5, 3, 8, 1];
 
-function camelize(str) {
-  return str.split('-').map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)).join('');
+filterRangeInPlace(arr, 1, 4); 
+
+
+function filterRangeInPlace(arr, a, b) {
+
+  for (let i = 0; i < arr.length; i++) {
+    if (a < arr[i] || arr[i] > b) {
+      arr.splice(i, 1);
+    } 
+  }
 }
-console.log(camelize('hello-pretty-world'));
+
+console.log(arr);
 
 // function Contact(name, number) {
 //   this.name = name;
