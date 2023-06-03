@@ -6,25 +6,19 @@
 
 
 */ 
-
-let cat;
-console.log(cat);
-
-let arr = [5, 3, 8, 1];
-
-filterRangeInPlace(arr, 1, 4); 
-
+let arr = [5, 3, 8, 1, 2, 6];
 
 function filterRangeInPlace(arr, a, b) {
-
-  for (let i = 0; i < arr.length; i++) {
-    if (a < arr[i] || arr[i] > b) {
-      arr.splice(i, 1);
-    } 
-  }
+  arr.forEach((element, index) =>  {
+    if (!element >= a || !element <= b) {
+      arr.splice(index, 1);
+    }
+  })
+  return arr;
 }
 
-console.log(arr);
+// console.log(filterRangeInPlace(arr, 1, 4));
+console.log(filterRangeInPlace(arr, 2, 3));
 
 // function Contact(name, number) {
 //   this.name = name;
