@@ -6,6 +6,18 @@
 
 
 */ 
+
+const number = 2365;
+const d1 = Math.floor(number / 1000);
+const d2 = Math.floor(number % 1000 / 100);
+const d3 = Math.floor(number % 100 / 10);
+const d4 = Math.floor(number % 10);
+console.log(d1 * d2 * d3 * d4);
+
+
+// function 
+
+/*
 let arr = [5, 3, 8, 1, 2, 6];
 
 function filterRangeInPlace(arr, a, b) {
@@ -19,6 +31,7 @@ function filterRangeInPlace(arr, a, b) {
 
 // console.log(filterRangeInPlace(arr, 1, 4));
 console.log(filterRangeInPlace(arr, 2, 3));
+*/
 
 // function Contact(name, number) {
 //   this.name = name;
