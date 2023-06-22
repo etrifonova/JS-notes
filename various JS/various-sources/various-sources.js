@@ -7,12 +7,19 @@
 
 */ 
 
+/* Find the production of all the digits without using strings
 const number = 2365;
 const d1 = Math.floor(number / 1000);
 const d2 = Math.floor(number % 1000 / 100);
 const d3 = Math.floor(number % 100 / 10);
 const d4 = Math.floor(number % 10);
 console.log(d1 * d2 * d3 * d4);
+
+
+
+*/ 
+
+
 
 
 // function 
