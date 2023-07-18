@@ -7,6 +7,12 @@
 
 */ 
 
+function pow(x, n) {
+  return (n == 1) ? x : (x * pow(x, n - 1));
+}
+
+console.log(pow(2, 4));
+
 /* Find the production of all the digits without using strings
 const number = 2365;
 const d1 = Math.floor(number / 1000);
@@ -15,11 +21,30 @@ const d3 = Math.floor(number % 100 / 10);
 const d4 = Math.floor(number % 10);
 console.log(d1 * d2 * d3 * d4);
 
-
-
 */ 
 
 
+
+
+
+// function steamrollArray(arr) {
+//   let flattenedArray = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (!Array.isArray(arr[i])) {
+//       flattenedArray.push(arr[i]);
+//       continue;
+//       }
+//       for (let j = 0; j < arr[i].length; j++) {
+//         flattenedArray.push(arr[i][j]);
+//       }
+//     } 
+//   return flattenedArray;
+// }
+
+console.log(steamrollArray([1, [2], [3, [[4]]]]));
+console.log(steamrollArray([1, [2], [3, [[4]]]]));
+console.log(steamrollArray([1, [], [3, [[4]]]]));
+console.log(steamrollArray([1, {}, [3, [[4]]]]));
 
 
 // function 
