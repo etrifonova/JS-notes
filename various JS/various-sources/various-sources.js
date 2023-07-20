@@ -41,10 +41,10 @@ console.log(d1 * d2 * d3 * d4);
 //   return flattenedArray;
 // }
 
-console.log(steamrollArray([1, [2], [3, [[4]]]]));
-console.log(steamrollArray([1, [2], [3, [[4]]]]));
-console.log(steamrollArray([1, [], [3, [[4]]]]));
-console.log(steamrollArray([1, {}, [3, [[4]]]]));
+// console.log(steamrollArray([1, [2], [3, [[4]]]]));
+// console.log(steamrollArray([1, [2], [3, [[4]]]]));
+// console.log(steamrollArray([1, [], [3, [[4]]]]));
+// console.log(steamrollArray([1, {}, [3, [[4]]]]));
 
 
 // function 
