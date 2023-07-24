@@ -7,11 +7,23 @@
 
 */ 
 
-function pow(x, n) {
-  return (n == 1) ? x : (x * pow(x, n - 1));
+/* 
+Write a function which takes a string and crops it until its length is 5
+
+*/ 
+
+
+function crop(str) {
+  return (str.length == 5) ? str : str.split('').unshift();
 }
 
-console.log(pow(2, 4));
+console.log(crop('Hello my dear friend'));
+
+// function pow(x, n) {
+//   return (n == 1) ? x : (x * pow(x, n - 1));
+// }
+
+// console.log(pow(2, 4));
 
 /* Find the production of all the digits without using strings
 const number = 2365;
