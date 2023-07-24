@@ -9,8 +9,45 @@
 */
 
 /*
+Everything Be True
+Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
+
+In other words, you are given an array collection of objects. The predicate pre will be an object property and you need to return true if its value is truthy. Otherwise, return false.
+
+In JavaScript, truthy values are values that translate to true when evaluated in a Boolean context.
+
+Remember, you can access object properties through either dot notation or [] notation.
+
+Steps:
+- check the presence of the pre property;
+- if it exists, check whether it's truthy or not;
+
 
 */
+
+function truthCheck(collection, pre) {
+
+  // let array = collection.map(element => element[pre]);
+  let result;
+  for (let i = 0; i < collection.length; i++) {
+    if (collection[i].hasOwnProperty(pre)) {
+      result = true;
+    } 
+    else {
+      result = false;
+    }
+  }
+  return result;
+}
+
+console.log(truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "isBot"));
+console.log(truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "name"));
+// console.log(truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "role"));
+// console.log(truthCheck([{name: "Pikachu", number: 25, caught: 3}, {name: "Togepi", number: 175, caught: 1}], "number"));
+// console.log(truthCheck([{id: 1, data: {url: "https://freecodecamp.org", name: "freeCodeCamp"}}, {id: 2, data: {url: "https://coderadio.freecodecamp.org/", name: "CodeRadio"}}, {id: null, data: {}}], "id"));
+console.log(truthCheck([{name: "Quincy", username: "QuincyLarson"}, {name: "Naomi", username: "nhcarrigan"}, {name: "Camperbot"}], "username"));
+
+
 
 /* Binary Agents
 Return an English translated sentence of the passed binary string.
