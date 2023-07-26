@@ -9,6 +9,57 @@
 */
 
 /*
+
+*/
+
+/*
+Arguments Optional
+Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
+
+For example, addTogether(2, 3) should return 5, and addTogether(2) should return a function.
+
+Calling this returned function with a single argument will then return the sum:
+
+var sumTwoAnd = addTogether(2);
+sumTwoAnd(3) returns 5.
+
+If either argument isn't a valid number, return undefined.
+
+*/
+
+function addTogether(a, b) {
+
+  if (arguments.length == 1) {
+
+    if (Number.isInteger(a)) {
+      return function sumTwoAnd(one, two) {
+        return one + two;
+      };
+    } 
+    
+    else {
+      return undefined;
+    }
+  } 
+  
+  
+  else if (!b) {
+    return undefined;
+  } else {
+    return a + b;
+  }
+}
+
+// console.log(addTogether(2,3));
+// console.log(addTogether(5, undefined));
+// console.log(addTogether("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+console.log(addTogether(5)(7));
+// console.log(addTogether(2)([3]));
+// console.log(addTogether(2, "3"));
+console.log(addTogether(5));
+
+
+/*
 Everything Be True
 Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
 
@@ -22,15 +73,17 @@ Steps:
 - check the presence of the pre property;
 - if it exists, check whether it's truthy or not;
 
+longer solution:
 
-*/
 
 function truthCheck(collection, pre) {
-
-  // let array = collection.map(element => element[pre]);
   let result;
   for (let i = 0; i < collection.length; i++) {
     if (collection[i].hasOwnProperty(pre)) {
+      if (!collection[i][pre]) {
+        result = false;
+        break;
+      }
       result = true;
     } 
     else {
@@ -42,10 +95,15 @@ function truthCheck(collection, pre) {
 
 console.log(truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "isBot"));
 console.log(truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "name"));
-// console.log(truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "role"));
-// console.log(truthCheck([{name: "Pikachu", number: 25, caught: 3}, {name: "Togepi", number: 175, caught: 1}], "number"));
-// console.log(truthCheck([{id: 1, data: {url: "https://freecodecamp.org", name: "freeCodeCamp"}}, {id: 2, data: {url: "https://coderadio.freecodecamp.org/", name: "CodeRadio"}}, {id: null, data: {}}], "id"));
+console.log(truthCheck([{name: "Quincy", role: "Founder", isBot: false}, {name: "Naomi", role: "", isBot: false}, {name: "Camperbot", role: "Bot", isBot: true}], "role"));
+console.log(truthCheck([{name: "Pikachu", number: 25, caught: 3}, {name: "Togepi", number: 175, caught: 1}], "number"));
+console.log(truthCheck([{id: 1, data: {url: "https://freecodecamp.org", name: "freeCodeCamp"}}, {id: 2, data: {url: "https://coderadio.freecodecamp.org/", name: "CodeRadio"}}, {id: null, data: {}}], "id"));
 console.log(truthCheck([{name: "Quincy", username: "QuincyLarson"}, {name: "Naomi", username: "nhcarrigan"}, {name: "Camperbot"}], "username"));
+
+*/
+
+
+
 
 
 
