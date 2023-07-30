@@ -9,8 +9,71 @@
 */
 
 /*
+Make a Person
+Fill in the object constructor with the following methods below:
+
+getFirstName()
+getLastName()
+getFullName()
+setFirstName(first)
+setLastName(last)
+setFullName(first, last)
+Run the tests to see the expected output for each method. These methods must be the only available means of interacting with the object. Each test will declare a new Person instance as new Person('Bob', 'Ross').
 
 */
+
+const Person = function(first, last) {
+
+  this.getFirstName = function() {
+    return first;
+  };
+
+  this.getLastName = function() {
+    return last;
+  };
+
+  this.getFullName = function() {
+    return first + " " + last;
+  };
+
+  this.setFirstName = function(firstName) {
+    this.firstName = firstName;
+  }
+  
+  this.setLastName = function(lastName) {
+    this.lastName = lastName;
+  }
+  
+  this.setFullName = function(fullName) {
+    this.fullName = fullName;
+  }
+
+  return "";
+};
+
+const person1 = new Person('Jerry', 'Brown');
+console.log(person1.getFullName());
+console.log(person1.getFirstName());
+console.log(person1.getLastName());
+console.log(person1.setLastName('Hanks'));
+
+// class Book {
+//   constructor(author) {
+//     this._author = author;
+//   }
+//   // getter
+//   get writer() {
+//     return this._author;
+//   }
+//   // setter
+//   set writer(updatedAuthor) {
+//     this._author = updatedAuthor;
+//   }
+// }
+// const novel = new Book('anonymous');
+// console.log(novel.writer);
+// novel.writer = 'newAuthor';
+// console.log(novel.writer);
 
 /*
 Arguments Optional
@@ -25,38 +88,32 @@ sumTwoAnd(3) returns 5.
 
 If either argument isn't a valid number, return undefined.
 
-*/
+I had no idea variables could declared using square brackets and multiple names;
 
-function addTogether(a, b) {
-
-  if (arguments.length == 1) {
-
-    if (Number.isInteger(a)) {
-      return function sumTwoAnd(one, two) {
-        return one + two;
-      };
-    } 
-    
-    else {
-      return undefined;
+function addTogether() {
+  const [a, b] = arguments;
+  if (Number.isInteger(a)) {
+    if (Number.isInteger(b)) {
+      return a + b;
     }
-  } 
-  
-  
-  else if (!b) {
-    return undefined;
-  } else {
-    return a + b;
+    if (arguments.length == 1) {
+      return (b) => addTogether(a, b);
+    }
   }
 }
 
-// console.log(addTogether(2,3));
-// console.log(addTogether(5, undefined));
-// console.log(addTogether("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+console.log(addTogether(2,3));
+console.log(addTogether(5, undefined));
+console.log(addTogether("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
 console.log(addTogether(5)(7));
-// console.log(addTogether(2)([3]));
-// console.log(addTogether(2, "3"));
+console.log(addTogether(2)([3]));
+console.log(addTogether(2, "3"));
 console.log(addTogether(5));
+
+
+*/
+
+
 
 
 /*
