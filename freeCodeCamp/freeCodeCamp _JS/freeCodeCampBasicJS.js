@@ -20,42 +20,60 @@ setLastName(last)
 setFullName(first, last)
 Run the tests to see the expected output for each method. These methods must be the only available means of interacting with the object. Each test will declare a new Person instance as new Person('Bob', 'Ross').
 
-*/
 
-const Person = function(first, last) {
+ChatGPT solution (mine was similar, but I didn't write return `${firstName} ${lastName}`, but used concatenation instead, and I guess that was the problem)
+
+function Person(first, last) {
+  let firstName = first;
+  let lastName = last;
 
   this.getFirstName = function() {
-    return first;
+    return firstName;
   };
 
   this.getLastName = function() {
-    return last;
+    return lastName;
   };
 
   this.getFullName = function() {
-    return first + " " + last;
+    return `${firstName} ${lastName}`;
   };
 
-  this.setFirstName = function(firstName) {
-    this.firstName = firstName;
-  }
-  
-  this.setLastName = function(lastName) {
-    this.lastName = lastName;
-  }
-  
-  this.setFullName = function(fullName) {
-    this.fullName = fullName;
-  }
+  this.setFirstName = function(first) {
+    firstName = first;
+  };
 
-  return "";
-};
+  this.setLastName = function(last) {
+    lastName = last;
+  };
 
-const person1 = new Person('Jerry', 'Brown');
-console.log(person1.getFullName());
-console.log(person1.getFirstName());
-console.log(person1.getLastName());
-console.log(person1.setLastName('Hanks'));
+  this.setFullName = function(first, last) {
+    firstName = first;
+    lastName = last;
+  };
+}
+
+// Test cases
+const person = new Person('Bob', 'Ross');
+console.log(person.getFirstName()); // Output: Bob
+console.log(person.getLastName());  // Output: Ross
+console.log(person.getFullName());  // Output: Bob Ross
+
+person.setFirstName('John');
+console.log(person.getFirstName()); // Output: John
+console.log(person.getFullName());  // Output: John Ross
+
+person.setLastName('Doe');
+console.log(person.getLastName());  // Output: Doe
+console.log(person.getFullName());  // Output: John Doe
+
+person.setFullName('Alice', 'Smith');
+console.log(person.getFullName());  // Output: Alice Smith
+
+*/
+
+
+
 
 // class Book {
 //   constructor(author) {
