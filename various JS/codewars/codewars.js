@@ -4,9 +4,27 @@
 
 */
 
-/*
+/* Count IP Addresses https://www.codewars.com/kata/526989a41034285187000de4/train/javascript
 
 */
+
+function ipsBetween(start, end){
+  let accumulator = 0;
+  const firstIP = start.split('.');
+  const secondIP = end.split('.');
+
+  accumulator = secondIP[3] - firstIP[3];
+
+  // for (let i = 3; i >= 0; i--) {
+  //   accumulator = secondIP[i];
+  // }
+  return accumulator;
+}
+
+console.log(ipsBetween("10.0.0.0", "10.0.0.50"))
+console.log(ipsBetween("10.0.0.0", "10.0.1.0"))
+console.log(ipsBetween("20.0.0.10", "20.0.1.0"))
+
 
 /* IP Validation https://www.codewars.com/kata/515decfd9dcfc23bb6000006/train/javascript
 
