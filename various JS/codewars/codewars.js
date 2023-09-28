@@ -13,7 +13,14 @@ function ipsBetween(start, end){
   const firstIP = start.split('.');
   const secondIP = end.split('.');
 
-  accumulator = secondIP[3] - firstIP[3];
+  if (secondIP[3] >= firstIP[3]) {
+    accumulator = secondIP[3] - firstIP[3];
+  }
+  
+  if (secondIP[2] > firstIP[2]) {
+    accumulator += (secondIP[2] - firstIP[2]) * 256;
+  }
+
 
   // for (let i = 3; i >= 0; i--) {
   //   accumulator = secondIP[i];
