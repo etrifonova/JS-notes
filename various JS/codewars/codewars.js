@@ -1,37 +1,152 @@
 
 
+
 /*
 
+Let's pretend your company just hired your friend from college and paid you a referral bonus. Awesome! To celebrate, you're taking your team out to the terrible dive bar next door and using the referral bonus to buy, and build, the largest three-dimensional beer can pyramid you can. And then probably drink those beers, because let's pretend it's Friday too.
+
+A beer can pyramid will square the number of cans in each level - 1 can in the top level, 4 in the second, 9 in the next, 16, 25...
+
+Complete the beeramid function to return the number of complete levels of a beer can pyramid you can make, given the parameters of:
+
+your referral bonus, and
+
+the price of a beer can
+
+For example:
+
+beeramid(1500, 2); // should === 12
+beeramid(5000, 3); // should === 16
+
+My 1st solutions:
+
+var beeramid = function (bonus, price) {
+  let beercans = bonus / price;
+  let levels;
+  if (beercans >= 1) {
+    let remainder = beercans;
+
+    for (let i = 1; remainder >= i * i; i++) {
+      levels = i;
+      remainder = remainder - i * i;
+    }
+  } else {
+    levels = 0;
+  }
+  return levels;
+};
+
+console.log(beeramid(9, 2));
+console.log(beeramid(10, 2));
+console.log(beeramid(11, 2));
+console.log(beeramid(21, 1.5));
+console.log(beeramid(454, 5));
+console.log(beeramid(455, 5));
+console.log(beeramid(4, 4));
+console.log(beeramid(3, 4));
+console.log(beeramid(0, 4));
+console.log(beeramid(-1, 4));
+
+S1:
+
+var beeramid = function(bonus, price) {
+  var beers = Math.floor(bonus / price), levels = 0;
+  while(beers >= ++levels * levels) {
+    beers -= levels * levels;
+  }
+  return levels - 1;
+}
+
+S2:
+
+const beeramid = (bonus, price, lvl = 1) =>
+  bonus - lvl ** 2 * price < 0 ? --lvl : beeramid(bonus - lvl ** 2 * price, price, ++lvl);
+
+S3:
+
+var beeramid = function(bonus, price, level=1) {
+  if (level**2*price > bonus)
+    return level-1;
+  return beeramid(bonus-level**2*price, price, level+1)
+}
+
 */
+
+
+
+
+
+
+
+
+// Test.assertEquals(beeramid(9, 2), 1);
+// Test.assertEquals(beeramid(10, 2), 2);
+// Test.assertEquals(beeramid(11, 2), 2);
+// Test.assertEquals(beeramid(21, 1.5), 3);
+// Test.assertEquals(beeramid(454, 5), 5);
+// Test.assertEquals(beeramid(455, 5), 6);
+// Test.assertEquals(beeramid(4, 4), 1);
+// Test.assertEquals(beeramid(3, 4), 0);
+// Test.assertEquals(beeramid(0, 4), 0);
+// Test.assertEquals(beeramid(-1, 4), 0);
 
 /* Count IP Addresses https://www.codewars.com/kata/526989a41034285187000de4/train/javascript
 
-*/
 
-function ipsBetween(start, end){
+My solution based on a ChatGPT solution (in my original solution I started calculating the difference from the end, but starting from the beginning makes more sense; what's more, ChatGPT provided a nice way to convert the stringed number to numbers through mapping)
+
+function ipsBetween(start, end) {
   let accumulator = 0;
-  const firstIP = start.split('.');
-  const secondIP = end.split('.');
+  const firstIP = start.split(".").map(Number);
+  const secondIP = end.split(".").map(Number);
 
-  if (secondIP[3] >= firstIP[3]) {
-    accumulator = secondIP[3] - firstIP[3];
-  }
-  
-  if (secondIP[2] > firstIP[2]) {
-    accumulator += (secondIP[2] - firstIP[2]) * 256;
+  for (let i = 0; i < 4; i++) {
+    accumulator = accumulator * 256 + (secondIP[i] - firstIP[i]);
+    console.log(accumulator);
   }
 
-
-  // for (let i = 3; i >= 0; i--) {
-  //   accumulator = secondIP[i];
-  // }
   return accumulator;
 }
 
-console.log(ipsBetween("10.0.0.0", "10.0.0.50"))
-console.log(ipsBetween("10.0.0.0", "10.0.1.0"))
-console.log(ipsBetween("20.0.0.10", "20.0.1.0"))
+console.log(ipsBetween("10.0.0.0", "10.0.0.50"));
+console.log(ipsBetween("10.0.0.0", "10.0.1.0"));
+console.log(ipsBetween("20.0.0.10", "20.0.1.0"));
+console.log(ipsBetween("180.0.0.0", "181.0.0.0"));
 
+solutions from other codewars users:
+
+S1:
+
+function ipsBetween(start, end){
+  const num = ip => ip.split('.')
+                      .map(x => parseInt(x))
+                      .reduce((acc, e) => acc * 256 + e);  
+  
+  return num(end) - num(start);
+}
+
+S2:
+
+function ipsBetween(start, end){
+  const ip1 = start.split('.')
+  const ip2 = end.split('.')
+  
+  let result = 0
+  for (let i = 0; i < 4; i++) {
+    result += (ip2[i] - ip1[i]) * 256 ** (3 - i)
+  }
+  
+  return result
+}
+
+S3:
+
+function ipsBetween(start, end){
+  function val(ip){return ip.split('.').reduce(function(tot,cur,i){return tot+cur*Math.pow(256,3-i)}, 0);}
+  return val(end)-val(start);
+}
+
+*/
 
 /* IP Validation https://www.codewars.com/kata/515decfd9dcfc23bb6000006/train/javascript
 
@@ -81,7 +196,6 @@ console.log(solution("djfekdsl"))
 console.log(solution("abgds"))
 
 */
-
 
 /* Build a pile of Cubes https://www.codewars.com/kata/5592e3bd57b64d00f3000047/train/javascript 
 
@@ -154,7 +268,6 @@ function findNb(m) {
 
 
 */
-
 
 /* Human Readable Time https://www.codewars.com/kata/52685f7382004e774f0001f7/solutions/javascript
 
@@ -305,8 +418,6 @@ function humanReadable(seconds) {
 This is very cool and I've studied the methods used here
 
 */
-
-
 
 /* Multiples of 3 or 5
 
@@ -477,10 +588,7 @@ function wordsToMarks(str)
 }
 
 
-*/ 
-
-
-
+*/
 
 /* Return true if the given string is a palindrome. Otherwise, return false.
 
@@ -510,11 +618,7 @@ console.log(palindrome("1 eye for of 1 eye."));
 
 */
 
-
-
-
 // ^[a-z0-9]+$/i - for checking if a character is alphanumeric; /[a-z]/i - for checking if a character is a letter
-
 
 /* Replace With Alphabet Position
 
@@ -583,8 +687,6 @@ function alphabetPosition(text) {
 
 */
 
-
-
 /* Jaden Casing Strings
 Моё первое самостоятельное (без поиска задачи на Ютубе) решение:
 Решение громоздкое, но пока в рамках моих знаний. Надо учиться более рациональным решениям.
@@ -636,8 +738,6 @@ String.prototype.toJadenCase = function () {
 
 */
 
-
-
 /* DESCENDING ORDER
 
 function descendingOrder(n){
@@ -669,8 +769,6 @@ radix
 */
 
 //   return parseInt(String(n).split("").sort((a,b) => a - b).reverse().join(""));
-
-
 
 /* Descending Order
 
