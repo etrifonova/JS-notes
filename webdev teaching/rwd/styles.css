@@ -63,7 +63,7 @@ body {
   padding: 20px;
 }
 
-.display-container:nth-child(3) div {
+.display-container:nth-child(3) .display-types div, .display-container:nth-child(3) .display-types p {
   background-color: rebeccapurple;
   color: white;
   padding: 10px;
