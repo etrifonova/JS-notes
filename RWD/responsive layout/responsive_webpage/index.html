@@ -25,23 +25,23 @@
           <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
               <li class="nav__item">
-                <a href="#home" class="nav__item">Home</a>
+                <a href="#home" class="nav__link">Home</a>
               </li>
 
               <li class="nav__item">
-                <a href="#new" class="nav__item">News</a>
+                <a href="#new" class="nav__link">News</a>
               </li>
               
               <li class="nav__item">
-                <a href="#about" class="nav__item">About us</a>
+                <a href="#about" class="nav__link">About us</a>
               </li>
               
               <li class="nav__item">
-                <a href="#favorite" class="nav__item">Favorites</a>
+                <a href="#favorite" class="nav__link">Favorites</a>
               </li>
               
               <li class="nav__item">
-                <a href="#visit" class="nav__item">Location</a>
+                <a href="#visit" class="nav__link">Location</a>
               </li>
             </ul>
 
@@ -67,7 +67,22 @@
       <main class="main">
          <!--==================== HOME ====================-->
          <section class="home section" id="home">
-            
+          <img src="assets/img/home-bg.jpg" alt="image" class="home__bg">
+            <div class="home__shadow"></div>
+
+            <div class="home__container container grid">
+              <div class="home__data">
+                <h1 class="home__title">Select The Best <br> Quality Breads</h1>
+                <!-- not sure if using <br> is a good idea; googling shows that not really -->
+              <a href="#" class="button">Select Breads</a>
+
+              <img src="assets/img/bread-1.png" alt="image" class="home__bread">
+              </div>
+
+              <div class="home__image">
+              <img src="assets/img/home-bread.png" alt="image" class="home__img">
+              </div>
+            </div>
          </section>
 
          <!--==================== NEWS ====================-->
