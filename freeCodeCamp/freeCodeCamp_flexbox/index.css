@@ -1,0 +1,79 @@
+.container {
+    border: 5px solid #ffcc5c;
+    display: flex;
+}
+
+.flex-direction-row {
+
+    flex-direction: row;
+}
+
+.flex-direction-column {
+
+    flex-direction: column;
+}
+
+.flex-direction-row-reverse {
+
+    flex-direction: row-reverse;
+}
+
+.flex-direction-column-reverse {
+
+    flex-direction: column-reverse;
+}
+
+.justify-content-flex-start {
+    justify-content: flex-start;
+}
+
+.justify-content-flex-end {
+    justify-content: flex-end;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-space-around {
+    justify-content: space-around;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.justify-content-space-evenly {
+    justify-content: space-evenly;
+}
+
+.margin-auto-logout > div:nth-child(3) {
+    margin-left: auto;
+}
+
+.margin-auto-search > div:nth-child(2) {
+    margin-left: auto;
+}
+
+.margin-auto-home {
+    justify-content: flex-end;
+}
+.margin-auto-home > div:nth-child(1) {
+    margin-right: auto;
+}
+
+.flex-1-for-three > div {
+    flex: 1;
+}
+
+.flex-1-for-four > div {
+    flex: 1;
+}
+
+.flex-2-for-one > div:nth-child(2) {
+    flex: 2;
+}
+
+.flex-1-for-two > div:not(div:nth-child(2)) {
+    flex: 1;
+}
