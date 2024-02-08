@@ -1,0 +1,159 @@
+.container {
+    background-color: lightgray;
+    border: 5px solid darkgrey;
+    display: flex;
+}
+
+.flex-direction-row {
+
+    flex-direction: row;
+}
+
+.flex-direction-column {
+
+    flex-direction: column;
+}
+
+.flex-direction-row-reverse {
+
+    flex-direction: row-reverse;
+}
+
+.flex-direction-column-reverse {
+
+    flex-direction: column-reverse;
+}
+
+.justify-content-flex-start {
+    justify-content: flex-start;
+}
+
+.justify-content-flex-end {
+    justify-content: flex-end;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-space-around {
+    justify-content: space-around;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.justify-content-space-evenly {
+    justify-content: space-evenly;
+}
+
+.margin-auto-logout > div:nth-child(3) {
+    margin-left: auto;
+}
+
+.margin-auto-search > div:nth-child(2) {
+    margin-left: auto;
+}
+
+.margin-auto-home {
+    justify-content: flex-end;
+}
+.margin-auto-home > div:nth-child(1) {
+    margin-right: auto;
+}
+
+.flex-1-for-three > div {
+    flex: 1;
+}
+
+.flex-1-for-four > div {
+    flex: 1;
+}
+
+.flex-2-for-one > div:nth-child(2) {
+    flex: 2;
+}
+
+.flex-1-for-two > div:not(div:nth-child(2)) {
+    flex: 1;
+}
+
+.container-5 {
+    height: 50%;
+}
+
+.align-items-stretch {
+    align-items: stretch;
+}
+
+.align-items-flex-start {
+    align-items: flex-start;
+}
+
+.align-items-flex-end {
+    align-items: flex-end;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.align-items-justify-content-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.align-items-justify-content-center > div {
+    border-radius: 8px;
+}
+
+.container-6 {
+    height: 50%;
+    align-items: center;
+}
+
+.align-self-flex-start > div:nth-child(3) {
+    align-self: flex-start;
+}
+
+.align-self-flex-end > div:nth-child(1) {
+    align-self: flex-end;
+}
+
+.container-7 {
+    height: 50%;
+    flex-direction: column;
+}
+
+.fd-column-jc-flex-start {
+    justify-content: flex-start;
+}
+
+.fd-column-jc-flex-end {
+    justify-content: flex-end;
+}
+
+.fd-column-jc-flex-center {
+    justify-content: center;
+}
+
+.fd-column-jc-flex-center-ai-flex-end {
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.fd-column-jc-flex-center-ai-flex-start {
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.fd-column-jc-flex-center-ai-stretch {
+    justify-content: center;
+    align-items: stretch;
+}
+
+.bottom-right-corner {
+    justify-content: flex-end;
+    align-items: flex-end;
+}

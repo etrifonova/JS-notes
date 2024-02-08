@@ -1,0 +1,48 @@
+.container > div {
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #F6F6F6;
+}
+
+html, body {
+    height: 100%;
+    background-color: #fbf7f5;
+    margin: 10px;
+}
+
+.container > div:nth-child(1) {
+    background-color: #04AA6D;
+}
+
+.container > div:nth-child(2) {
+    background-color: #042C54;
+}
+
+.container > div:nth-child(3) {
+    background-color: #031B34;
+}
+
+.container > div:nth-child(4) {
+    background-color: #ff6f69;
+}
+
+.heading {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #040C18;
+}
+
+.subheading {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 1rem;
+    color: #040C18;
+}
+
+.spacer {
+    height: 20px;
+    background-color: #000000;
+    display: none;
+}

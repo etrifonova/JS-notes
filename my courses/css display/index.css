@@ -1,0 +1,30 @@
+.container {
+    background-color: lightgray;
+    border: 5px solid darkgrey;
+}
+
+.display-inline > div {
+    display: inline;
+}
+
+.display-block > span {
+    display: block;
+}
+
+.display-inline-block > div {
+    display: inline-block;
+}
+
+.flex-items-centered {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-items-bottom-right {
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
