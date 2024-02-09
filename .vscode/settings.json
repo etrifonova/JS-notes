@@ -3,5 +3,8 @@
     "notebook.output.wordWrap": true,
     "editor.wordWrap": "on",
     "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "cSpell.words": [
+        "fsgb"
+    ]
 }

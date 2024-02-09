@@ -20,7 +20,7 @@ html, body {
 }
 
 .container > div:nth-child(3) {
-    background-color: #88d8b0;
+    background-color: lightblue;
 }
 
 .container > div:nth-child(4) {
@@ -33,7 +33,7 @@ html, body {
     font-size: 1.5rem;
 }
 
-.subheading {
+.subheading, p {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     font-size: 1rem;
