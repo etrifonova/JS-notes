@@ -8,6 +8,7 @@
 html, body {
     height: 100%;
     background-color: #ffeead;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 10px;
 }
 
