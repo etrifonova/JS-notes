@@ -1,3 +1,93 @@
+/* 
+
+S1:
+
+
+S2:
+
+
+S3:
+
+
+*/
+
+/* 
+
+S1:
+
+
+S2:
+
+
+S3:
+
+
+*/
+
+/* 
+
+S1:
+
+
+S2:
+
+
+S3:
+
+
+*/
+
+/* Strip Comments
+https://www.codewars.com/kata/51c8e37cee245da6b40000bd/train/javascript
+
+S1:
+
+
+S2:
+
+
+S3:
+
+
+*/
+
+
+
+/* Not very secure
+https://www.codewars.com/kata/526dbd6c8c0eb53254000110/train/javascript  
+
+In this example you have to validate if a user input string is alphanumeric. The given string is not nil/null/NULL/None, so you don't have to check that.
+
+The string has the following conditions to be alphanumeric:
+
+At least one character ("" is not valid)
+Allowed characters are uppercase / lowercase latin letters and digits from 0 to 9
+No whitespaces / underscore
+
+function alphanumeric(string) {
+  const regex = /^[a-zA-Z0-9]+$/;
+  return regex.test(string) ? true : false;
+}
+
+console.log(alphanumeric("Mazinkaiser"));
+console.log(alphanumeric("hello world_"));
+console.log(alphanumeric("PassW0rd"));
+console.log(alphanumeric("     "));
+
+
+S1:
+let alphanumeric = s => /^[a-z\d]+$/i.test(s);
+
+
+S2:
+function alphanumeric(string){
+  return /^[0-9a-z]+$/i.test(string);
+}
+
+S3:
+const alphanumeric = str => /^[0-9a-z]+$/i.test(str)
+
+*/
 
 
 
@@ -71,13 +161,6 @@ var beeramid = function(bonus, price, level=1) {
 }
 
 */
-
-
-
-
-
-
-
 
 // Test.assertEquals(beeramid(9, 2), 1);
 // Test.assertEquals(beeramid(10, 2), 2);
