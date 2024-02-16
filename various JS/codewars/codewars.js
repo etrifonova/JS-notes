@@ -51,6 +51,23 @@ S3:
 
 */
 
+function solution(text, markers) {
+  let result = markers.test(text);
+  return result;
+}
+
+const markers = /[#!]/;
+
+let test = 'apples, pears and bananas grapes bananas !apples'
+console.log(solution(test, markers))
+
+// console.log(solution())
+
+// console.log(solution())
+
+// console.log(solution())
+
+// console.log(solution())
 
 
 /* Not very secure
