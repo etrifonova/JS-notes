@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parse XML with JavaScript</title>
+  </head>
+  <body>
+    <script>
+      fetch("https://db.chgk.info/xml")
+        .then((response) => response.text())
+        .then((text) => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(text, "text/xml");
+          console.log(doc.documentElement);
+          const nodes = doc.querySelectorAll('Question');
+          console.log(nodes);
+          const array = [];
+          for (const node of nodes ) {
+            const question = node.innerHTML;
+            array.push(question);
+          }
+          console.log(array);
+        });
+    </script>
+  </body>
+</html>
