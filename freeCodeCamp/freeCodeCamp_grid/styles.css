@@ -166,27 +166,27 @@ if grid is used for the entire page, having more columns is a good idea as it en
   grid-gap: 3px;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 40px 200px 40px;
-  grid-template-areas:
+  /* grid-template-areas:
     "h h h h h h h h h h h h"
     "m c c c c c c c c c c c"
-    "f f f f f f f f f f f f";
+    "f f f f f f f f f f f f"; */
 }
 
 .container-6 > .header {
-  grid-area: h;
+  grid-column: span 12;
   /* .header takes all the area defined as "h" */
 }
 
 .container-6 > .menu {
-  grid-area: m;
+  grid-column: span 2;
 }
 
 .container-6 >.content {
-  grid-area: c;
+  grid-column: span 10;
 }
 
 .container-6 > .footer {
-  grid-area: f;
+  grid-column: span 12;
 }
 
 
