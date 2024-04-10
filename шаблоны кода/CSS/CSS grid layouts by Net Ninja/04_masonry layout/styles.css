@@ -12,14 +12,11 @@
 /* short rows - 1 row in height
 tall rows - 2 rows in height
  */
+
 body {
   margin: 0;
   font-family: "Poppins";
   background-color: var(--color-4);
-}
-
-img {
-  width: 100%;
 }
 
 header {
@@ -58,6 +55,8 @@ nav h1 div:last-child {
 }
 
 main {
+
+  box-sizing: border-box;
   max-width: 1200px;
   width: 100%;
   margin: 60px auto;
@@ -83,5 +82,34 @@ main img {
   height: 100%;
 }
 
+main .short {
+  grid-row: span 1;
+}
+
+main .tall {
+  grid-row: span 2;
+}
+
+@media screen and (max-width: 960px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  main {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    /* max-width to prevent items from occupying the entire width because it would look a bit ugly */
+    margin: 20px auto;
+  }
+  nav {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  nav h1 {
+    grid-column: 1 / span 4;
+    grid-row: 1;
+  }
+}
 
 
