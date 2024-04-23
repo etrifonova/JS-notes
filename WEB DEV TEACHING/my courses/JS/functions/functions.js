@@ -7,7 +7,6 @@ function checkScope(a) {
 
 checkScope(z);
 console.log(z);
-// Function Arguments
 // Function arguments (parameters) work as local variables inside functions.
 
 myFunction();
@@ -35,6 +34,17 @@ function someFunction() {
 console.log(someFunction()); //this works like a function call, but it displays "undefined" because there's no return-statement in the function
 console.log(three); // this works only if there's a function call; otherwise it says "undefined"
 
+// Web Dev Simplified https://www.youtube.com/watch?v=TkFN6e9ZDMw&t=19s
+
+const a = 1;
+
+function test() {
+  const b = 2;
+  console.log("Here", a, b)
+}
+
+test();
+console.log(a, b)
 /* Glossary
 scope область видимости
 function scope область видимости на уровне функции
