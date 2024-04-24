@@ -4,16 +4,14 @@ let button = document.querySelectorAll('button');
 
 let string = ""; // "" empty string
 let arr = Array.from(button);
-console.log(arr);
 arr.forEach(button => {
   button.addEventListener('click', (e) => { // e - event
     if (e.target.innerHTML == '=') {
       try {
         let result = new Function('return ' + string)();
-        console.log(typeof(result));
         string = result.toString();
-        input.value = string;
-        console.log(typeof(input.value));
+        input.value = result;
+        console.log(result);
       } catch (error) {
         input.value = 'Error';
       }
