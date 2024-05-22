@@ -6,7 +6,7 @@
     <title>Parse XML with JavaScript</title>
   </head>
   <body>
-    <script>
+    <!-- <script>
       async function myFunction() {
         const myPromise = new Promise((resolve, reject) => {
           // Your asynchronous operation here
@@ -112,6 +112,35 @@
       // })
       // .then(data => console.log(data))
       // .catch(error => console.log('ERROR'))
-    </script>
+    </script> -->
+
+  <script>
+    fetch("http://www.db.chgk.info/questions").then( res => {
+    console.log(res.json());
+    // return res.json();
+  })
+  // .then(loadedQuestions => {
+  //   console.log(loadedQuestions);
+  //   questions = loadedQuestions.results.map( loadedQuestion => {
+  //     const formattedQuestion = {
+  //       question: loadedQuestion.question
+  //     };
+
+  //     const answerChoices = [... loadedQuestion.incorrect_answers];
+  //     formattedQuestion.answer = Math.floor(Math.random()*3) + 1;
+  //     answerChoices.splice(formattedQuestion.answer - 1, 0, loadedQuestion.correct_answer);
+
+  //     answerChoices.forEach((choice, index) => {
+  //       formattedQuestion["choice" + (index+1)] = choice;
+  //     })
+
+  //     return formattedQuestion;
+  //   })
+  //   startGame();
+  // })
+  // .catch( err => {
+  //   console.error(err);
+  // })
+  </script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-/* 
+/*
 
 S1:
 
@@ -11,7 +11,7 @@ S3:
 
 */
 
-/* 
+/*
 
 S1:
 
@@ -24,8 +24,8 @@ S3:
 
 */
 
-/* 
-
+/* Mean Square Error
+https://www.codewars.com/kata/51edd51599a189fe7f000015/train/javascript
 S1:
 
 
@@ -36,30 +36,6 @@ S3:
 
 
 */
-
-/* Strip Comments
-https://www.codewars.com/kata/51c8e37cee245da6b40000bd/train/javascript
-
-S1:
-
-
-S2:
-
-
-S3:
-
-
-*/
-
-function solution(text, markers) {
-  let result = markers.test(text);
-  return result;
-}
-
-const markers = /[#!]/;
-
-let test = 'apples, pears and bananas grapes bananas !apples'
-console.log(solution(test, markers))
 
 // console.log(solution())
 
@@ -71,7 +47,7 @@ console.log(solution(test, markers))
 
 
 /* Not very secure
-https://www.codewars.com/kata/526dbd6c8c0eb53254000110/train/javascript  
+https://www.codewars.com/kata/526dbd6c8c0eb53254000110/train/javascript
 
 In this example you have to validate if a user input string is alphanumeric. The given string is not nil/null/NULL/None, so you don't have to check that.
 
@@ -220,8 +196,8 @@ S1:
 function ipsBetween(start, end){
   const num = ip => ip.split('.')
                       .map(x => parseInt(x))
-                      .reduce((acc, e) => acc * 256 + e);  
-  
+                      .reduce((acc, e) => acc * 256 + e);
+
   return num(end) - num(start);
 }
 
@@ -230,12 +206,12 @@ S2:
 function ipsBetween(start, end){
   const ip1 = start.split('.')
   const ip2 = end.split('.')
-  
+
   let result = 0
   for (let i = 0; i < 4; i++) {
     result += (ip2[i] - ip1[i]) * 256 ** (3 - i)
   }
-  
+
   return result
 }
 
@@ -289,7 +265,7 @@ function solution(str){
   return str.length % 2 === 0 ? str.split('').forEach((element, index) => {
     return element[index] + element[index+1]
   }) : false;
-   
+
 }
 
 console.log(solution("djfekdsl"))
@@ -297,7 +273,7 @@ console.log(solution("abgds"))
 
 */
 
-/* Build a pile of Cubes https://www.codewars.com/kata/5592e3bd57b64d00f3000047/train/javascript 
+/* Build a pile of Cubes https://www.codewars.com/kata/5592e3bd57b64d00f3000047/train/javascript
 
 
 Examples:
@@ -399,7 +375,7 @@ function humanReadable (seconds) {
       seconds = '00';
     } else if (seconds > 0 && seconds < 10) {
       seconds = '0' + seconds;
-    } 
+    }
 
   } else if (seconds >= 600 && seconds <= 3599) {
     minutes = Math.floor(seconds / 60);
@@ -409,12 +385,12 @@ function humanReadable (seconds) {
       seconds = '00';
     } else if (seconds > 0 && seconds < 10) {
       seconds = '0' + seconds;
-    } 
+    }
 
   } else if (seconds >= 3600 && seconds <= 35999) {
     hours = '0' + Math.floor(seconds / 3600);
     seconds = seconds - hours * 3600;
-    
+
     if (seconds === 0) {
       seconds = '00';
     } else if (seconds > 0 && seconds < 10) {
@@ -422,27 +398,27 @@ function humanReadable (seconds) {
     } else if (seconds >= 60 && seconds <= 599) {
       minutes = '0' + Math.floor(seconds / 60);
       seconds = seconds - minutes * 60;
-  
+
       if (seconds === 0) {
         seconds = '00';
       } else if (seconds > 0 && seconds < 10) {
         seconds = '0' + seconds;
-      } 
-  
+      }
+
     } else if (seconds >= 600 && seconds <= 3599) {
       minutes = Math.floor(seconds / 60);
       seconds = seconds - minutes * 60;
-  
+
       if (seconds === 0) {
         seconds = '00';
       } else if (seconds > 0 && seconds < 10) {
         seconds = '0' + seconds;
-      } 
+      }
   }
 } else if (seconds >= 36000 && seconds <= 359999) {
   hours = Math.floor(seconds / 3600);
   seconds = seconds - hours * 3600;
-    
+
   if (seconds === 0) {
     seconds = '00';
   } else if (seconds > 0 && seconds < 10) {
@@ -455,7 +431,7 @@ function humanReadable (seconds) {
       seconds = '00';
     } else if (seconds > 0 && seconds < 10) {
       seconds = '0' + seconds;
-    } 
+    }
 
   } else if (seconds >= 600 && seconds <= 3599) {
     minutes = Math.floor(seconds / 60);
@@ -465,7 +441,7 @@ function humanReadable (seconds) {
       seconds = '00';
     } else if (seconds > 0 && seconds < 10) {
       seconds = '0' + seconds;
-    } 
+    }
 }
 
 }
@@ -617,7 +593,7 @@ function digitalRoot(n) {
     return n;
   } else {
     return digitalRoot(n);
-  } 
+  }
 }
 
 console.log(digitalRoot(55));
@@ -638,7 +614,7 @@ function digital_root(n) {
 
   for (var sum = 0, i = 0, n = String(n); i < n.length; i++)
     sum += Number(n[i]);
-   
+
   return digital_root(sum);
 }
 
@@ -754,7 +730,7 @@ if (textArray[textArray.length - 1].length === 1 && textArray[textArray.length -
   return numberArray;
 }
 
-console.log(alphabetPosition("The sunset sets at twelve o' clock.")) 
+console.log(alphabetPosition("The sunset sets at twelve o' clock."))
 
 Other solutions from codewars:
 
@@ -769,10 +745,10 @@ function alphabetPosition(text) {
   return result.slice(0, result.length-1);
 }
 
-2. 
+2.
 let alphabetPosition = (text) => text.toUpperCase().replace(/[^A-Z]/g, '').split('').map(ch => ch.charCodeAt(0) - 64).join(' ');
 
-3. 
+3.
 function alphabetPosition(text) {
   var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
   return text.toLowerCase().split('')
@@ -793,7 +769,7 @@ function alphabetPosition(text) {
 
 
 String.prototype.toJadenCase = function () {
-  
+
   let array = this.split(" ");
   let capitalizedString = [];
   let capitalizedWord;
@@ -818,7 +794,7 @@ String.prototype.toJadenCase = function () {
 };
 
 2.
-String.prototype.toJadenCase = function () { 
+String.prototype.toJadenCase = function () {
   return this.split(" ").map(function(word){
     return word.charAt(0).toUpperCase() + word.slice(1);
   }).join(" ");
@@ -830,7 +806,7 @@ String.prototype.toJadenCase = function () {
   function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  
+
   return this.split(' ').map(capitalizeFirstLetter).join(' ');
 };
 
