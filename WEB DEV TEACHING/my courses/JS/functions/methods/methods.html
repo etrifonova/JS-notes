@@ -12,59 +12,103 @@
       <div class="methods-container">
         <div class="method">
           <h2>push()</h2>
-          <p>The push() method of Array instances adds the specified elements to the end of an array and returns the new length of the array.</p>
+          <p>
+            The push() method of Array instances adds the specified elements to
+            the end of an array and returns the new length of the array.
+          </p>
           <code>
-            const stack = ['HTML', 'CSS', 'JS'];<br>
-            const length = stack.push('React.js');<br>
-            console.log(length);
+            const stackOne = ['HTML', 'CSS', 'JS'];<br />
+            const lengthOne = stackOne.push('React.js');<br />
+            console.log(lengthOne);
           </code>
-          <div class="output" id="outputOne">output</div>
+          <div class="output" id="outputOne"></div>
+        </div>
+        <div class="method">
+          <h2>shift()</h2>
+          <p>
+            The shift() method of Array instances removes the first element from
+            an array and returns that removed element. This method changes the
+            length of the array.
+          </p>
+          <code>
+            const stack = ['React', 'Vue', 'Gatsby'];<br />
+            const shiftedItem = stackTwo.shift();<br />
+            console.log(shiftedItem);<br />
+          </code>
+          <div class="output" id="outputTwo"></div>
+        </div>
+        <div class="method">
+          <h2>pop()</h2>
+          <p>
+            The pop() method of Array instances removes the last element from an
+            array and returns that element. This method changes the length of
+            the array.
+          </p>
+          <code>
+            const stackThree = ['Git', 'VS Code', 'Node.js'];<br />
+            const poppedItem = stackThree.pop();<br />
+            console.log(poppedItem);<br />
+          </code>
+          <div class="output" id="outputThree"></div>
+        </div>
+        <div class="method">
+          <h2>unshift()</h2>
+          <p>
+            The unshift() method of Array instances adds the specified elements
+            to the beginning of an array and returns the new length of the
+            array.
+          </p>
+          <code>
+            const stackFour = ['Git', 'VS Code', 'Node.js'];<br />
+            const lengthTwo = stackFour.unshift('Webpack');<br />
+            console.log(lengthTwo);<br />
+          </code>
+          <div class="output" id="outputFour">output</div>
+        </div>
+        <div class="method">
+          <h2>concat()</h2>
+          <p>
+            The concat() method of Array instances is used to merge two or more
+            arrays. This method does not change the existing arrays, but instead
+            returns a new array.
+          </p>
+          <code>
+            const array1 = ['grid', 'flexbox', 'block'];<br />
+            const array2 = ['inline', 'inline-block', 'none'];<br />
+            const array3 = array1.concat(array2);<br />
+            console.log(array3);<br
+          /></code>
+          <div class="output" id="outputFive">output</div>
+        </div>
+        <div class="method">
+          <h2>filter()</h2>
+          <p>
+            The filter() method of Array instances creates a shallow copy of a
+            portion of a given array, filtered down to just the elements from
+            the given array that pass the test implemented by the provided
+            function.
+          </p>
+          <code>
+            const words = ['bug', 'error', 'failure', 'application',
+            'crash'];<br />
+            const result = words.filter((word) => word.length > 6);<br />
+            console.log(result);<br />
+          </code>
+          <div class="output" id="outputSix">output</div>
         </div>
         <div class="method">
           <h2>method name</h2>
           <p>method description</p>
           <code>code</code>
-          <div class="output-1">output</div>
+          <div class="output">output</div>
         </div>
         <div class="method">
           <h2>method name</h2>
           <p>method description</p>
           <code>code</code>
-          <div class="output-1">output</div>
-        </div>
-        <div class="method">
-          <h2>method name</h2>
-          <p>method description</p>
-          <code>code</code>
-          <div class="output-1">output</div>
+          <div class="output">output</div>
         </div>
       </div>
-      <!-- <div class="methods-container">
-        <div class="method">
-          <h2>method name</h2>
-          <p>method description</p>
-          <code>code</code>
-          <div class="output-1">output</div>
-        </div>
-        <div class="method">
-          <h2>method name</h2>
-          <p>method description</p>
-          <code>code</code>
-          <div class="output-1">output</div>
-        </div>
-        <div class="method">
-          <h2>method name</h2>
-          <p>method description</p>
-          <code>code</code>
-          <div class="output-1">output</div>
-        </div>
-        <div class="method">
-          <h2>method name</h2>
-          <p>method description</p>
-          <code>code</code>
-          <div class="output-1">output</div>
-        </div>
-      </div> -->
     </div>
     <script src="methods.js"></script>
   </body>

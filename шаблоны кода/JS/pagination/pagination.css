@@ -87,5 +87,17 @@ body {
 
 .control:not(.disabled):hover, .pageNumbers a:hover {
   background-color: rgba(var(--color-1-rgb), 0.4);
+  color: black;
 }
+
+a.active {
+  background-color: white;
+  color: green;
+}
+
+.hidden {
+  display: none;
+}
+
+
 

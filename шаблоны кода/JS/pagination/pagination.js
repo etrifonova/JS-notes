@@ -52,7 +52,7 @@ for (let i = 1; i <= questions.length; i++) {
 }
 
 
-const contentLimit = 10;
+const contentLimit = 7;
 const pageCount = Math.ceil(listItems.length / contentLimit);
 let currentPage = 1;
 
@@ -139,8 +139,11 @@ window.addEventListener("load", () => {
     const pageIndex = Number(button.getAttribute("index"));
 
     if (pageIndex) {
-      setCurrentPage(pageIndex);
+      button.addEventListener('click', () => {
+        setCurrentPage(pageIndex);
+      })
     };
+
   });
 });
 

@@ -1,3 +1,9 @@
+
+
+
+
+
+
 let z = 0;
 
 function checkScope(a) {
