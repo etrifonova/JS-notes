@@ -1,5 +1,47 @@
 // Intermediate Algorithm Scripting
 
+// Setup
+const recordCollection = {
+  2548: {
+    albumTitle: 'Slippery When Wet',
+    artist: 'Bon Jovi',
+    tracks: ['Let It Rock', 'You Give Love a Bad Name']
+  },
+  2468: {
+    albumTitle: '1999',
+    artist: 'Prince',
+    tracks: ['1999', 'Little Red Corvette']
+  },
+  1245: {
+    artist: 'Robert Palmer',
+    tracks: []
+  },
+  5439: {
+    albumTitle: 'ABBA Gold'
+  }
+};
+
+// Only change code below this line
+function updateRecords(records, id, prop, value) {
+  if (value == "") {
+    delete records[id][prop];
+  } else if (prop != "tracks" && value != "") {
+    records[id][prop] = value;
+  } else if (prop == "tracks" && value != "") {
+    if (records[id].hasOwnProperty("tracks")) {
+      records[id].tracks.push(value);
+    } else {
+      records[id].tracks = [];
+      records[id].tracks.push(value);
+    }
+  }
+  console.log(records)
+  return records;
+}
+
+updateRecords(recordCollection, 5439, "tracks", "Take a Chance on Me");
+
+
 /*
 
 */
@@ -10,7 +52,7 @@ According to Kepler's Third Law, the orbital period  T
   of two point masses orbiting each other in a circular or elliptic orbit is:
 
 T=2πa3μ−−−√
- 
+
 a
   is the orbit's semi-major axis
 μ=GM
@@ -211,7 +253,7 @@ function truthCheck(collection, pre) {
         break;
       }
       result = true;
-    } 
+    }
     else {
       result = false;
     }
@@ -368,15 +410,15 @@ function smallestCommons(arr) {
     }
     return true;
   }
-  
+
   let max = Math.max(arr[0], arr[1]);
   let min = Math.min(arr[0], arr[1]);
   let multiple = max;
-  
+
   while (!isValidMultiple(multiple, min, max)) {
     multiple += max;
   }
-  
+
   return multiple;
 }
 
@@ -480,8 +522,8 @@ function convertHTML(str) {
       }
     }
 
-  return newStr.join(''); 
-  
+  return newStr.join('');
+
 }
 
 console.log(convertHTML('Stuff in "quotation marks"'));
@@ -663,7 +705,7 @@ uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 Solution 3 (Click to Show/Hide)
 
 function uniteUnique(...arr) {
-  return [...new Set(arr.flat())]; - what is flat?! 
+  return [...new Set(arr.flat())]; - what is flat?!
 }
 
 // Or as an arrow function
@@ -677,7 +719,7 @@ function uniteUnique() {
     .filter((item, ind, arr) => arr.indexOf(item) === ind); - this one is beyond my knowledge
 }
 
-uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]); 
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 
 From FCC users:
 
@@ -768,7 +810,7 @@ function fearNotLetter(str) {
   return missing;
 }
 
-SOL 3: 
+SOL 3:
 function fearNotLetter(str) {
   for (let i = 1; i < str.length; ++i) {
     if (str.charCodeAt(i) - str.charCodeAt(i - 1) > 1) {
@@ -808,7 +850,7 @@ function pairElement(str) {
   const initialArray = str.split('');
 
   for (let i = 0; i < initialArray.length; i++) {
- 
+
       if (initialArray[i] === basePair1[0]) {
         smallArray.push(basePair1[0]);
         smallArray.push(basePair1[1]);
@@ -829,7 +871,7 @@ function pairElement(str) {
       smallArray.push(basePair2[0]);
       bigArray.push(smallArray);
       smallArray = [];
-    } 
+    }
     }
 
   return bigArray;
@@ -902,11 +944,11 @@ Note: Preserve the case of the first character in the original word when you are
 
 function myReplace(str, before, after) {
 
-  return (/[A-Z]/).test(before.charAt(0)) ? 
-  str.replace(before, after.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')) 
+  return (/[A-Z]/).test(before.charAt(0)) ?
+  str.replace(before, after.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))
   : str.replace(before, after.toLowerCase());
 }
-// 
+//
 console.log(myReplace("I think we should look up there", "up", "Down"));
 
 */
@@ -923,7 +965,7 @@ Translate the provided string to Pig Latin. Input strings are guaranteed to be E
 function translatePigLatin(str) {
 
   const regEx1 = /^[aeiou]/;
-  const regEx2 = /^[bcdfghjklmnpqrstvwxyz][bcdfghjklmnpqrstvwxyz]*/; 
+  const regEx2 = /^[bcdfghjklmnpqrstvwxyz][bcdfghjklmnpqrstvwxyz]*/;
 /*
   if (regEx1.test(str) === true) {
     return str + 'way';
@@ -958,7 +1000,7 @@ if regex pattern found (starts with consonants), it deletes match, adds the matc
 
 if regex pattern not found (starts with vowels), it just adds “way” to the ending
 
-Solution 2: 
+Solution 2:
 function translatePigLatin(str) {
   // Create variables to be used
   var pigLatin = "";
@@ -994,7 +1036,7 @@ console.log(spinalCase('This Is Spinal Tap'));
 console.log(spinalCase('Teletubbies say Eh-oh'));
 
 console.log(spinalCase('AllThe-small Things'));
-console.log(spinalCase('The_Andy_Griffith_Show')); 
+console.log(spinalCase('The_Andy_Griffith_Show'));
 
 
 Solution 2:
@@ -1038,7 +1080,7 @@ For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { f
 НИ ФИГА НЕ РАЗОБРАЛАСЬ ДО КОНЦА и стырила решение у FCC
 
 function whatIsInAName(collection, source) {
-  
+
   const sourceKeys = Object.keys(source);
 
   // filter the collection
@@ -1180,7 +1222,7 @@ function sumAll(arr) {
       sum += i;
     }
   }
-  
+
   return sum;
 }
 
@@ -1209,7 +1251,7 @@ function sumAll(arr) {
 
 console.log(sumAll([1, 4]));
 
-*/ 
+*/
 
 
 // The global variable
@@ -1345,7 +1387,7 @@ The output should not have any spaces
 function urlSlug(title) {
 
   return title.toLowerCase().split(' ').filter((a) => a !== "").join('-');
-    
+
   }
   // Only change code above this line
   console.log(urlSlug(" Winter Is  Coming"));
@@ -1353,8 +1395,8 @@ function urlSlug(title) {
 
 
 
-*/ 
-   
+*/
+
 
 /* Combine an Array into a String Using the join Method
 The join method is used to join the elements of an array together to create a string. It takes an argument for the delimiter that is used to separate the array elements in the string.
@@ -1649,23 +1691,23 @@ function getRating(watchList) {
   // Only change code below this line
   let averageRating;
 
-  let totalRating = 0; 
+  let totalRating = 0;
   let numberOfMovies = 0;
-  
+
   totalRating = watchList.filter(movie => movie["Director"] === "Christopher Nolan").map((movie) => ({
-    
+
     "Title": movie["Title"],
     "imdbRating": movie["imdbRating"]
-    
+
   }))
   .reduce((accumulator, movie) => accumulator + Number(movie["imdbRating"]), 0);
   console.log(totalRating);
 
   numberOfMovies = watchList.filter(movie => movie["Director"] === "Christopher Nolan").map((movie) => ({
-    
+
     "Title": movie["Title"],
     "imdbRating": movie["imdbRating"]
-    
+
   })).length;
 
 
@@ -1826,7 +1868,7 @@ const users = [
 ];
 
 const usersUnder30 = users.filter(user => user.age < 30);
-console.log(usersUnder30); 
+console.log(usersUnder30);
 The console would display the value [ { name: 'Amy', age: 20 }, { name: 'camperCat', age: 10 } ].
 
 The variable watchList holds an array of objects with information on several movies. Use a combination of filter and map on watchList to assign a new array of objects with only title and rating keys. The new array should only include objects where imdbRating is greater than or equal to 8.0. Note that the rating values are saved as strings in the object and you may need to convert them into numbers to perform mathematical operations on them.
@@ -1947,7 +1989,7 @@ const watchList = [
 // Only change code below this line
 
 const filteredList = watchList.filter(movie => Number(movie.imdbRating) >= 8).map((movie) => (
-  { title: movie["Title"], 
+  { title: movie["Title"],
   rating: movie["imdbRating"] }
 ));
 
@@ -2004,7 +2046,7 @@ console.log(["naomi", "quincy", "camperbot"].myMap(element => element.toUpperCas
 
 console.log([1, 1, 2, 5, 2].myMap((element, index, array) => array[index + 1] || array[0]));
 
-Solution 2: 
+Solution 2:
 Array.prototype.myMap = function (callback) {
   const newArray = [];
   // Only change code below this line
@@ -2162,9 +2204,9 @@ const watchList = [
 
 // Only change code below this line
 
-const ratings = watchList.map((film) => 
+const ratings = watchList.map((film) =>
 (
-  { title: film["Title"], 
+  { title: film["Title"],
   rating: film["imdbRating"] }
 ));
 
@@ -2176,9 +2218,9 @@ Solutions from fCC:
 
 Solution 1:
 
-const ratings = watchList.map((film) => 
+const ratings = watchList.map((film) =>
 (
-  { title: film["Title"], 
+  { title: film["Title"],
   rating: film["imdbRating"] }
 ));
 
@@ -2213,7 +2255,7 @@ function add(anotherBookList, bookName) {
   let newBookList = [...anotherBookList];
   newBookList.push(bookName);
   return newBookList;
-  
+
   // Change code above this line
 }
 
@@ -2236,7 +2278,7 @@ console.log(remove(bookList, "On The Electrodynamics of Moving Bodies"))
 
 
 
- 
+
 */
 
 /* Pass Arguments to Avoid External Dependence in a Function
@@ -2350,13 +2392,13 @@ Window.prototype.tabClose = function(index) {
   if (index === 1) {
     tabsBeforeIndex = this.tabs.splice(0, index); // Get the tabs before the tab
     console.log(tabsBeforeIndex)
-  
+
     tabsAfterIndex = this.tabs.splice(index); // Get the tabs after the tab
     console.log(tabsAfterIndex)
   } else if (index > 1) {
     tabsBeforeIndex = this.tabs.splice(0, index); // Get the tabs before the tab
     console.log(tabsBeforeIndex)
-  
+
     tabsAfterIndex = this.tabs.splice(index - 1); // Get the tabs after the tab
     console.log(tabsAfterIndex)
 
@@ -2606,7 +2648,7 @@ The simplest way to make this public property private is by creating a variable 
 function Bird() {
   let hatchedEgg = 10;
 
-  this.getHatchedEggCount = function() { 
+  this.getHatchedEggCount = function() {
     return hatchedEgg;
   };
 }
@@ -2682,7 +2724,7 @@ let glideMixin = function(obj) {
 glideMixin(bird);
 glideMixin(boat);
 
- 
+
 */
 
 /* Override Inherited Methods
@@ -2908,7 +2950,7 @@ The describe method is repeated in two places. The code can be edited to follow 
 function Animal() { };
 
 Animal.prototype = {
-  constructor: Animal, 
+  constructor: Animal,
   describe: function() {
     console.log("My name is " + this.name);
   }
@@ -3027,7 +3069,7 @@ Bird.prototype = {
     console.log("nom nom nom");
   },
   describe: function() {
-    console.log("My name is " + this.name); 
+    console.log("My name is " + this.name);
   }
 };
 Define the constructor property on the Dog prototype.
@@ -3067,7 +3109,7 @@ Bird.prototype.describe = function() {
 A more efficient way is to set the prototype to a new object that already contains the properties. This way, the properties are added all at once:
 
 Bird.prototype = {
-  numLegs: 2, 
+  numLegs: 2,
   eat: function() {
     console.log("nom nom nom");
   },
@@ -3088,7 +3130,7 @@ Dog.prototype = {
     console.log("I love meat")
   },
   describe: function() {
-    console.log("I'm " + this.name + " and I'm awesome.") 
+    console.log("I'm " + this.name + " and I'm awesome.")
   }
 
 };
@@ -3101,7 +3143,7 @@ There is a special constructor property located on the object instances duck and
 let duck = new Bird();
 let beagle = new Dog();
 
-console.log(duck.constructor === Bird); 
+console.log(duck.constructor === Bird);
 console.log(beagle.constructor === Dog);
 Both of these console.log calls would display true in the console.
 
@@ -3488,7 +3530,7 @@ The arguments ["hello", "hey"] should return false because the string hello does
 
 Lastly, ["Alien", "line"], should return true because all of the letters in line are present in Alien.
 
-Шаги: 
+Шаги:
 
 - создать цикл для проверки наличия каждой буквы второго слова в первом;
 - если буква есть, result = true;
@@ -3497,11 +3539,11 @@ function mutation(arr) {
 
   let word1 = arr[0].toLowerCase().split('');
   let word2 = arr[1].toLowerCase().split('');
-  
+
   let result;
 
   for (let i = 0; i < word2.length; i++) {
-    
+
     if (word1.includes(word2[i]) === false) {
       result = false;
       break;
@@ -3531,13 +3573,13 @@ Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has
 
 function getIndexToIns(arr, num) {
 
-  
+
   let index;
 
   if (arr.length == 0) {
     index = 0;
   } else {
-    arr.sort((a, b) => a - b); 
+    arr.sort((a, b) => a - b);
 
     for (let i=0; i<arr.length; i++) {
         if (num > arr[i] && num < arr[i+1]) {
@@ -3576,7 +3618,7 @@ function bouncer(arr) {
 
     if (!!arr[i] != false) {
       newArr.push(arr[i]);
-    } 
+    }
   }
 
   console.log(newArr);
@@ -3654,7 +3696,7 @@ function titleCase(str) {
     let newWord = newStr[i].charAt(0).toUpperCase() + newStr[i].slice(1);
     newArray.push(newWord);
   }
-  
+
   console.log(newArray.join(' '))
   return newArray.join(' ');
 }
@@ -3718,7 +3760,7 @@ function truncateString(str, num) {
   if (str.length > num) {
     newStr = str.split('').splice(0, num).join('');
     str = newStr + '...';
-  } 
+  }
 
 
 
@@ -3769,9 +3811,9 @@ function confirmEnding(str, target) {
   arrEnd = strArray.splice(strArray.length - target.length, target.length).join('');
 
   console.log(arrEnd);
-  
+
   return arrEnd === target;
-  
+
 }
 
 console.log(confirmEnding("Open sesame", "same"));
@@ -3790,9 +3832,9 @@ console.log(confirmEnding("Open sesame", "same"));
 //   arrEnd = strArray.splice(strArray.length - target.length, target.length).join('');
 
 //   console.log(arrEnd);
-  
+
 //   return arrEnd === target;
-  
+
 // }
 
 // console.log(confirmEnding("Привет, Макар", "Макар"));
@@ -3809,12 +3851,12 @@ testArr = [[17, 23, 25, 12], [25, 7, 34, 48], [4, -10, 18, 21], [-72, -3, -17, -
 function largestNum(arr) {
 
   let newArray = [];
-  
+
   for (let j = 0; j < arr.length; j++) {
 
     let greatestNum = -100;
     for (let i = 0; i < arr[j].length; i++) {
-      
+
 
       if (arr[j][i] > greatestNum) {
         greatestNum = arr[j][i];
@@ -3837,7 +3879,7 @@ function largestNum(arr) {
 
   let newArr = [];
   for (let i = 0; i < arr.length; i++) {
-    
+
   arr[i].sort((a,b) => b - a);
     newArr.push(arr[i][0]);
   }
@@ -3900,7 +3942,7 @@ factorialize(5);
 
 */
 
-/* 
+/*
 Reverse a String
 Reverse the provided string and return the reversed string.
 
@@ -4076,13 +4118,13 @@ let users = {
       online: true
     }
   };
-  
+
   function isEveryoneHere(userObj) {
     // Only change code below this line
     return 'Alan' in userObj && 'Jeff' in userObj && 'Sarah' in userObj && 'Ryan' in userObj;
     // Only change code above this line
   }
-  
+
   console.log(isEveryoneHere(users));
 
 
@@ -4098,7 +4140,7 @@ const users = {
       online: false
     }
   }
-  
+
   function countOnline(usersObj) {
     // Only change code below this line
     let counter = 0;
@@ -4110,7 +4152,7 @@ const users = {
     return counter;
     // Only change code above this line
   }
-  
+
   console.log(countOnline(users));
 
 */
@@ -4164,7 +4206,7 @@ let foods = {
 
 function checkInventory(scannedItem) {
   // Only change code below this line
-  
+
   return foods[scannedItem];
 
   // Only change code above this line
@@ -4261,12 +4303,12 @@ console.log(foods);
 
 */
 
-/* 
+/*
 
 
 let myNestedArray = [
   // Only change code below this line
-  ['unshift', false, 1, 2, 3, 'complex', 'nested', 
+  ['unshift', false, 1, 2, 3, 'complex', 'nested',
   ['cat', 3, 'deep'],
   [
     ['deeper'],
@@ -4275,7 +4317,7 @@ let myNestedArray = [
       [1, 3, false,]
     ]
   ]
-  
+
   ],
   ['loop', 'shift', 6, 7, 1000, 'method'],
   ['concat', false, true, 'spread', 'array'],
@@ -4317,15 +4359,15 @@ function filteredArray(arr, elem) {
           newArr.push(arr[i]); //Inserts the element of the array in the new filtered array
         }
       }
-    
+
     // Only change code above this line
     return newArr;
   }
-  
+
   console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3));
 
 */
-  
+
 
 /* Check For The Presence of an Element With indexOf()
 Since arrays can be changed, or mutated, at any time, there's no guarantee about where a particular piece of data will be on a given array, or if that element even still exists. Luckily, JavaScript provides us with another built-in method, indexOf(), that allows us to quickly and easily check for the presence of an element on an array. indexOf() takes an element as a parameter, and when called, it returns the position, or index, of that element, or -1 if the element does not exist on the array.
@@ -4394,13 +4436,13 @@ function copyMachine(arr, num) {
     while (num >= 1) {
       // Only change code below this line
       newArr.push([...arr]);
-  
+
       // Only change code above this line
       num--;
     }
     return newArr;
   }
-  
+
   console.log(copyMachine([true, false, true], 2));
 
 */
@@ -4557,12 +4599,12 @@ function zeroArray(m, n) {
 
     while (newArray.length < m) {
 
-   
+
     for (let i = 0; i < m; i++) {
       // Adds the m-th row into newArray
 
       if (row.length < n) {
-  
+
         for (let j = 0; j < n; j++) {
           // Pushes n zeroes into the current row to create the columns
           row.push(0);
@@ -4576,13 +4618,13 @@ function zeroArray(m, n) {
 }
     return newArray;
   }
-  
+
   let matrix = zeroArray(3, 2);
   console.log(matrix);
 
 
 */
-  
+
 
 /* Catch Off By One Errors When Using Indexing
 Off by one errors (sometimes called OBOE) crop up when you're trying to target a specific index of a string or array (to slice or access a segment), or when looping over the indices of them. JavaScript indexing starts at zero, not one, which means the last index is always one less than the length of the item. If you try to access an index equal to the length, the program may throw an "index out of range" reference error or print undefined.
@@ -4644,7 +4686,7 @@ Add two console.log() statements to check the typeof each of the two variables s
 */
 
 
-// Regular Expressions 
+// Regular Expressions
 
 /* Remove Whitespace from Start and End
 Sometimes whitespace characters around strings are not wanted but are there. Typical processing of strings is to remove the whitespace at the start and end of it.
@@ -4750,7 +4792,7 @@ let myRegex = /(Franklin|Eleanor)\s?([a-zA-Z]{1,}\.?)* Roosevelt/g; // Change th
 let result = myRegex.test(myString); // Change this line
 // After passing the challenge experiment with myString and see how the grouping works
 
-fCC solution: 
+fCC solution:
 
 let myString = "Eleanor Roosevelt";
 let myRegex = /(Franklin|Eleanor) (([A-Z]\.?|[A-Z][a-z]+) )?Roosevelt/;
@@ -5359,17 +5401,17 @@ let result = myRegex.test(myString); // Change this line
 catch is the method used when your promise has been rejected. It is executed immediately after a promise's reject method is called. Here’s the syntax:
 
 myPromise.catch(error => {
-  
+
 });
 error is the argument passed in to the reject method.
 
 const makeServerRequest = new Promise((resolve, reject) => {
   // responseFromServer is set to false to represent an unsuccessful response from a server
   let responseFromServer = false;
-    
+
   if(responseFromServer) {
     resolve("We got the data");
-  } else {  
+  } else {
     reject("Data not received");
     makeServerRequest.catch((error) => {
       console.log(error);
@@ -5389,20 +5431,20 @@ makeServerRequest.then(result => {
 Promises are most useful when you have a process that takes an unknown amount of time in your code (i.e. something asynchronous), often a server request. When you make a server request it takes some amount of time, and after it completes you usually want to do something with the response from the server. This can be achieved by using the then method. The then method is executed immediately after your promise is fulfilled with resolve. Here’s an example:
 
 myPromise.then(result => {
-  
+
 });
 result comes from the argument given to the resolve method.
 
 const makeServerRequest = new Promise((resolve, reject) => {
   // responseFromServer is set to true to represent a successful response from a server
   let responseFromServer = true;
-    
+
   if(responseFromServer) {
     resolve("We got the data");
     makeServerRequest.then(result => {
       console.log(result);
     })
-  } else {  
+  } else {
     reject("Data not received");
   }
 });
@@ -5628,7 +5670,7 @@ let temp = thermos.temperature; // 24.44 in Celsius
 thermos.temperature = 26;
 temp = thermos.temperature; // 26 in Celsius
 
-*/ 
+*/
 // Синтаксис get связывает свойство объекта с функцией, которая будет вызываться при обращении к этому свойству.
 // Оператор set связывает свойство объекта с функцией, которая будет вызвана при попытке установить это свойство.
 
@@ -5645,18 +5687,18 @@ temp = thermos.temperature; // 26 in Celsius
     for (let i = 0; i < arr.length; i++) {
       failureItems.push(`<li class="text-warning">&{arr[i]}</li>`);
     }
-    
+
     // Only change code above this line
-  
+
     return failureItems;
   }
-  
+
   const failuresList = makeList(result.failure);
 
   console.log(failuresList)
 
 
-/* https://youtu.be/PkZNo7MFNFg 
+/* https://youtu.be/PkZNo7MFNFg
 3:25:26 Import a Default Export НЕПОНЯТНО
 
 
@@ -5793,7 +5835,7 @@ console.log(carrot.name);
 
 /* 3:12:24 Declarative Functions
 
-an object can contain a function. 
+an object can contain a function.
 
 //the long way
 const bicycle1 = {
@@ -5824,7 +5866,7 @@ console.log(bicycle1.gear);
 
 /* 3:10:43 Simple Fields
 
-//way 1 
+//way 1
 const createPerson1 = (name, age, gender) => {
 
     return {
@@ -5837,7 +5879,7 @@ const createPerson1 = (name, age, gender) => {
 
 console.log(createPerson1("Zodiac Hasbro, 56", "male"));
 
-//way 2 
+//way 2
 const createPerson2 = (name, age, gender) => ( { name, age, gender});
 
 
@@ -5869,7 +5911,7 @@ const person = {
 };
 
 const greeting = `Hello, my name is ${person.name}!
-I am ${person.age} years old.`; 
+I am ${person.age} years old.`;
 
 console.log(greeting);
 
@@ -5919,7 +5961,7 @@ A lot of things happened there. Firstly, the example uses backticks (`), not quo
 const stats = {
     max: 56.78,
     standard_deviation: 4.34,
-    median: 34.54, 
+    median: 34.54,
     mode: 23.87,
     min: -0.75,
     average: 35.85
@@ -5927,7 +5969,7 @@ const stats = {
 const half = (function() {
 
     return function half({ max, min}) {
-        return (max + min) / 2.0; 
+        return (max + min) / 2.0;
     };
 })();
 console.log(stats);
@@ -5960,7 +6002,7 @@ When profileData is passed to the above function, the values are destructured fr
 
 const source = [1,2,3,4,5,6,7,8,9,10];
 function removeFirstTwo(list) {
-    
+
     const [ , ,  ...arr] = list; // no do anything to 1 and 2, and add the rest to the variable arr; if we put [ a, b,  ...arr], then it'll be  [a,b,3,4,5,6,7,8,9,10];
 
     return arr;
@@ -6028,7 +6070,7 @@ const LOCAL_FORECAST = {
 function getMaxOfTmrw(forecast) {
 
     const { tomorrow: {max : maxOfTmrw }} = forecast;
-    return maxOfTmrw; 
+    return maxOfTmrw;
 }
 
 console.log(getMaxOfTmrw(LOCAL_FORECAST));
@@ -6073,28 +6115,28 @@ const HIGH_TEMPERATURES = {
     today: 77,
     tomorrow: 80
   };
-  
+
   // Only change code below this line
-  
+
   const {today, tomorrow} = HIGH_TEMPERATURES;
-  
+
   // Only change code above this line
 
 
 
 */
 
-/* 
+/*
 
 function descendingOrder(n){
-  
+
     var digits = n.toString().split('');
     var realDigits = digits.map(Number);
     const compareFn = (a, b) => a > b ? -1 : 0;
     var x = realDigits.sort(compareFn).join('');
     return x;
   }
-  
+
   console.log(descendingOrder(589789324798472));
 
   var a = 5764435365;
@@ -6167,7 +6209,7 @@ console.log(sum2(1, 2, 3, 4, 6));
 параметры по умолчанию действуют тогда, когда аргументы не указаны
 
 const increment = (function() {
-    return function increment(number, value = 1) { // если не передать значение value при вызове функции, то будет браться это значение 
+    return function increment(number, value = 1) { // если не передать значение value при вызове функции, то будет браться это значение
         return number + value;
     };
 }) ();
@@ -6205,7 +6247,7 @@ var myConcat = function(arr1, arr2) {
 
 console.log(myConcat([1, 2], [3, 4, 5]));
 
-const myConcat = (arr1, arr2) => 
+const myConcat = (arr1, arr2) =>
      arr1.concat(arr2);
 
 console.log(myConcat([1, 2], [3, 4, 5]));
@@ -6263,7 +6305,7 @@ const s = [5, 7, 2];
 
 function editInPlace() {
     "use strict";
-    
+
     // s = [2, 5, 7];
     s[0] = 2;
     s[1] = 5;
@@ -6286,7 +6328,7 @@ const нельзя переприсвоить
 function printManyTimes(str) {
     "use strict";
 
-    const SENTENCE = str + " is cool!"; 
+    const SENTENCE = str + " is cool!";
 
     for (let i = 0; i < str.length; i +=2) {
         console.log(SENTENCE);
@@ -6303,7 +6345,7 @@ printManyTimes("freeCodeCamp");
 /* 2:39:02 var vs let scopes
 
 var - глобальная декларация; если внутри функции - локальная
-let - ограничивается инструкцией и выражением блока, в котором она задекларирована 
+let - ограничивается инструкцией и выражением блока, в котором она задекларирована
 
 Block scope i is:  block scope
 Function scope i is:  function scope
@@ -6345,8 +6387,8 @@ checkScope();
 /* 2:36:57 var vs let
 let не позволяет декларировать переменную дважды
 
-ECMAScript 5 (ES5). Он добавил новые возможности в язык и изменил некоторые 
-из существующих. Чтобы устаревший код работал, как и раньше, по умолчанию подобные изменения не применяются. 
+ECMAScript 5 (ES5). Он добавил новые возможности в язык и изменил некоторые
+из существующих. Чтобы устаревший код работал, как и раньше, по умолчанию подобные изменения не применяются.
 Поэтому нам нужно явно их активировать с помощью специальной директивы: "use strict".
 
 Директива выглядит как строка: "use strict" или 'use strict'. Когда она находится в начале скрипта, весь сценарий работает в «современном» режиме.
@@ -6357,10 +6399,10 @@ ECMAScript 5 (ES5). Он добавил новые возможности в я�
 
 // этот код работает в современном режиме
 ...
-Позже мы изучим функции (способ группировки команд). 
-Забегая вперёд, заметим, что вместо всего скрипта "use strict" можно поставить 
-в начале большинства видов функций. Это позволяет включить строгий режим 
-только в конкретной функции. 
+Позже мы изучим функции (способ группировки команд).
+Забегая вперёд, заметим, что вместо всего скрипта "use strict" можно поставить
+в начале большинства видов функций. Это позволяет включить строгий режим
+только в конкретной функции.
 Но обычно люди используют его для всего файла.
 
 let catName = "Quincy";
@@ -6502,7 +6544,7 @@ function ourRandomRange(ourMin, ourMax) {
     return Math.floor(Math.random() * (ourMax - ourMin + 1)) + ourMin;
 }
 
-ourRandomRange(1, 9); 
+ourRandomRange(1, 9);
 
 function randomRange(myMin, myMax) {
 
@@ -6510,7 +6552,7 @@ function randomRange(myMin, myMax) {
 }
 
 var myRandom = randomRange(5, 15);
-// Math.floor(Math.random() * (15 - 5 + 1)) + 5 = округл(ранд. дробное число от 0 до 1 * 11) + 5 
+// Math.floor(Math.random() * (15 - 5 + 1)) + 5 = округл(ранд. дробное число от 0 до 1 * 11) + 5
 
 console.log(myRandom);
 
@@ -6553,7 +6595,7 @@ console.log(randomFraction());
 
 */
 
-/* recursion https://youtu.be/Q0alTGQ-lXk 
+/* recursion https://youtu.be/Q0alTGQ-lXk
 
 function multiply(arr, n) {
     if (n <= 0) {
@@ -6578,21 +6620,21 @@ countToTen();
 
 /* 2:24:12 Profile Lookup
 
-var contacts = [ 
+var contacts = [
     {
     "firstName": "Akira",
     "lastName": "Laine",
     "number": "0543236543",
-    "likes": ["Pizza", "Coding", "Brownie Points"] 
+    "likes": ["Pizza", "Coding", "Brownie Points"]
 },
 {
 "firstName": "Harry",
 "lastName": "Potter", "number": "0994372684",
-"likes": ["Hogwarts", "Magic", "Hagrid"] 
+"likes": ["Hogwarts", "Magic", "Hagrid"]
 },
 {
 "firstName": "Sherlock",
-"lastName": "Holmes", "number": "0487345643", "likes": ["Intriguing Cases", "Violin"] 
+"lastName": "Holmes", "number": "0487345643", "likes": ["Intriguing Cases", "Violin"]
 },
 {
 "firstName": "Kristian",
@@ -6635,7 +6677,7 @@ do {
 } while (i < 5);
 The example above behaves similar to other types of loops, and the resulting array will look like [0, 1, 2, 3, 4]. However, what makes the do...while different from other loops is how it behaves when the condition fails on the first check. Let's see this in action. Here is a regular while loop that will run the code in the loop as long as i < 5:
 
-const ourArray = []; 
+const ourArray = [];
 let i = 5;
 
 while (i < 5) {
@@ -6644,7 +6686,7 @@ while (i < 5) {
 }
 In this example, we initialize the value of ourArray to an empty array and the value of i to 5. When we execute the while loop, the condition evaluates to false because i is not less than 5, so we do not execute the code inside the loop. The result is that ourArray will end up with no values added to it, and it will still look like [] when all of the code in the example above has completed running. Now, take a look at a do...while loop:
 
-const ourArray = []; 
+const ourArray = [];
 let i = 5;
 
 do {
@@ -6656,10 +6698,10 @@ In this case, we initialize the value of i to 5, just like we did with the while
 var myArray = [];
 var i = 10;
 
-do { 
+do {
     myArray.push(i);
     i++;
-} while (i < 5) 
+} while (i < 5)
 
 document.write(i, myArray);
 
@@ -6678,7 +6720,7 @@ function multiplyAll(arr) {
         for (var j=0; j < arr[i].length; j++) {
             product *= arr[i][j];
         }
-    }    
+    }
 
     return product;
 }
@@ -6803,7 +6845,7 @@ var collection = {
       "album": 'Slippery When Wet',
       "artist": 'Bon Jovi',
       "tracks": [
-        'Let It Rock', 
+        'Let It Rock',
         'You Give Love a Bad Name'
         ]
     },
@@ -6811,7 +6853,7 @@ var collection = {
       "album": '1999',
       "artist": 'Prince',
       "tracks": [
-        '1999', 
+        '1999',
         'Little Red Corvette'
         ]
     },
@@ -6869,21 +6911,21 @@ const recordCollection = {
 /* JSON
 
 const str = `{
-    "data" : 
-[ 
+    "data" :
+[
     {
         "shoppingCart": "ABC123",
-        "items": ["123", "456"] 
+        "items": ["123", "456"]
     }
 ]
 }`;
 
 const obj = {
-    data: 
+    data:
     [
         {
             shoppingCart : 'ABC123',
-            'items': ['123', '456'] 
+            'items': ['123', '456']
         }
     ]
 };
@@ -6894,7 +6936,7 @@ console.log(JSON.parse(str).data[0].items);
 
 
 
-Template literals are literals delimited with backtick (`) characters, allowing for multi-line strings, for string interpolation with embedded expressions, and for special constructs called tagged templates; при копировании в код данных при помощи JSON они помещаются внутри `` и воспринимаются как строка, и с ней можно производить только действия для строк 
+Template literals are literals delimited with backtick (`) characters, allowing for multi-line strings, for string interpolation with embedded expressions, and for special constructs called tagged templates; при копировании в код данных при помощи JSON они помещаются внутри `` и воспринимаются как строка, и с ней можно производить только действия для строк
 
 */
 
@@ -7163,7 +7205,7 @@ document.write(myDog.tails);
 
 /* 1:54:30 Add New Properties to Object
 
-добавить новые свойства объекту можно путем точечной или скобочной записи 
+добавить новые свойства объекту можно путем точечной или скобочной записи
 
 You can add new properties to existing JavaScript objects the same way you would modify them.
 
@@ -7300,7 +7342,7 @@ var testObject = {
     26: "Terry", // обычная запятая, а не точка с запятой
     8: "Lampard",
     1: "Cech"
-}; 
+};
 
 var footballerNumber = 26;
 var footballer = testObject[footballerNumber];
@@ -7442,7 +7484,7 @@ function abTest(a, b) {
     return Math.round(Math.pow(Math.sqrt(a) + Math.sqrt(b), 2));
 }
 
-document.write(abTest(-2,2)); 
+document.write(abTest(-2,2));
 
 
 */
@@ -7501,20 +7543,20 @@ function chainToSwitch(val) {
     case 42:
         answer = 'The Answer';
         break;
-        
+
     case 1:
         answer = 'There is no #1';
         break;
-        
+
     case 99:
         answer = 'Missed me by this much!';
         break;
-        
+
     case 7:
         answer = 'Ate Nine';
         break;
 
-    }    
+    }
 
     return answer;
 }
@@ -7565,7 +7607,7 @@ function switchOfStuff(val) {
             break;
         case 'b':
             answer = 'pear';
-            break;          
+            break;
         case 'c':
             answer = 'banana';
             break;
@@ -7594,15 +7636,15 @@ function spanishWords(val) {
         case 1:
             word = 'madre';
             break;
-        case 2:  
+        case 2:
             word = 'padre';
-            break;  
-        case 3:  
+            break;
+        case 3:
             word = 'gato';
-            break;  
-        case 4:  
+            break;
+        case 4:
             word = 'perro';
-            break;  
+            break;
     }
     return word;
 }
@@ -7611,16 +7653,16 @@ document.write(spanishWords(1))
 function caseInSwitch(val) {
     var answer = "";
     switch(val) {
-        case 1:  // if val equals 1; it uses "===" 
+        case 1:  // if val equals 1; it uses "==="
             answer = "alpha";
             break;
-        case 2: // if val equals 2; it uses "===" 
+        case 2: // if val equals 2; it uses "==="
             answer = "beta";
             break; // if we don't put the "break" statement, it'll go through the next case statement automatically
-        case 3:  
+        case 3:
             answer = "gamma";
             break;
-        case 4:  
+        case 4:
             answer = "delta";
             break;
     }
@@ -7633,7 +7675,7 @@ document.write(caseInSwitch(4));
 
 */
 
-/* 
+/*
 
 
 */
@@ -7789,14 +7831,14 @@ alert(testLogicalOr(5));
 alert(testLogicalOr(15));
 alert(testLogicalOr(50));
 
-*/ 
+*/
 
-/* 1:19:17 And Operator 
+/* 1:19:17 And Operator
 
 function testLogicalAnd(val) {
 
     if (val <= 50 && val >= 25) {
-      return "Yes";        
+      return "Yes";
     }
 
     return "No";
@@ -7900,7 +7942,7 @@ function testNotEqual(val) {
 
 console.log(testNotEqual(99))
 
-*/ 
+*/
 
 /* 1:14:44 Practice comparing different values
 
@@ -7969,9 +8011,9 @@ console.log(testStrict(10));
 1   == '1' // true
 "3" ==  3  // true
 
-function testEqual(val) { 
+function testEqual(val) {
 if (val == 12) {
-    return "Equal"; 
+    return "Equal";
     }
     return "Not Equal";
 }
@@ -7982,7 +8024,7 @@ console.log(testEqual(10));
 
 
 
-/* 1:09:24 Use Conditional Logic with If Statements 
+/* 1:09:24 Use Conditional Logic with If Statements
 
 function ourTrueOrFalse(isItTrue) {
     if (isItTrue) {
@@ -8011,7 +8053,7 @@ function welcomeToBooleans() {
     return false;
 }
 
-or 
+or
 
 function welcomeToBooleans() {
     return true;
@@ -8022,7 +8064,7 @@ function welcomeToBooleans() {
 
 /* Баловство с shift, push, unshift
 
-let arr = [1,2,3,4,5]; 
+let arr = [1,2,3,4,5];
 let shiftedValue =arr.shift();
 console.log(shiftedValue)
 
@@ -8041,9 +8083,9 @@ you can add an item to the array that's passed in and it's going to return the 1
 "JSON.stringify" turns the array into a string that can easily prited out to the screen
 
 function nextInLine(arr, item) {
-    
-    arr.push(item);  
-    return arr.shift(); 
+
+    arr.push(item);
+    return arr.shift();
 }
 
 var testArr = [1,2,3,4,5];
@@ -8114,7 +8156,7 @@ console.log(divideByTen(100))
 */
 
 
-/* Global vs Local Scope in Functions 1:00:52 
+/* Global vs Local Scope in Functions 1:00:52
 The local variable takes precedence over the global variable. In the example below, the local variable (T-Shirt) is displayed first, and then - the global variable (sweater)
 
 var outerWear = "T-Shirt";
